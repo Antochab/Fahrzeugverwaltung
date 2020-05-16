@@ -9,5 +9,13 @@ namespace Fahrzeugverwaltung
     class Motorrad : Fahrzeug
     {
         private int hubraum;
+
+        public Motorrad(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum)
+        : base(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis)
+        {
+            hubraum = aHubraum;
+        }
+
     }
+
 }
