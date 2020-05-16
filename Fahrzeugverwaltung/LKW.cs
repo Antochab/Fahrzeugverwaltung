@@ -10,5 +10,15 @@ namespace Fahrzeugverwaltung
     {
         private int achsenAnzahl;
         private int zuladung;
+
+        public LKW(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aAchsenanzahl, int aZuladung)
+        :base(aHersteller,aModell,aKennzeichen,aErstzulassung,aAnschaffungspreis)        {
+            achsenAnzahl = aAchsenanzahl;
+            zuladung = aZuladung;
+        }
+
+
+
+
     }
 }
