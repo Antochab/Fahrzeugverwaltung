@@ -15,7 +15,7 @@ namespace Fahrzeugverwaltung
         {
             hubraum = aHubraum;
         }
-
+        public int Hubraum { get { return hubraum; } set { hubraum = value; } }
     }
 
 }

@@ -10,5 +10,9 @@ namespace Fahrzeugverwaltung
     {
         private int nummer;
         private String stellplatzTyp;
+
+        public int Nummer { get { return nummer; } set { nummer = value; } }
+        public String Stellplatztyp { get { return stellplatzTyp; } set { stellplatzTyp = value; } }
     }
+
 }

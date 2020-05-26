@@ -17,7 +17,8 @@ namespace Fahrzeugverwaltung
             zuladung = aZuladung;
         }
 
-
+        public int Achsenanzahl { get { return achsenAnzahl; } set { achsenAnzahl = value; } }
+        public int Zuladung { get { return zuladung; } set { zuladung = value; } }
 
 
     }
