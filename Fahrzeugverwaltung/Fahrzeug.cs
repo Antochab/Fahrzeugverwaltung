@@ -23,6 +23,10 @@ namespace Fahrzeugverwaltung
             anschaffungspreis = aAnschaffungspreis;
         }
 
+        public String Hersteller{ get { return hersteller; } set { hersteller = value; } }
+
+
+
 
 
     }
