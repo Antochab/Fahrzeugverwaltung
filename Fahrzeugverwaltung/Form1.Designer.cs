@@ -33,18 +33,20 @@
             this.textBoxKennzeichen = new System.Windows.Forms.TextBox();
             this.textBoxZulassung = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxAnschaffungspreis = new System.Windows.Forms.TextBox();
-            this.textBoxHubraum = new System.Windows.Forms.TextBox();
-            this.textBoxLeistung = new System.Windows.Forms.TextBox();
-            this.textBoxSchadstoffklasse = new System.Windows.Forms.TextBox();
-            this.labelHersteller = new System.Windows.Forms.Label();
-            this.labelModell = new System.Windows.Forms.Label();
-            this.labelKennzeichen = new System.Windows.Forms.Label();
-            this.labelZulassung = new System.Windows.Forms.Label();
-            this.labelAnschaffungspreis = new System.Windows.Forms.Label();
-            this.labelHubraum = new System.Windows.Forms.Label();
-            this.labelLeistung = new System.Windows.Forms.Label();
             this.labelSchadstoffklasse = new System.Windows.Forms.Label();
+            this.labelLeistung = new System.Windows.Forms.Label();
+            this.labelHubraum = new System.Windows.Forms.Label();
+            this.labelAnschaffungspreis = new System.Windows.Forms.Label();
+            this.labelZulassung = new System.Windows.Forms.Label();
+            this.labelKennzeichen = new System.Windows.Forms.Label();
+            this.labelModell = new System.Windows.Forms.Label();
+            this.labelHersteller = new System.Windows.Forms.Label();
+            this.textBoxSchadstoffklasse = new System.Windows.Forms.TextBox();
+            this.textBoxLeistung = new System.Windows.Forms.TextBox();
+            this.textBoxHubraum = new System.Windows.Forms.TextBox();
+            this.textBoxAnschaffungspreis = new System.Windows.Forms.TextBox();
+            this.buttonAnlegen = new System.Windows.Forms.Button();
+            this.buttonAbbrechen = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +80,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonAbbrechen);
+            this.panel1.Controls.Add(this.buttonAnlegen);
             this.panel1.Controls.Add(this.labelSchadstoffklasse);
             this.panel1.Controls.Add(this.labelLeistung);
             this.panel1.Controls.Add(this.labelHubraum);
@@ -99,87 +103,14 @@
             this.panel1.Size = new System.Drawing.Size(642, 396);
             this.panel1.TabIndex = 4;
             // 
-            // textBoxAnschaffungspreis
+            // labelSchadstoffklasse
             // 
-            this.textBoxAnschaffungspreis.Location = new System.Drawing.Point(206, 215);
-            this.textBoxAnschaffungspreis.Name = "textBoxAnschaffungspreis";
-            this.textBoxAnschaffungspreis.Size = new System.Drawing.Size(100, 26);
-            this.textBoxAnschaffungspreis.TabIndex = 4;
-            // 
-            // textBoxHubraum
-            // 
-            this.textBoxHubraum.Location = new System.Drawing.Point(206, 272);
-            this.textBoxHubraum.Name = "textBoxHubraum";
-            this.textBoxHubraum.Size = new System.Drawing.Size(100, 26);
-            this.textBoxHubraum.TabIndex = 5;
-            // 
-            // textBoxLeistung
-            // 
-            this.textBoxLeistung.Location = new System.Drawing.Point(206, 321);
-            this.textBoxLeistung.Name = "textBoxLeistung";
-            this.textBoxLeistung.Size = new System.Drawing.Size(100, 26);
-            this.textBoxLeistung.TabIndex = 6;
-            // 
-            // textBoxSchadstoffklasse
-            // 
-            this.textBoxSchadstoffklasse.Location = new System.Drawing.Point(206, 369);
-            this.textBoxSchadstoffklasse.Name = "textBoxSchadstoffklasse";
-            this.textBoxSchadstoffklasse.Size = new System.Drawing.Size(100, 26);
-            this.textBoxSchadstoffklasse.TabIndex = 7;
-            // 
-            // labelHersteller
-            // 
-            this.labelHersteller.AutoSize = true;
-            this.labelHersteller.Location = new System.Drawing.Point(19, 18);
-            this.labelHersteller.Name = "labelHersteller";
-            this.labelHersteller.Size = new System.Drawing.Size(77, 20);
-            this.labelHersteller.TabIndex = 8;
-            this.labelHersteller.Text = "Hersteller";
-            // 
-            // labelModell
-            // 
-            this.labelModell.AutoSize = true;
-            this.labelModell.Location = new System.Drawing.Point(19, 60);
-            this.labelModell.Name = "labelModell";
-            this.labelModell.Size = new System.Drawing.Size(55, 20);
-            this.labelModell.TabIndex = 9;
-            this.labelModell.Text = "Modell";
-            // 
-            // labelKennzeichen
-            // 
-            this.labelKennzeichen.AutoSize = true;
-            this.labelKennzeichen.Location = new System.Drawing.Point(19, 111);
-            this.labelKennzeichen.Name = "labelKennzeichen";
-            this.labelKennzeichen.Size = new System.Drawing.Size(101, 20);
-            this.labelKennzeichen.TabIndex = 10;
-            this.labelKennzeichen.Text = "Kennzeichen";
-            // 
-            // labelZulassung
-            // 
-            this.labelZulassung.AutoSize = true;
-            this.labelZulassung.Location = new System.Drawing.Point(19, 163);
-            this.labelZulassung.Name = "labelZulassung";
-            this.labelZulassung.Size = new System.Drawing.Size(83, 20);
-            this.labelZulassung.TabIndex = 11;
-            this.labelZulassung.Text = "Zulassung";
-            // 
-            // labelAnschaffungspreis
-            // 
-            this.labelAnschaffungspreis.AutoSize = true;
-            this.labelAnschaffungspreis.Location = new System.Drawing.Point(19, 219);
-            this.labelAnschaffungspreis.Name = "labelAnschaffungspreis";
-            this.labelAnschaffungspreis.Size = new System.Drawing.Size(142, 20);
-            this.labelAnschaffungspreis.TabIndex = 12;
-            this.labelAnschaffungspreis.Text = "Anschaffungspreis";
-            // 
-            // labelHubraum
-            // 
-            this.labelHubraum.AutoSize = true;
-            this.labelHubraum.Location = new System.Drawing.Point(19, 276);
-            this.labelHubraum.Name = "labelHubraum";
-            this.labelHubraum.Size = new System.Drawing.Size(75, 20);
-            this.labelHubraum.TabIndex = 13;
-            this.labelHubraum.Text = "Hubraum";
+            this.labelSchadstoffklasse.AutoSize = true;
+            this.labelSchadstoffklasse.Location = new System.Drawing.Point(19, 373);
+            this.labelSchadstoffklasse.Name = "labelSchadstoffklasse";
+            this.labelSchadstoffklasse.Size = new System.Drawing.Size(132, 20);
+            this.labelSchadstoffklasse.TabIndex = 15;
+            this.labelSchadstoffklasse.Text = "Schadstoffklasse";
             // 
             // labelLeistung
             // 
@@ -190,14 +121,105 @@
             this.labelLeistung.TabIndex = 14;
             this.labelLeistung.Text = "Leistung";
             // 
-            // labelSchadstoffklasse
+            // labelHubraum
             // 
-            this.labelSchadstoffklasse.AutoSize = true;
-            this.labelSchadstoffklasse.Location = new System.Drawing.Point(19, 373);
-            this.labelSchadstoffklasse.Name = "labelSchadstoffklasse";
-            this.labelSchadstoffklasse.Size = new System.Drawing.Size(132, 20);
-            this.labelSchadstoffklasse.TabIndex = 15;
-            this.labelSchadstoffklasse.Text = "Schadstoffklasse";
+            this.labelHubraum.AutoSize = true;
+            this.labelHubraum.Location = new System.Drawing.Point(19, 276);
+            this.labelHubraum.Name = "labelHubraum";
+            this.labelHubraum.Size = new System.Drawing.Size(75, 20);
+            this.labelHubraum.TabIndex = 13;
+            this.labelHubraum.Text = "Hubraum";
+            // 
+            // labelAnschaffungspreis
+            // 
+            this.labelAnschaffungspreis.AutoSize = true;
+            this.labelAnschaffungspreis.Location = new System.Drawing.Point(19, 219);
+            this.labelAnschaffungspreis.Name = "labelAnschaffungspreis";
+            this.labelAnschaffungspreis.Size = new System.Drawing.Size(142, 20);
+            this.labelAnschaffungspreis.TabIndex = 12;
+            this.labelAnschaffungspreis.Text = "Anschaffungspreis";
+            // 
+            // labelZulassung
+            // 
+            this.labelZulassung.AutoSize = true;
+            this.labelZulassung.Location = new System.Drawing.Point(19, 163);
+            this.labelZulassung.Name = "labelZulassung";
+            this.labelZulassung.Size = new System.Drawing.Size(83, 20);
+            this.labelZulassung.TabIndex = 11;
+            this.labelZulassung.Text = "Zulassung";
+            // 
+            // labelKennzeichen
+            // 
+            this.labelKennzeichen.AutoSize = true;
+            this.labelKennzeichen.Location = new System.Drawing.Point(19, 111);
+            this.labelKennzeichen.Name = "labelKennzeichen";
+            this.labelKennzeichen.Size = new System.Drawing.Size(101, 20);
+            this.labelKennzeichen.TabIndex = 10;
+            this.labelKennzeichen.Text = "Kennzeichen";
+            // 
+            // labelModell
+            // 
+            this.labelModell.AutoSize = true;
+            this.labelModell.Location = new System.Drawing.Point(19, 60);
+            this.labelModell.Name = "labelModell";
+            this.labelModell.Size = new System.Drawing.Size(55, 20);
+            this.labelModell.TabIndex = 9;
+            this.labelModell.Text = "Modell";
+            // 
+            // labelHersteller
+            // 
+            this.labelHersteller.AutoSize = true;
+            this.labelHersteller.Location = new System.Drawing.Point(19, 18);
+            this.labelHersteller.Name = "labelHersteller";
+            this.labelHersteller.Size = new System.Drawing.Size(77, 20);
+            this.labelHersteller.TabIndex = 8;
+            this.labelHersteller.Text = "Hersteller";
+            // 
+            // textBoxSchadstoffklasse
+            // 
+            this.textBoxSchadstoffklasse.Location = new System.Drawing.Point(206, 369);
+            this.textBoxSchadstoffklasse.Name = "textBoxSchadstoffklasse";
+            this.textBoxSchadstoffklasse.Size = new System.Drawing.Size(100, 26);
+            this.textBoxSchadstoffklasse.TabIndex = 7;
+            // 
+            // textBoxLeistung
+            // 
+            this.textBoxLeistung.Location = new System.Drawing.Point(206, 321);
+            this.textBoxLeistung.Name = "textBoxLeistung";
+            this.textBoxLeistung.Size = new System.Drawing.Size(100, 26);
+            this.textBoxLeistung.TabIndex = 6;
+            // 
+            // textBoxHubraum
+            // 
+            this.textBoxHubraum.Location = new System.Drawing.Point(206, 272);
+            this.textBoxHubraum.Name = "textBoxHubraum";
+            this.textBoxHubraum.Size = new System.Drawing.Size(100, 26);
+            this.textBoxHubraum.TabIndex = 5;
+            // 
+            // textBoxAnschaffungspreis
+            // 
+            this.textBoxAnschaffungspreis.Location = new System.Drawing.Point(206, 215);
+            this.textBoxAnschaffungspreis.Name = "textBoxAnschaffungspreis";
+            this.textBoxAnschaffungspreis.Size = new System.Drawing.Size(100, 26);
+            this.textBoxAnschaffungspreis.TabIndex = 4;
+            // 
+            // buttonAnlegen
+            // 
+            this.buttonAnlegen.Location = new System.Drawing.Point(505, 348);
+            this.buttonAnlegen.Name = "buttonAnlegen";
+            this.buttonAnlegen.Size = new System.Drawing.Size(136, 44);
+            this.buttonAnlegen.TabIndex = 16;
+            this.buttonAnlegen.Text = "Anlegen";
+            this.buttonAnlegen.UseVisualStyleBackColor = true;
+            // 
+            // buttonAbbrechen
+            // 
+            this.buttonAbbrechen.Location = new System.Drawing.Point(384, 348);
+            this.buttonAbbrechen.Name = "buttonAbbrechen";
+            this.buttonAbbrechen.Size = new System.Drawing.Size(115, 44);
+            this.buttonAbbrechen.TabIndex = 17;
+            this.buttonAbbrechen.Text = "Abbrechen";
+            this.buttonAbbrechen.UseVisualStyleBackColor = true;
             // 
             // FormAutoAnlegen
             // 
@@ -232,6 +254,8 @@
         private System.Windows.Forms.Label labelKennzeichen;
         private System.Windows.Forms.Label labelModell;
         private System.Windows.Forms.Label labelHersteller;
+        private System.Windows.Forms.Button buttonAbbrechen;
+        private System.Windows.Forms.Button buttonAnlegen;
     }
 }
 
