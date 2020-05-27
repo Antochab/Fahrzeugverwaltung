@@ -271,6 +271,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormAutoAnlegen";
             this.Text = "Neues Auto anlegen";
+            this.Load += new System.EventHandler(this.FormAutoAnlegen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

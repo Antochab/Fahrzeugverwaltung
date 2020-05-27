@@ -29,5 +29,15 @@ namespace Fahrzeugverwaltung
         {
             Console.WriteLine(fahrzeugpool.Fahrzeugliste.Count());
         }
+
+        //Anzeige hängt von der Auswahl im Hauptmenü ab! 
+        // TODO Wenn Auto nur entsprechende Felder anzeigen!
+        private void FormAutoAnlegen_Load(object sender, EventArgs e)
+        {
+            labelAnzahlAchsen.Visible = false;
+            labelZuladung.Visible = false;
+            textBoxAnzahlAchsen.Visible = false;
+            textBoxZuladung.Visible = false;
+        }
     }
 }
