@@ -9,12 +9,12 @@ namespace Fahrzeugverwaltung
 {
     abstract class Fahrzeug
     {
-        protected String hersteller, modell, kennzeichen;
+        protected string hersteller, modell, kennzeichen;
         protected int erstzulassung;
         protected float anschaffungspreis;
 
 
-        public Fahrzeug(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis)
+        public Fahrzeug(string aHersteller, string aModell, string aKennzeichen, int aErstzulassung, float aAnschaffungspreis)
         {
             hersteller = aHersteller;
             modell = aModell;
