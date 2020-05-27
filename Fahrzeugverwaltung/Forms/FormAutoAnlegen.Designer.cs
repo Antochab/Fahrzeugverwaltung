@@ -33,6 +33,10 @@
             this.textBoxKennzeichen = new System.Windows.Forms.TextBox();
             this.textBoxZulassung = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.labelZuladung = new System.Windows.Forms.Label();
+            this.labelAnzahlAchsen = new System.Windows.Forms.Label();
+            this.textBoxZuladung = new System.Windows.Forms.TextBox();
+            this.textBoxAnzahlAchsen = new System.Windows.Forms.TextBox();
             this.buttonAbbrechen = new System.Windows.Forms.Button();
             this.buttonAnlegen = new System.Windows.Forms.Button();
             this.labelSchadstoffklasse = new System.Windows.Forms.Label();
@@ -47,10 +51,6 @@
             this.textBoxLeistung = new System.Windows.Forms.TextBox();
             this.textBoxHubraum = new System.Windows.Forms.TextBox();
             this.textBoxAnschaffungspreis = new System.Windows.Forms.TextBox();
-            this.textBoxAnzahlAchsen = new System.Windows.Forms.TextBox();
-            this.textBoxZuladung = new System.Windows.Forms.TextBox();
-            this.labelAnzahlAchsen = new System.Windows.Forms.Label();
-            this.labelZuladung = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,6 +111,38 @@
             this.panel1.Size = new System.Drawing.Size(642, 396);
             this.panel1.TabIndex = 4;
             // 
+            // labelZuladung
+            // 
+            this.labelZuladung.AutoSize = true;
+            this.labelZuladung.Location = new System.Drawing.Point(23, 278);
+            this.labelZuladung.Name = "labelZuladung";
+            this.labelZuladung.Size = new System.Drawing.Size(76, 20);
+            this.labelZuladung.TabIndex = 21;
+            this.labelZuladung.Text = "Zuladung";
+            // 
+            // labelAnzahlAchsen
+            // 
+            this.labelAnzahlAchsen.AutoSize = true;
+            this.labelAnzahlAchsen.Location = new System.Drawing.Point(23, 326);
+            this.labelAnzahlAchsen.Name = "labelAnzahlAchsen";
+            this.labelAnzahlAchsen.Size = new System.Drawing.Size(116, 20);
+            this.labelAnzahlAchsen.TabIndex = 20;
+            this.labelAnzahlAchsen.Text = "Anzahl Achsen";
+            // 
+            // textBoxZuladung
+            // 
+            this.textBoxZuladung.Location = new System.Drawing.Point(206, 321);
+            this.textBoxZuladung.Name = "textBoxZuladung";
+            this.textBoxZuladung.Size = new System.Drawing.Size(100, 26);
+            this.textBoxZuladung.TabIndex = 19;
+            // 
+            // textBoxAnzahlAchsen
+            // 
+            this.textBoxAnzahlAchsen.Location = new System.Drawing.Point(206, 273);
+            this.textBoxAnzahlAchsen.Name = "textBoxAnzahlAchsen";
+            this.textBoxAnzahlAchsen.Size = new System.Drawing.Size(100, 26);
+            this.textBoxAnzahlAchsen.TabIndex = 18;
+            // 
             // buttonAbbrechen
             // 
             this.buttonAbbrechen.Location = new System.Drawing.Point(384, 348);
@@ -119,6 +151,7 @@
             this.buttonAbbrechen.TabIndex = 17;
             this.buttonAbbrechen.Text = "Abbrechen";
             this.buttonAbbrechen.UseVisualStyleBackColor = true;
+            this.buttonAbbrechen.Click += new System.EventHandler(this.buttonAbbrechen_Click);
             // 
             // buttonAnlegen
             // 
@@ -128,6 +161,7 @@
             this.buttonAnlegen.TabIndex = 16;
             this.buttonAnlegen.Text = "Anlegen";
             this.buttonAnlegen.UseVisualStyleBackColor = true;
+            this.buttonAnlegen.Click += new System.EventHandler(this.buttonAnlegen_Click);
             // 
             // labelSchadstoffklasse
             // 
@@ -229,38 +263,6 @@
             this.textBoxAnschaffungspreis.Size = new System.Drawing.Size(100, 26);
             this.textBoxAnschaffungspreis.TabIndex = 4;
             // 
-            // textBoxAnzahlAchsen
-            // 
-            this.textBoxAnzahlAchsen.Location = new System.Drawing.Point(206, 273);
-            this.textBoxAnzahlAchsen.Name = "textBoxAnzahlAchsen";
-            this.textBoxAnzahlAchsen.Size = new System.Drawing.Size(100, 26);
-            this.textBoxAnzahlAchsen.TabIndex = 18;
-            // 
-            // textBoxZuladung
-            // 
-            this.textBoxZuladung.Location = new System.Drawing.Point(206, 321);
-            this.textBoxZuladung.Name = "textBoxZuladung";
-            this.textBoxZuladung.Size = new System.Drawing.Size(100, 26);
-            this.textBoxZuladung.TabIndex = 19;
-            // 
-            // labelAnzahlAchsen
-            // 
-            this.labelAnzahlAchsen.AutoSize = true;
-            this.labelAnzahlAchsen.Location = new System.Drawing.Point(23, 326);
-            this.labelAnzahlAchsen.Name = "labelAnzahlAchsen";
-            this.labelAnzahlAchsen.Size = new System.Drawing.Size(116, 20);
-            this.labelAnzahlAchsen.TabIndex = 20;
-            this.labelAnzahlAchsen.Text = "Anzahl Achsen";
-            // 
-            // labelZuladung
-            // 
-            this.labelZuladung.AutoSize = true;
-            this.labelZuladung.Location = new System.Drawing.Point(23, 278);
-            this.labelZuladung.Name = "labelZuladung";
-            this.labelZuladung.Size = new System.Drawing.Size(76, 20);
-            this.labelZuladung.TabIndex = 21;
-            this.labelZuladung.Text = "Zuladung";
-            // 
             // FormAutoAnlegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -269,6 +271,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "FormAutoAnlegen";
             this.Text = "Neues Auto anlegen";
+            this.Load += new System.EventHandler(this.FormAutoAnlegen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -10,17 +10,13 @@ namespace Fahrzeugverwaltung
     {
         protected List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
 
-        public Fahrzeugpool(List<Fahrzeug> aFahrzeugliste)
-        {
-            fahrzeugliste = aFahrzeugliste;
-        }
-
         public List<Fahrzeug> Fahrzeugliste { get { return fahrzeugliste; } } 
 
 
-        public void neuesFahrzeug(Fahrzeug f)
+        public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum, int aLeistung, int aSchadstoffklasse)
         {
-            fahrzeugliste.Add(f);
+            fahrzeugliste.Add(new PKW(aHersteller,aModell,aKennzeichen,aErstzulassung,aAnschaffungspreis,aHubraum,aLeistung,aSchadstoffklasse));
+
         }
         public Fahrzeug sucheFahrzeug(string kennzeichen)
         {
