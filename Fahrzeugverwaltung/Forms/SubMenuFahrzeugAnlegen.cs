@@ -28,21 +28,23 @@ namespace Fahrzeugverwaltung.Forms
 
     private void button_Click(object sender, EventArgs e)
         {
+            this.Close();
             switch (((Button)sender).Name)
             {
                 case "buttonPKWAnlegen":
                     FormFahrzeugAnlegen pkwForm = new FormFahrzeugAnlegen("PKW");
                     pkwForm.Show();
-            break;
+                    break;
+
                 case "buttonMotorradAnlegen":
                     FormFahrzeugAnlegen motorradForm = new FormFahrzeugAnlegen("Motorrad");
                     motorradForm.Show();
                     break;
+
                 case "buttonLKWAnlegen":
+                    this.Close();
                     FormFahrzeugAnlegen lkwForm = new FormFahrzeugAnlegen("LKW");
                     lkwForm.Show();
-                    break;
-                default:
                     break;
             }
         }

@@ -17,7 +17,7 @@ namespace Fahrzeugverwaltung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SubMenuFahrzeugAnlegen());
+            Application.Run(new Hauptmenu());
 
            
             //Testen, ob Suche Fahrzeug funktioniert
