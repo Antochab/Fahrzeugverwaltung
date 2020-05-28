@@ -1,6 +1,6 @@
 ﻿namespace Fahrzeugverwaltung
 {
-    partial class FormAutoAnlegen
+    partial class FormFahrzeugAnlegen
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -108,7 +108,7 @@
             this.panel1.Controls.Add(this.textBoxKennzeichen);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(642, 396);
+            this.panel1.Size = new System.Drawing.Size(642, 426);
             this.panel1.TabIndex = 4;
             // 
             // labelZuladung
@@ -151,7 +151,7 @@
             this.buttonAbbrechen.TabIndex = 17;
             this.buttonAbbrechen.Text = "Abbrechen";
             this.buttonAbbrechen.UseVisualStyleBackColor = true;
-            this.buttonAbbrechen.Click += new System.EventHandler(this.buttonAbbrechen_Click);
+            this.buttonAbbrechen.Click += new System.EventHandler(this.ButtonAbbrechen_Click);
             // 
             // buttonAnlegen
             // 
@@ -161,7 +161,7 @@
             this.buttonAnlegen.TabIndex = 16;
             this.buttonAnlegen.Text = "Anlegen";
             this.buttonAnlegen.UseVisualStyleBackColor = true;
-            this.buttonAnlegen.Click += new System.EventHandler(this.buttonAnlegen_Click);
+            this.buttonAnlegen.Click += new System.EventHandler(this.ButtonAnlegen_Click);
             // 
             // labelSchadstoffklasse
             // 
@@ -263,14 +263,14 @@
             this.textBoxAnschaffungspreis.Size = new System.Drawing.Size(100, 26);
             this.textBoxAnschaffungspreis.TabIndex = 4;
             // 
-            // FormAutoAnlegen
+            // FormFahrzeugAnlegen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
-            this.Name = "FormAutoAnlegen";
-            this.Text = "Neues Auto anlegen";
+            this.Name = "FormFahrzeugAnlegen";
+            this.Text = "Neues Fahrzeug anlegen";
             this.Load += new System.EventHandler(this.FormAutoAnlegen_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
