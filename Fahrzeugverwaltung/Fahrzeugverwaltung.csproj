@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Hauptmenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Hauptmenu.Designer.cs">
+      <DependentUpon>Hauptmenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SubMenuFahrzeugAnlegen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +75,9 @@
     <Compile Include="Klassen\Stellplatz.cs" />
     <EmbeddedResource Include="Forms\FormFahrzeugAnlegen.resx">
       <DependentUpon>FormFahrzeugAnlegen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Hauptmenu.resx">
+      <DependentUpon>Hauptmenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubMenuFahrzeugAnlegen.resx">
       <DependentUpon>SubMenuFahrzeugAnlegen.cs</DependentUpon>

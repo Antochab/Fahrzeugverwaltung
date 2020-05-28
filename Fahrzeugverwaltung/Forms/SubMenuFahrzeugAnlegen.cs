@@ -19,30 +19,32 @@ namespace Fahrzeugverwaltung.Forms
 
     private void SubMenuFahrzeugAnlegen_Load(object sender, EventArgs e)
         {
-            foreach (var button in Controls.OfType<Button>())
-            {
-                button.Click += button_Click;
-                    
-            }
+            buttonLKWAnlegen.Click += button_Click;
+            buttonPKWAnlegen.Click += button_Click;
+            buttonMotorradAnlegen.Click += button_Click;
+
         }
 
-        private void button_Click(object sender, EventArgs e)
+
+    private void button_Click(object sender, EventArgs e)
         {
+            this.Close();
             switch (((Button)sender).Name)
             {
                 case "buttonPKWAnlegen":
                     FormFahrzeugAnlegen pkwForm = new FormFahrzeugAnlegen("PKW");
                     pkwForm.Show();
-            break;
-                case "buttonMotorradAnlegen.Name":
+                    break;
+
+                case "buttonMotorradAnlegen":
                     FormFahrzeugAnlegen motorradForm = new FormFahrzeugAnlegen("Motorrad");
                     motorradForm.Show();
                     break;
+
                 case "buttonLKWAnlegen":
+                    this.Close();
                     FormFahrzeugAnlegen lkwForm = new FormFahrzeugAnlegen("LKW");
                     lkwForm.Show();
-                    break;
-                default:
                     break;
             }
         }
