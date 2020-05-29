@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormDatenAusgeben.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDatenAusgeben.Designer.cs">
+      <DependentUpon>FormDatenAusgeben.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Steureschuld_fuer_Kennzeichen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     <Compile Include="Klassen\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Klassen\Stellplatz.cs" />
+    <EmbeddedResource Include="Forms\FormDatenAusgeben.resx">
+      <DependentUpon>FormDatenAusgeben.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormFahrzeugAnlegen.resx">
       <DependentUpon>FormFahrzeugAnlegen.cs</DependentUpon>
     </EmbeddedResource>

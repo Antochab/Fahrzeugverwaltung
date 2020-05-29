@@ -53,6 +53,7 @@
             this.buttonDatenAusgeben.TabIndex = 1;
             this.buttonDatenAusgeben.Text = "Daten ausgeben";
             this.buttonDatenAusgeben.UseVisualStyleBackColor = true;
+            this.buttonDatenAusgeben.Click += new System.EventHandler(this.buttonDatenAusgeben_Click);
             // 
             // buttonSteuerschuldBerechnen
             // 
