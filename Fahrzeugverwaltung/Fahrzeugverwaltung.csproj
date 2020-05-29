@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\Form_Steureschuld_fuer_Kennzeichen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form_Steureschuld_fuer_Kennzeichen.Designer.cs">
+      <DependentUpon>Form_Steureschuld_fuer_Kennzeichen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Hauptmenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Hauptmenu.Designer.cs">
       <DependentUpon>Hauptmenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Steuerschulden berechnen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Steuerschulden berechnen.Designer.cs">
+      <DependentUpon>Steuerschulden berechnen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SubMenuFahrzeugAnlegen.cs">
       <SubType>Form</SubType>
@@ -76,8 +88,14 @@
     <EmbeddedResource Include="Forms\FormFahrzeugAnlegen.resx">
       <DependentUpon>FormFahrzeugAnlegen.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form_Steureschuld_fuer_Kennzeichen.resx">
+      <DependentUpon>Form_Steureschuld_fuer_Kennzeichen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Hauptmenu.resx">
       <DependentUpon>Hauptmenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Steuerschulden berechnen.resx">
+      <DependentUpon>Steuerschulden berechnen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SubMenuFahrzeugAnlegen.resx">
       <DependentUpon>SubMenuFahrzeugAnlegen.cs</DependentUpon>

@@ -62,6 +62,7 @@
             this.buttonSteuerschuldBerechnen.TabIndex = 2;
             this.buttonSteuerschuldBerechnen.Text = "Steuerschulden";
             this.buttonSteuerschuldBerechnen.UseVisualStyleBackColor = true;
+            this.buttonSteuerschuldBerechnen.Click += new System.EventHandler(this.buttonSteuerschuldBerechnen_Click);
             // 
             // panel1
             // 

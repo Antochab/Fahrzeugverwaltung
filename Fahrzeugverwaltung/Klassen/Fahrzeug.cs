@@ -7,7 +7,7 @@ using System.Xml.Schema;
 
 namespace Fahrzeugverwaltung
 {
-    abstract class Fahrzeug
+    public abstract class Fahrzeug
     {
         protected string hersteller, modell, kennzeichen;
         protected int erstzulassung;

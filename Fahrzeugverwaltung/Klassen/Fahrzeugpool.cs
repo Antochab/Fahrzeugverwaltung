@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace Fahrzeugverwaltung
 {
-    class Fahrzeugpool
+    public class Fahrzeugpool
     {
-        protected List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
-        protected List<Parkhaus> parkhausliste = new List<Parkhaus>(); 
-
-        public List<Fahrzeug> Fahrzeugliste { get { return fahrzeugliste; } }
-        public List<Parkhaus> Parkhausliste { get { return parkhausliste; } }
-
+        private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
+        private List<Parkhaus> parkhausliste = new List<Parkhaus>(); 
 
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum, int aLeistung, int aSchadstoffklasse)
         {

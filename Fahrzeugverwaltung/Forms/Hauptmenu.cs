@@ -12,6 +12,8 @@ namespace Fahrzeugverwaltung.Forms
 {
     public partial class Hauptmenu : Form
     {
+        private Fahrzeugpool fahrzeugpool = new Fahrzeugpool();
+
         public Hauptmenu()
         {
             InitializeComponent();
@@ -19,8 +21,14 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonFahrzeugAnlegen_Click(object sender, EventArgs e)
         {
-            SubMenuFahrzeugAnlegen subMenuFahrzeugAnlegen = new SubMenuFahrzeugAnlegen();
+            SubMenuFahrzeugAnlegen subMenuFahrzeugAnlegen = new SubMenuFahrzeugAnlegen(fahrzeugpool);
             subMenuFahrzeugAnlegen.Show();
+        }
+
+        private void buttonSteuerschuldBerechnen_Click(object sender, EventArgs e)
+        {
+            Steuerschulden_berechnen steuerschulden_Berechnen = new Steuerschulden_berechnen(fahrzeugpool);
+            steuerschulden_Berechnen.Show();
         }
     }
 }

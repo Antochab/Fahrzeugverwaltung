@@ -12,9 +12,11 @@ namespace Fahrzeugverwaltung.Forms
 {
     public partial class SubMenuFahrzeugAnlegen : Form
     {
-        public SubMenuFahrzeugAnlegen()
+        private Fahrzeugpool fahrzeugpool;
+        public SubMenuFahrzeugAnlegen(Fahrzeugpool aFahrzeugpool)
         {
             InitializeComponent();
+            fahrzeugpool = aFahrzeugpool;
         }
 
     private void SubMenuFahrzeugAnlegen_Load(object sender, EventArgs e)
@@ -32,18 +34,18 @@ namespace Fahrzeugverwaltung.Forms
             switch (((Button)sender).Name)
             {
                 case "buttonPKWAnlegen":
-                    FormFahrzeugAnlegen pkwForm = new FormFahrzeugAnlegen("PKW");
+                    FormFahrzeugAnlegen pkwForm = new FormFahrzeugAnlegen(fahrzeugpool, "PKW");
                     pkwForm.Show();
                     break;
 
                 case "buttonMotorradAnlegen":
-                    FormFahrzeugAnlegen motorradForm = new FormFahrzeugAnlegen("Motorrad");
+                    FormFahrzeugAnlegen motorradForm = new FormFahrzeugAnlegen(fahrzeugpool, "Motorrad");
                     motorradForm.Show();
                     break;
 
                 case "buttonLKWAnlegen":
                     this.Close();
-                    FormFahrzeugAnlegen lkwForm = new FormFahrzeugAnlegen("LKW");
+                    FormFahrzeugAnlegen lkwForm = new FormFahrzeugAnlegen(fahrzeugpool, "LKW");
                     lkwForm.Show();
                     break;
             }
