@@ -14,21 +14,25 @@ namespace Fahrzeugverwaltung
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum, int aLeistung, int aSchadstoffklasse)
         {
             //neuen PKW zur Liste hinzufügen hinzufügen
-            fahrzeugliste.Add(new PKW(aHersteller,aModell,aKennzeichen,aErstzulassung,aAnschaffungspreis,aHubraum,aLeistung,aSchadstoffklasse));
-
+            PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aHubraum, aLeistung, aSchadstoffklasse);
+            fahrzeugliste.Add(pkw);
+            stellplatzZuweisen(pkw);
         }
 
         public void neuenLKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aAchsenAnzahl, int aZuladung)
         {
             //neuen PKW zur Liste hinzufügen hinzufügen
-            fahrzeugliste.Add(new LKW(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aAchsenAnzahl, aZuladung));
-
+            LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aAchsenAnzahl, aZuladung);
+            fahrzeugliste.Add(lkw);
+            stellplatzZuweisen(lkw);
         }
 
         public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum)
         {
             //neuen PKW zur Liste hinzufügen hinzufügen
-            fahrzeugliste.Add(new Motorrad(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aHubraum));
+            Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aHubraum);
+            fahrzeugliste.Add(motorrad);
+            stellplatzZuweisen(motorrad);
 
         }
 
@@ -79,6 +83,7 @@ namespace Fahrzeugverwaltung
 
        public float berechneSteuerschuld()
         {
+            //TODO Fahrzeuge mit Steuerschulden ausgeben
             float steuerschuld = 0;
             //berechnen der Steuerschuld für jedes Fahrzeug in der Fahrzeugliste
             foreach(Fahrzeug f in fahrzeugliste)
