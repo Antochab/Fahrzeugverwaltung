@@ -30,5 +30,11 @@ namespace Fahrzeugverwaltung.Forms
             Steuerschulden_berechnen steuerschulden_Berechnen = new Steuerschulden_berechnen(fahrzeugpool);
             steuerschulden_Berechnen.Show();
         }
+
+        private void buttonDatenAusgeben_Click(object sender, EventArgs e)
+        {
+            FormDatenAusgeben formDatenAusgeben = new FormDatenAusgeben(fahrzeugpool);
+            formDatenAusgeben.Show();
+        }
     }
 }

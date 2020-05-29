@@ -29,22 +29,30 @@ namespace Fahrzeugverwaltung
             string hersteller = textBoxHersteller.Text;
             string modell = textBoxModell.Text;
             string kennzeichen = textBoxKennzeichen.Text;
-            int erstzulassung = Convert.ToInt32(textBoxZulassung.Text);
-            float anschaffungspreis = float.Parse(textBoxAnschaffungspreis.Text);
+            string erstzulassung = textBoxZulassung.Text;
+            string anschaffungspreis = textBoxAnschaffungspreis.Text;
 
             switch (fahrzeugtyp)
             {
                 case "PKW":
                     //TODO übersichtlicher darstellen
-                    fahrzeugpool.neuenPKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, Convert.ToInt32(textBoxHubraum.Text), Convert.ToInt32(textBoxLeistung.Text), Convert.ToInt32(textBoxSchadstoffklasse.Text));
+                    try
+                    {
+                        fahrzeugpool.neuenPKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text, textBoxLeistung.Text, textBoxSchadstoffklasse.Text);
+                        break;
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                     break;
 
                 case "Motorrad":
-                    fahrzeugpool.neuesMotorradAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, Convert.ToInt32(textBoxHubraum.Text));
+                  //  fahrzeugpool.neuesMotorradAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text);
                     break;
 
                 case "LKW":
-                    fahrzeugpool.neuenLKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, Convert.ToInt32(textBoxAnzahlAchsen.Text), Convert.ToInt32(textBoxZuladung.Text));
+                  //  fahrzeugpool.neuenLKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxAnzahlAchsen.Text, textBoxZuladung.Text);
                     break;
             }
         }

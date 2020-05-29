@@ -21,7 +21,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonSteuerschuldFuerAlle_Click(object sender, EventArgs e)
         {
-            fahrzeugpool.berechneSteuerschuld();
+            MessageBox.Show(fahrzeugpool.berechneSteuerschuld().ToString());
         }
 
         private void buttonFuerKennzeichen_Click(object sender, EventArgs e)

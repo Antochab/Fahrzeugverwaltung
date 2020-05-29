@@ -26,6 +26,10 @@ namespace Fahrzeugverwaltung
         public String Hersteller{ get { return hersteller; } set { hersteller = value; } }
         public String Modell { get { return modell; } set { modell = value; } }
         public String Kennzeichen { get { return kennzeichen; } set { kennzeichen = value; } }
+     /// <summary>
+     /// TODO
+     /// Bei Set Erstzulassung Kriterium setzen,das man in einem bestimmten Bereich bleibt!
+     /// </summary>
         public int Erstzulassung { get { return erstzulassung; } set { erstzulassung = value; } }
         public float Anschaffungspreis { get { return anschaffungspreis; } set { anschaffungspreis = value; } }
 
