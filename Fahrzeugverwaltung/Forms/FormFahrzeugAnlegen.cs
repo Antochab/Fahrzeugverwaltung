@@ -27,6 +27,7 @@ namespace Fahrzeugverwaltung
             switch (fahrzeugtyp)
             {
                 case "PKW":
+                    //Luca: hier würde ich die Exception behandeln
                     fahrzeugpool.neuenPKWAnlegen(textBoxHersteller.Text, textBoxModell.Text, textBoxKennzeichen.Text, Convert.ToInt32(textBoxZulassung.Text), float.Parse(textBoxAnschaffungspreis.Text), Convert.ToInt32(textBoxHubraum.Text), Convert.ToInt32(textBoxLeistung.Text), Convert.ToInt32(textBoxSchadstoffklasse.Text));
                     break;
 
