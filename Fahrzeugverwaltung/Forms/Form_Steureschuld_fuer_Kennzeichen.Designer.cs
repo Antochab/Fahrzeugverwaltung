@@ -31,6 +31,7 @@
             this.buttonSteuerBerechnen = new System.Windows.Forms.Button();
             this.textBoxKennzeichen = new System.Windows.Forms.TextBox();
             this.labelKennzeichen = new System.Windows.Forms.Label();
+            this.textBoxSteuerschuld = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSteuerBerechnen
@@ -59,11 +60,20 @@
             this.labelKennzeichen.TabIndex = 2;
             this.labelKennzeichen.Text = "Bitte Kenneichen eingeben";
             // 
+            // textBoxSteuerschuld
+            // 
+            this.textBoxSteuerschuld.Location = new System.Drawing.Point(485, 93);
+            this.textBoxSteuerschuld.Name = "textBoxSteuerschuld";
+            this.textBoxSteuerschuld.ReadOnly = true;
+            this.textBoxSteuerschuld.Size = new System.Drawing.Size(100, 26);
+            this.textBoxSteuerschuld.TabIndex = 3;
+            // 
             // Form_Steureschuld_fuer_Kennzeichen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBoxSteuerschuld);
             this.Controls.Add(this.labelKennzeichen);
             this.Controls.Add(this.textBoxKennzeichen);
             this.Controls.Add(this.buttonSteuerBerechnen);
@@ -79,5 +89,6 @@
         private System.Windows.Forms.Button buttonSteuerBerechnen;
         private System.Windows.Forms.TextBox textBoxKennzeichen;
         private System.Windows.Forms.Label labelKennzeichen;
+        private System.Windows.Forms.TextBox textBoxSteuerschuld;
     }
 }
