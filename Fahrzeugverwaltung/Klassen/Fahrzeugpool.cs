@@ -11,13 +11,38 @@ namespace Fahrzeugverwaltung
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
         private List<Parkhaus> parkhausliste = new List<Parkhaus>(); 
 
-        public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum, int aLeistung, int aSchadstoffklasse)
+        public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum, String aLeistung, String aSchadstoffklasse)
         {
-            //neuen PKW zur Liste hinzufügen hinzufügen
-            PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aHubraum, aLeistung, aSchadstoffklasse);
-            fahrzeugliste.Add(pkw);
-            stellplatzZuweisen(pkw);
+            int hubraum = 0;
+            int leistung = 0;
+            int schadstoffklasse = 0;
+
+            ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
+
+            if (int.TryParse(aHubraum, out hubraum) == false || String.IsNullOrWhiteSpace(aHubraum))
+            {
+                throw new ArgumentException("Hubraum überprüfen");
+            }
+            if (int.TryParse(aLeistung, out leistung) == false || String.IsNullOrWhiteSpace(aLeistung))
+            {
+                throw new ArgumentException("Leistung überprüfen");
+            }
+            if (int.TryParse(aSchadstoffklasse, out schadstoffklasse) == false || String.IsNullOrWhiteSpace(aSchadstoffklasse))
+            {
+                throw new ArgumentException("Schadstoffklasse überprüfen");
+            }
+
+            try {
+                //neuen PKW zur Liste hinzufügen hinzufügen
+                PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
+                fahrzeugliste.Add(pkw);
+                stellplatzZuweisen(pkw);
+            } catch
+            {
+                throw new Exception("Something went wrong");
+            }
         }
+
 
         public void neuenLKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aAchsenAnzahl, int aZuladung)
         {
@@ -121,6 +146,34 @@ namespace Fahrzeugverwaltung
             }
 
         }
+        private void ExceptionHandling(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis)
+        {
+            int erstzulassung = 0;
+            float anschaffungspreis = 0;
+
+            if (String.IsNullOrEmpty(aHersteller) || String.IsNullOrWhiteSpace(aHersteller))
+            {
+                throw new ArgumentException("Hersteller überprüfen");
+            }
+            if (String.IsNullOrEmpty(aModell) || String.IsNullOrWhiteSpace(aModell))
+            {
+                throw new ArgumentException("Modell überprüfen");
+            }
+            //Format angeben
+            if (String.IsNullOrEmpty(aKennzeichen) || String.IsNullOrWhiteSpace(aKennzeichen))
+            {
+                throw new ArgumentException("Kennzeichen überprüfen");
+            }
+            if (int.TryParse(aErstzulassung, out erstzulassung) == false || String.IsNullOrWhiteSpace(aErstzulassung))
+            {
+                throw new ArgumentException("Erstzulassung überprüfen");
+            }
+            if (float.TryParse(aAnschaffungspreis, out anschaffungspreis) == false || String.IsNullOrWhiteSpace(aAnschaffungspreis))
+            {
+                throw new ArgumentException("Anschaffungspreis überprüfen");
+            }
+        }
 
     }
 }
+
