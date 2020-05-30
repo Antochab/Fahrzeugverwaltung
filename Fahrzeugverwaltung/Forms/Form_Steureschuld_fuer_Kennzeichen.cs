@@ -21,7 +21,14 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonSteuerBerechnen_Click(object sender, EventArgs e)
         {
-            textBoxSteuerschuld.Text = fahrzeugpool.berechneSteuerschuldKennzeichen(textBoxKennzeichen.Text).ToString();
+            try
+            {
+                textBoxSteuerschuld.Text = fahrzeugpool.berechneSteuerschuldKennzeichen(textBoxKennzeichen.Text).ToString();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

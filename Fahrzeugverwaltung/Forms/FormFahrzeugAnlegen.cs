@@ -32,34 +32,32 @@ namespace Fahrzeugverwaltung
             string erstzulassung = textBoxZulassung.Text;
             string anschaffungspreis = textBoxAnschaffungspreis.Text;
 
-            switch (fahrzeugtyp)
+            try
             {
-                case "PKW":
-                    //TODO übersichtlicher darstellen
-                    try
-                    {
-                        fahrzeugpool.neuenPKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text, textBoxLeistung.Text, textBoxSchadstoffklasse.Text);
+                switch (fahrzeugtyp)
+                {
+                    case "PKW":
+                        fahrzeugpool.neuenPKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text, textBoxLeistung.Text, textBoxSchadstoffklasse.Text);    
                         break;
-                    }
-                    catch (ArgumentException ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                    break;
 
-                case "Motorrad":
-                  //  fahrzeugpool.neuesMotorradAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text);
-                    break;
+                    case "Motorrad":    
+                        fahrzeugpool.neuesMotorradAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text);
+                        break;
 
-                case "LKW":
-                  //  fahrzeugpool.neuenLKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxAnzahlAchsen.Text, textBoxZuladung.Text);
-                    break;
+                    case "LKW":
+                        fahrzeugpool.neuenLKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxAnzahlAchsen.Text, textBoxZuladung.Text);
+                        break;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ButtonAbbrechen_Click(object sender, EventArgs e)
         {
-// Console.WriteLine(fahrzeugpool.fahrzeugliste.Count());
+            this.Close();
         }
 
         //Anzeige hängt von der Auswahl im Hauptmenü ab! 
