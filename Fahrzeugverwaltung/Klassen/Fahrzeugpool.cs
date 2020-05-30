@@ -99,6 +99,14 @@ namespace Fahrzeugverwaltung
 
        public float berechneSteuerschuldKennzeichen(string kennzeichen)
         {
+            //Prüfen, ob Kennzeichen in der Fahrzeugliste vorhanden ist
+            //sonst erfolgt eine Fehlerausgabe
+
+            if((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
+            {
+                throw new ArgumentException("Kennzeichen nicht vorhanden!");
+            }
+
             //Anlegen der Variablen steuerschuld
             float steuerschuld;
             //Finden des Fahrezugs mit dem übergebenen Kennzeichen
