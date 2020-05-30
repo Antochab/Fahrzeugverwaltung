@@ -44,18 +44,41 @@ namespace Fahrzeugverwaltung
         }
 
 
-        public void neuenLKWAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aAchsenAnzahl, int aZuladung)
+        public void neuenLKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aAchsenAnzahl, String aZuladung)
         {
+            int achsenanzahl = 0;
+            int zuladung = 0;
+
+            ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
+
+            if (int.TryParse(aAchsenAnzahl, out achsenanzahl) == false || String.IsNullOrWhiteSpace(aAchsenAnzahl))
+            {
+                throw new ArgumentException("Achsenanzahl überprüfen");
+            }
+            if (int.TryParse(aZuladung, out zuladung) == false || String.IsNullOrWhiteSpace(aZuladung))
+            {
+                throw new ArgumentException("Zuladung überprüfen");
+            }
+
             //neuen PKW zur Liste hinzufügen hinzufügen
-            LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aAchsenAnzahl, aZuladung);
+            LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), Convert.ToInt32(aZuladung));
             fahrzeugliste.Add(lkw);
             stellplatzZuweisen(lkw);
         }
 
-        public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aHubraum)
+        public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum)
         {
+            int hubraum = 0;
+
+            ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
+
+            if (int.TryParse(aHubraum, out hubraum) == false || String.IsNullOrWhiteSpace(aHubraum))
+            {
+                throw new ArgumentException("Hubraum überprüfen");
+            }
+
             //neuen PKW zur Liste hinzufügen hinzufügen
-            Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis, aHubraum);
+            Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum));
             fahrzeugliste.Add(motorrad);
             stellplatzZuweisen(motorrad);
 
