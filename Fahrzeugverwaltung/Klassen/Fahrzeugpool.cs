@@ -40,9 +40,9 @@ namespace Fahrzeugverwaltung
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
                 fahrzeugliste.Add(pkw);
                 stellplatzZuweisen(pkw);
-            } catch
+            } catch(ArgumentException ex)
             {
-                throw new Exception("Something went wrong");
+                throw new ArgumentException(ex.Message);
             }
         }
 

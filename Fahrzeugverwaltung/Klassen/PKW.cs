@@ -17,7 +17,7 @@ namespace Fahrzeugverwaltung
         {
             hubraum = aHubraum;
             leistung = aLeistung;
-            schadstoffklasse = aSchadstoffklasse; //Property einfügen
+            Schadstoffklasse = aSchadstoffklasse; //Property einfügen
         }
 
         public int Hubraum { get { return hubraum; } set { hubraum = value; } }
