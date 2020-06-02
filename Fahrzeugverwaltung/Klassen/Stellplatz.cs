@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fahrzeugverwaltung
 {
-    class Stellplatz
+    public class Stellplatz
     {
         private int nummer;
         private String stellplatzTyp;

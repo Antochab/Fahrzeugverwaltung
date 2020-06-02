@@ -22,6 +22,17 @@ namespace Fahrzeugverwaltung
 
         public int Hubraum { get { return hubraum; } set { hubraum = value; } }
         public int Leistung { get { return leistung; } set { leistung = value; } }
-        public int Schadstoffklasse { get { return schadstoffklasse; } set { schadstoffklasse = value; } }
+        public int Schadstoffklasse { get { return schadstoffklasse; } set {
+                //prüfen, ob der eingegebene Wert den Wert 1,2 oder 3 enthält
+                if (value == 0 || value == 1 || value == 2)
+                {
+                    schadstoffklasse = value;
+                }
+                //falls der Wert keinen dieser Werte darstellt, wird eine Fehlermeldung ausgegeben
+                else
+                {
+                    throw new ArgumentException("Schadstoffklasse nicht vorhanden.");
+                }
+                } }
     }
 }

@@ -9,7 +9,10 @@ namespace Fahrzeugverwaltung
     public class Fahrzeugpool
     {
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
-        private List<Parkhaus> parkhausliste = new List<Parkhaus>(); 
+        private List<Parkhaus> parkhausliste = new List<Parkhaus>();
+
+        //Getter Methode für die Fahrzeugliste definieren, damit Fahrzeuge ausgegeben werden können
+        public List<Fahrzeug> Fahrzeugliste { get { return fahrzeugliste; } }
 
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum, String aLeistung, String aSchadstoffklasse)
         {
@@ -84,10 +87,6 @@ namespace Fahrzeugverwaltung
 
         }
 
-        public void neuesParkhausAnlegen(string aOrt, string aPlz, string aStrasse)
-        {
-            parkhausliste.Add(new Parkhaus(aOrt, aPlz, aStrasse));
-        }
 
         public Fahrzeug sucheFahrzeug(string kennzeichen)
         {
