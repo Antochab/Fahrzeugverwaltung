@@ -204,6 +204,18 @@ namespace Fahrzeugverwaltung
                 throw new ArgumentException("Anschaffungspreis überprüfen");
             }
         }
+        public List<String> gibAlleDatenAus()
+        {
+            string output = "{0,-15}\t{1,-15}\t{2,-15}\t{3,-15}\t{4,-15}\t{5,-15}\t";
+            List<String> alleFahrzeugDaten = new List<String>();
+            alleFahrzeugDaten.Add(string.Format(output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassaung", "Anschaffungspreis", "Typ"));
+
+            foreach (Fahrzeug fahrzeug in fahrzeugliste)
+            {
+                alleFahrzeugDaten.Add(string.Format(output, fahrzeug.Hersteller, fahrzeug.Modell, fahrzeug.Kennzeichen, fahrzeug.Erstzulassung.ToString(), fahrzeug.Anschaffungspreis.ToString(), fahrzeug.GetType()));
+            }
+            return alleFahrzeugDaten;
+        }
 
     }
 }

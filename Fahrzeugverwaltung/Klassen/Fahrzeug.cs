@@ -34,8 +34,5 @@ namespace Fahrzeugverwaltung
         public float Anschaffungspreis { get { return anschaffungspreis; } set { anschaffungspreis = value; } }
 
 
-
-
-
     }
 }
