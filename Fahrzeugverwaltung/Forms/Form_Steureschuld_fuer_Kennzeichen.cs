@@ -23,7 +23,7 @@ namespace Fahrzeugverwaltung.Forms
         {
             try
             {
-                textBoxSteuerschuld.Text = fahrzeugpool.berechneSteuerschuldKennzeichen(textBoxKennzeichen.Text).ToString();
+                //textBoxSteuerschuld.Text = fahrzeugpool.berechneSteuerschuldKennzeichen(textBoxKennzeichen.Text).ToString();
             }
             catch (ArgumentException ex)
             {

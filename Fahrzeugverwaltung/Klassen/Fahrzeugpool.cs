@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data.OleDb;
+using System.Data;
 
 namespace Fahrzeugverwaltung
 {
@@ -40,7 +43,7 @@ namespace Fahrzeugverwaltung
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
                 fahrzeugliste.Add(pkw);
                 stellplatzZuweisen(pkw);
-            } catch(ArgumentException ex)
+            } catch (ArgumentException ex)
             {
                 throw new ArgumentException(ex.Message);
             }
@@ -96,12 +99,12 @@ namespace Fahrzeugverwaltung
             return f;
         }
 
-       public float berechneSteuerschuld()
+        public float berechneSteuerschuld()
         {
             //TODO Fahrzeuge mit Steuerschulden ausgeben
             float steuerschuld = 0;
             //berechnen der Steuerschuld für jedes Fahrzeug in der Fahrzeugliste
-            foreach(Fahrzeug f in fahrzeugliste)
+            foreach (Fahrzeug f in fahrzeugliste)
             {
                 //addieren des Ergebnis der Berechnung der Steuerschuld auf die Variable Steuerschuld
                 steuerschuld = steuerschuld + f.berechneSteuerschuldKennzeichen(fahrzeugliste, f.Kennzeichen);
@@ -111,17 +114,17 @@ namespace Fahrzeugverwaltung
             return steuerschuld;
         }
 
-      public void stellplatzZuweisen(Fahrzeug f)
+        public void stellplatzZuweisen(Fahrzeug f)
         {
             bool abbruch = false;
-            foreach(Parkhaus element in parkhausliste)
+            foreach (Parkhaus element in parkhausliste)
             {
-                foreach(Stellplatz s in element.Stellplatzliste)
+                foreach (Stellplatz s in element.Stellplatzliste)
                 {
                     string fahrzeugtyp = f.GetType().ToString();
-                    if(s.IstBelegt == false)
+                    if (s.IstBelegt == false)
                     {
-                        if(s.Stellplatztyp == fahrzeugtyp)
+                        if (s.Stellplatztyp == fahrzeugtyp)
                         {
                             s.Kennzeichen = f.Kennzeichen;
                             abbruch = true;
@@ -129,7 +132,7 @@ namespace Fahrzeugverwaltung
                         }
                     }
                 }
-                if(abbruch == true)
+                if (abbruch == true)
                 {
                     break;
                 }
@@ -176,6 +179,36 @@ namespace Fahrzeugverwaltung
             return alleFahrzeugDaten;
         }
 
+        public void datenInDatenbankSichern()
+        {
+            OleDbCommand cmd;
+            DataSet dataSet = new DataSet();
+            try
+            {
+                string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
+
+
+                foreach (Fahrzeug fa in fahrzeugliste)
+                {
+                    string query = "Insert into Fahrzeugliste values('" + fa.Kennzeichen + "','" + fa.Hersteller + "','" + fa.Modell + "'," + fa.Erstzulassung + "," + fa.Anschaffungspreis + "," + "0" + ",0,0,0,0,'Motorrad'"  + ");";
+                    using (OleDbConnection connection = new OleDbConnection(connString))
+                {
+                        using (cmd = new OleDbCommand(query, connection))
+                        {
+                            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+                            dataAdapter.Fill(dataSet);
+
+                        };
+
+
+                }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Datenbankeintrag konnte nicht angelegt werden");
+            }
+        }
     }
 }
 

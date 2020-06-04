@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Fahrzeugverwaltung.Forms
 {
     public partial class Hauptmenu : Form
@@ -35,6 +36,11 @@ namespace Fahrzeugverwaltung.Forms
         {
             FormDatenAusgeben formDatenAusgeben = new FormDatenAusgeben(fahrzeugpool);
             formDatenAusgeben.Show();
+        }
+
+        private void Hauptmenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fahrzeugpool.datenInDatenbankSichern();    
         }
     }
 }

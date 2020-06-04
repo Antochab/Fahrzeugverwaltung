@@ -83,6 +83,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "Hauptmenu";
             this.Text = "Hauptmenu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Hauptmenu_FormClosing);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

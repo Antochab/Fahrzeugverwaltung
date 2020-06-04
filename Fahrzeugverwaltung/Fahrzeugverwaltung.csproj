@@ -46,6 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FahrzeugverwaltungDataSet1.cs">
+      <DependentUpon>FahrzeugverwaltungDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FahrzeugverwaltungDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FahrzeugverwaltungDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDatenAusgeben.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +126,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="FahrzeugverwaltungDataSet1.xsc">
+      <DependentUpon>FahrzeugverwaltungDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="FahrzeugverwaltungDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>FahrzeugverwaltungDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="FahrzeugverwaltungDataSet1.xss">
+      <DependentUpon>FahrzeugverwaltungDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,6 +150,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fahrzeugverwaltung.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
