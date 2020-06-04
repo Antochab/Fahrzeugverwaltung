@@ -88,52 +88,12 @@ namespace Fahrzeugverwaltung
         }
 
 
-        public Fahrzeug sucheFahrzeug(string kennzeichen)
+        public static Fahrzeug sucheFahrzeug(List<Fahrzeug> aFahrzeugliste, string kennzeichen)
         {
             //finden des Fahrzeugs in der Fahrzeugliste
-            Fahrzeug f = fahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
+            Fahrzeug f = aFahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
             //Zurückgeben des Ergebnisses
             return f;
-        }
-
-       public float berechneSteuerschuldKennzeichen(string kennzeichen)
-        {
-            //Prüfen, ob Kennzeichen in der Fahrzeugliste vorhanden ist
-            //sonst erfolgt eine Fehlerausgabe
-
-            if((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
-            {
-                throw new ArgumentException("Kennzeichen nicht vorhanden!");
-            }
-
-            //Anlegen der Variablen steuerschuld
-            float steuerschuld;
-            //Finden des Fahrezugs mit dem übergebenen Kennzeichen
-            Fahrzeug f = sucheFahrzeug(kennzeichen);
-            //If Abfrage, um die Steuerschuld in Abhängigkeit des Fahrzeugtyps zu ermitteln
-            if(f.GetType().Equals(typeof(PKW)))
-            {
-                //Konvertieren des Fahrzeugs in den Typ PKW
-                //um auf spezifische Variablen der Klasse PKW zugreifen zu können
-                PKW p = (PKW)Convert.ChangeType(f, typeof(PKW));
-                steuerschuld = (p.Hubraum + 99) / 100 * 10 * (p.Schadstoffklasse + 1);
-            }
-            else if(f.GetType().Equals(typeof(LKW)))
-            {
-                //Konvertieren des Fahrzeugs in den Typ LKW
-                //um auf spezifische Variablen der Klasse LKW zugreifen zu können
-                LKW l = (LKW)Convert.ChangeType(f, typeof(LKW));
-                steuerschuld = l.Zuladung * 100;
-            }
-            else
-            {
-                //Konvertieren des Fahrzeugs in den Typ Motorrad
-                //um auf spezifische Variablen der Klasse Motorrad zugreifen zu können
-                Motorrad m = (Motorrad)Convert.ChangeType(f, typeof(Motorrad));
-                steuerschuld = (m.Hubraum + 99) / 10 * 20;
-            }
-            //Zurückgeben des Ergebnisses
-            return steuerschuld;
         }
 
        public float berechneSteuerschuld()
@@ -144,7 +104,7 @@ namespace Fahrzeugverwaltung
             foreach(Fahrzeug f in fahrzeugliste)
             {
                 //addieren des Ergebnis der Berechnung der Steuerschuld auf die Variable Steuerschuld
-                steuerschuld = steuerschuld + berechneSteuerschuldKennzeichen(f.Kennzeichen);
+                steuerschuld = steuerschuld + f.berechneSteuerschuldKennzeichen(fahrzeugliste, f.Kennzeichen);
             }
 
             //Zurückgeben des Ergebnisses

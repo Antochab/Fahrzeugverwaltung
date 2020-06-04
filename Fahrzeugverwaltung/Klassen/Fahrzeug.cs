@@ -33,6 +33,7 @@ namespace Fahrzeugverwaltung
         public int Erstzulassung { get { return erstzulassung; } set { erstzulassung = value; } }
         public float Anschaffungspreis { get { return anschaffungspreis; } set { anschaffungspreis = value; } }
 
+        public abstract float berechneSteuerschuldKennzeichen(List<Fahrzeug> fahrzeugliste, string kennzeichen);
 
     }
 }

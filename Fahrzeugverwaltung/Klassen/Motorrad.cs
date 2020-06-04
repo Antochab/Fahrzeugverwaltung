@@ -16,6 +16,27 @@ namespace Fahrzeugverwaltung
             hubraum = aHubraum;
         }
         public int Hubraum { get { return hubraum; } set { hubraum = value; } }
+
+        public override float berechneSteuerschuldKennzeichen(List<Fahrzeug> fahrzeugliste, string kennzeichen)
+        {
+            //Anlegen der Variablen steuerschuld
+            float steuerschuld;
+            //Finden des Fahrezugs mit dem übergebenen Kennzeichen
+            Fahrzeug f = Fahrzeugpool.sucheFahrzeug(fahrzeugliste, kennzeichen);
+
+            if ((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
+            {
+                throw new ArgumentException("Kennzeichen nicht vorhanden!");
+            }
+
+            //Konvertieren des Fahrzeugs in den Typ LKW
+            //um auf spezifische Variablen der Klasse LKW zugreifen zu können
+            LKW l = (LKW)Convert.ChangeType(f, typeof(LKW));
+            steuerschuld = l.Zuladung * 100;
+
+            return steuerschuld;
+        }
+
     }
 
 }
