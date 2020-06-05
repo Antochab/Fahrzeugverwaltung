@@ -16,9 +16,9 @@ namespace Fahrzeugverwaltung.Klassen
             {
                 throw new ArgumentException ("Liste zu groß!");
             }
-            if ((parkhausliste.Exists(x => x.Parkhausnummer == aParkhausnummer)) == false)
+            if ((parkhausliste.Exists(x => x.Parkhausnummer == aParkhausnummer)) == true)
             {
-                throw new ArgumentException("Kennzeichen nicht vorhanden!");
+                throw new ArgumentException("Es existiert bereits ein Parkhaus mit dieser Parkhausnummer.");
             }
 
             parkhausliste.Add(parkhaus);
