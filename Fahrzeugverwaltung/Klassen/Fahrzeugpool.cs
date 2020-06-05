@@ -30,7 +30,7 @@ namespace Fahrzeugverwaltung
             int hubraum = 0;
             int leistung = 0;
             int schadstoffklasse = 0;
-            int stellplatznummer; 
+            String stellplatznummer; 
 
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
@@ -51,7 +51,7 @@ namespace Fahrzeugverwaltung
                 //neuen PKW zur Liste hinzufügen hinzufügen
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
                 stellplatznummer = stellplatzZuweisen(pkw);
-                if(stellplatznummer == -1)
+                if(stellplatznummer == "-1")
                 {
                     throw new ArgumentException("Kein freier Stellplatz gefunden."); 
                 }
@@ -72,7 +72,7 @@ namespace Fahrzeugverwaltung
         {
             int achsenanzahl = 0;
             int zuladung = 0;
-            int stellplatznummer;
+            String stellplatznummer;
 
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
@@ -88,7 +88,7 @@ namespace Fahrzeugverwaltung
             //neuen PKW zur Liste hinzufügen hinzufügen
             LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), Convert.ToInt32(aZuladung));
             stellplatznummer = stellplatzZuweisen(lkw);
-            if(stellplatznummer == -1)
+            if(stellplatznummer == "-1")
             {
                 throw new ArgumentException("Kein freier Stellplatz gefunden.");
             }
@@ -103,7 +103,7 @@ namespace Fahrzeugverwaltung
         public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum)
         {
             int hubraum = 0;
-            int stellplatznummer;
+            String stellplatznummer;
 
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
@@ -115,7 +115,7 @@ namespace Fahrzeugverwaltung
             //neuen PKW zur Liste hinzufügen hinzufügen
             Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum));
             stellplatznummer = stellplatzZuweisen(motorrad);
-            if(stellplatznummer == -1)
+            if(stellplatznummer == "-1")
             {
                 throw new ArgumentException("Kein freier Parkplatz gefunden.");
             }
@@ -151,10 +151,10 @@ namespace Fahrzeugverwaltung
             return steuerschuld;
         }
 
-        public int stellplatzZuweisen(Fahrzeug f)
+        public String stellplatzZuweisen(Fahrzeug f)
         {
             bool abbruch = false;
-            int stellplatznummer = -1;
+            String stellplatznummer = "-1";
             foreach (Parkhaus element in parkhausliste)
             {
                 foreach (Stellplatz s in element.Stellplatzliste)

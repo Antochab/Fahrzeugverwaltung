@@ -9,19 +9,19 @@ namespace Fahrzeugverwaltung
 {
     public class Stellplatz
     {
-        private int nummer;
+        private String nummer;
         private String stellplatzTyp;
         private String kennzeichen;
         private bool istBelegt;
 
-        public Stellplatz(int aNummer, string aStellplatztyp, bool aIstBelegt)
+        public Stellplatz(String aNummer, string aStellplatztyp, bool aIstBelegt)
         {
             nummer = aNummer;
             stellplatzTyp = aStellplatztyp;
             istBelegt = aIstBelegt;
         }
 
-        public int Nummer { get { return nummer; } set { nummer = value; } }
+        public String Nummer { get { return nummer; } set { nummer = value; } }
         public String Stellplatztyp { get { return stellplatzTyp; } set { stellplatzTyp = value; } }
         public String Kennzeichen { get { return kennzeichen; } set { kennzeichen = value; } }
         public bool IstBelegt { get { return istBelegt; } set { istBelegt = value;  } }
