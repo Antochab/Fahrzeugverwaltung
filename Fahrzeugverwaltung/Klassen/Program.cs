@@ -19,9 +19,8 @@ namespace Fahrzeugverwaltung
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Hauptmenu());
 
-           
+           /*
             //Testen, ob Suche Fahrzeug funktioniert
-            /*            PKW f1 = new PKW("Mercedes", "A", "12345", 12, 1200.5f, 1, 1, 1);
                         PKW f2= new PKW("Ford", "Focus", "67890", 13, 1100.5f, 1, 1, 1);
                         List<Fahrzeug> testliste = new List<Fahrzeug>();
                         testliste.Add(f1);

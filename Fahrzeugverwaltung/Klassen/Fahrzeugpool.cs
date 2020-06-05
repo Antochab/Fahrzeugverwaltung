@@ -183,6 +183,7 @@ namespace Fahrzeugverwaltung
         {
             OleDbCommand cmd;
             DataSet dataSet = new DataSet();
+            Boolean entryExists = false;
             try
             {
                 string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
@@ -190,18 +191,60 @@ namespace Fahrzeugverwaltung
 
                 foreach (Fahrzeug fa in fahrzeugliste)
                 {
-                    string query = "Insert into Fahrzeugliste values('" + fa.Kennzeichen + "','" + fa.Hersteller + "','" + fa.Modell + "'," + fa.Erstzulassung + "," + fa.Anschaffungspreis + "," + "0" + ",0,0,0,0,'Motorrad'"  + ");";
-                    using (OleDbConnection connection = new OleDbConnection(connString))
-                {
-                        using (cmd = new OleDbCommand(query, connection))
+                    string fahrzeugtyp = fa.GetType().ToString();
+                    string query = "Insert into Fahrzeugliste values('" + fa.Kennzeichen + "','" + fa.Hersteller + "','" + fa.Modell + "'," + fa.Erstzulassung + "," + fa.Anschaffungspreis + ",";
+                    entryExists = false;
+
+                        switch (fahrzeugtyp)
                         {
-                            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
-                            dataAdapter.Fill(dataSet);
+                            case "Fahrzeugverwaltung.PKW":
+                                PKW pkw = fa as PKW;
+                                query = query + pkw.Hubraum + "," + pkw.Leistung + "," + pkw.Schadstoffklasse + ",0,0,'" + pkw.GetType().ToString() + "');";
+                                break;
 
-                        };
+                            case "Fahrzeugverwaltung.Motorrad":
+                                Motorrad motorrad = fa as Motorrad;
+                                query = query + motorrad.Hubraum + ",0,0,0,0,'" + motorrad.GetType().ToString() + "');";
+                                break;
+
+                            case "Fahrzeugverwaltung.LKW":
+                                LKW lkw = fa as LKW;
+                                query = query + "0,0,0," + lkw.Achsenanzahl + "," + lkw.Zuladung + ",'" + lkw.GetType().ToString() + "');";
+                                break;
+
+                        }
 
 
-                }
+                        using (OleDbConnection connection = new OleDbConnection(connString))
+                        {
+
+                        using (cmd = new OleDbCommand("Select kennzeichen from Fahrzeugliste", connection))
+                        {
+                            connection.Open();
+                            OleDbDataReader reader = cmd.ExecuteReader();
+                            string kennzeichen;
+                            while (reader.Read())
+                            {
+                                kennzeichen = reader["kennzeichen"].ToString();
+                                if (kennzeichen.Equals(fa.Kennzeichen)) entryExists = true;
+                            }
+                        }
+
+                        if (!entryExists)
+                        {
+                            using (cmd = new OleDbCommand(query, connection))
+                            {
+
+                                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+                                dataAdapter.Fill(dataSet);
+                                connection.Close();
+                                dataSet.Dispose();
+
+                            };
+                        }
+
+
+                        }
                 }
             }
             catch (Exception e)
@@ -209,6 +252,73 @@ namespace Fahrzeugverwaltung
                 throw new Exception("Datenbankeintrag konnte nicht angelegt werden");
             }
         }
-    }
-}
 
+
+        public void datenAusDatenbankAuslesen()
+        {
+            OleDbCommand cmd;
+            DataSet dataSet = new DataSet();
+            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
+
+
+            string kennzeichen, hersteller, modell, typ;
+            float anschaffungspreis;
+            int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung;
+
+            string query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ FROM fahrzeugliste";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connString))
+                {
+                    using (cmd = new OleDbCommand(query, connection))
+                    {
+
+                        connection.Open();
+
+                        OleDbDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {    //Every new row will create a new dictionary that holds the columns
+
+                            kennzeichen = reader["kennzeichen"].ToString();
+                            hersteller = reader["hersteller"].ToString();
+                            modell = reader["modell"].ToString();
+                            erstzulassung = Int32.Parse(reader["erstzulassung"].ToString());
+                            anschaffungspreis = float.Parse(reader["anschaffungspreis"].ToString());
+                            hubraum = Int32.Parse(reader["hubraum"].ToString());
+                            leistung = Int32.Parse(reader["leistung"].ToString());
+                            schadstoffklasse = Int32.Parse(reader["schadstoffklasse"].ToString());
+                            achsenanzahl = Int32.Parse(reader["achsenanzahl"].ToString());
+                            zuladung = Int32.Parse(reader["zuladung"].ToString());
+                            typ = reader["typ"].ToString();
+
+                            switch (typ)
+                            {
+                                case "Fahrzeugverwaltung.PKW":
+                                    fahrzeugliste.Add(new PKW(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse));
+                                    break;
+
+                                case "Fahrzeugverwaltung.Motorrad":
+                                    fahrzeugliste.Add(new Motorrad(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, hubraum));
+                                    break;
+
+                                case "Fahrzeugverwaltung.LKW":
+                                    fahrzeugliste.Add(new LKW(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, achsenanzahl, zuladung));
+                                    break;
+                            }
+                        }
+                        reader.Close();
+                    }
+                    connection.Close();
+                }
+                } catch (Exception ex)
+            {
+                //If an exception occurs, write it to the console
+                Console.WriteLine(ex.ToString());
+            }
+        }
+    };
+
+
+}

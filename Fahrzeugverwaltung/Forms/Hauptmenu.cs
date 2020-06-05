@@ -42,5 +42,10 @@ namespace Fahrzeugverwaltung.Forms
         {
             fahrzeugpool.datenInDatenbankSichern();    
         }
+
+        private void Hauptmenu_Load(object sender, EventArgs e)
+        {
+            fahrzeugpool.datenAusDatenbankAuslesen();
+        }
     }
 }
