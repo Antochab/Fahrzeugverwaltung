@@ -14,9 +14,16 @@ namespace Fahrzeugverwaltung
     {
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
         private List<Parkhaus> parkhausliste = new List<Parkhaus>();
+        private List<String> allePKWDaten = new List<string>();
+        private List<String> alleLKWDaten = new List<string>();
+        private List<String> alleMotorradDaten = new List<string>();
+
 
         //Getter Methode für die Fahrzeugliste definieren, damit Fahrzeuge ausgegeben werden können
         public List<Fahrzeug> Fahrzeugliste { get { return fahrzeugliste; } }
+        public List<String> AllePKWDaten { get { return allePKWDaten; } set { allePKWDaten = value; } }
+        public List<String> AlleLKWDaten { get { return alleLKWDaten; } set { alleLKWDaten = value; } }
+        public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
 
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum, String aLeistung, String aSchadstoffklasse)
         {
@@ -168,18 +175,37 @@ namespace Fahrzeugverwaltung
                 throw new ArgumentException("Anschaffungspreis überprüfen");
             }
         }
-        public List<String> gibAlleDatenAus()
+        public void gibAlleDatenAus()
         {
-            string output = "{0,-15}\t{1,-15}\t{2,-15}\t{3,-15}\t{4,-15}\t{5,-15}\t";
-            List<String> alleFahrzeugDaten = new List<String>();
-            alleFahrzeugDaten.Add(string.Format(output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassaung", "Anschaffungspreis", "Typ"));
-
             foreach (Fahrzeug fahrzeug in fahrzeugliste)
             {
-                alleFahrzeugDaten.Add(string.Format(output, fahrzeug.Hersteller, fahrzeug.Modell, fahrzeug.Kennzeichen, fahrzeug.Erstzulassung.ToString(), fahrzeug.Anschaffungspreis.ToString(), fahrzeug.GetType()));
+                switch (fahrzeug.GetType().ToString())
+                {
+                    case "Fahrzeugverwaltung.PKW":
+                        string pkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
+                        PKW pkw = fahrzeug as PKW;
+                        allePKWDaten.Add(string.Format(pkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Leistung", "Schadstoffklasse"));
+                        allePKWDaten.Add(string.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(),pkw.Leistung.ToString(),pkw.Schadstoffklasse.ToString()));
+                        break;
+
+                    case "Fahrzeugverwaltung.LKW":
+                        string lkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
+                        LKW lkw = fahrzeug as LKW;
+                        alleLKWDaten.Add(string.Format(lkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "AnzahlAchsen","Zuladung"));
+                        alleLKWDaten.Add(string.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString()));
+                        break;
+
+                    case "Fahrzeugverwaltung.Motorrad":
+                        string motorrad_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t";
+                        Motorrad motorrad = fahrzeug as Motorrad;
+                        alleMotorradDaten.Add(string.Format(motorrad_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum"));
+                        alleMotorradDaten.Add(string.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString()));
+                        
+                        break;
+                }
             }
-            return alleFahrzeugDaten;
         }
+
 
         public void datenInDatenbankSichern()
         {
@@ -191,26 +217,26 @@ namespace Fahrzeugverwaltung
                 string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
 
 
-                foreach (Fahrzeug fa in fahrzeugliste)
+                foreach (Fahrzeug fahrzeug in fahrzeugliste)
                 {
-                    string fahrzeugtyp = fa.GetType().ToString();
-                    string query = "Insert into Fahrzeugliste values('" + fa.Kennzeichen + "','" + fa.Hersteller + "','" + fa.Modell + "'," + fa.Erstzulassung + "," + fa.Anschaffungspreis + ",";
+                    string fahrzeugtyp = fahrzeug.GetType().ToString();
+                    string query = "Insert into Fahrzeugliste values('" + fahrzeug.Kennzeichen + "','" + fahrzeug.Hersteller + "','" + fahrzeug.Modell + "'," + fahrzeug.Erstzulassung + "," + fahrzeug.Anschaffungspreis + ",";
                     entryExists = false;
 
                         switch (fahrzeugtyp)
                         {
                             case "Fahrzeugverwaltung.PKW":
-                                PKW pkw = fa as PKW;
+                                PKW pkw = fahrzeug as PKW;
                                 query = query + pkw.Hubraum + "," + pkw.Leistung + "," + pkw.Schadstoffklasse + ",0,0,'" + pkw.GetType().ToString() + "');";
                                 break;
 
                             case "Fahrzeugverwaltung.Motorrad":
-                                Motorrad motorrad = fa as Motorrad;
+                                Motorrad motorrad = fahrzeug as Motorrad;
                                 query = query + motorrad.Hubraum + ",0,0,0,0,'" + motorrad.GetType().ToString() + "');";
                                 break;
 
                             case "Fahrzeugverwaltung.LKW":
-                                LKW lkw = fa as LKW;
+                                LKW lkw = fahrzeug as LKW;
                                 query = query + "0,0,0," + lkw.Achsenanzahl + "," + lkw.Zuladung + ",'" + lkw.GetType().ToString() + "');";
                                 break;
 
@@ -228,7 +254,7 @@ namespace Fahrzeugverwaltung
                             while (reader.Read())
                             {
                                 kennzeichen = reader["kennzeichen"].ToString();
-                                if (kennzeichen.Equals(fa.Kennzeichen)) entryExists = true;
+                                if (kennzeichen.Equals(fahrzeug.Kennzeichen)) entryExists = true;
                             }
                         }
 

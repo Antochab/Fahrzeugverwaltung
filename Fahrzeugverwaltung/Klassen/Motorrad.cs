@@ -31,7 +31,7 @@ namespace Fahrzeugverwaltung
 
             //Konvertieren des Fahrzeugs in den Typ LKW
             //um auf spezifische Variablen der Klasse LKW zugreifen zu können
-            LKW l = (LKW)Convert.ChangeType(f, typeof(LKW));
+            LKW l = (LKW)Convert.ChangeType(f, typeof(LKW)); 
             steuerschuld = l.Zuladung * 100;
 
             return steuerschuld;

@@ -21,7 +21,9 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonAlleDaten_Click(object sender, EventArgs e)
         {
-            listBoxDaten.DataSource = fahrzeugpool.gibAlleDatenAus();
+            DatenAusgeben datenAusgeben = new DatenAusgeben(fahrzeugpool);
+            datenAusgeben.Show();
+            this.Close();
         }
 
         private void FormDatenAusgeben_Load(object sender, EventArgs e)
