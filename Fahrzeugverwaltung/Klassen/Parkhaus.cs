@@ -14,14 +14,14 @@ namespace Fahrzeugverwaltung
         private readonly int maxKap; 
         protected List<Stellplatz> stellplatzliste = new List<Stellplatz>();
 
-        public Parkhaus(string aOrt, string aPlz, string aStrasse, int aMaxKap, String aParkhausnummer, List<Stellplatz> aStellplatzliste)
+        public Parkhaus(string aOrt, string aPlz, string aStrasse, int aMaxKap, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad, int aAnzahlLKW)
         {
             ort = aOrt;
             plz = aPlz;
             strasse = aStrasse;
             maxKap = aMaxKap;
             parkhausnummer = aParkhausnummer;
-            stellplatzliste = aStellplatzliste;
+            Stellplatzliste = stellplaetzeAnlegen(aAnzahlPKW,aAnzahlMotorrad,aAnzahlLKW);
         }
 
         public String Ort { get { return ort; } set { ort = value; } }
@@ -29,9 +29,9 @@ namespace Fahrzeugverwaltung
         public String Strasse { get { return strasse; } set { strasse = value; } }
         public int MaxKap { get { return maxKap; } }
         public String Parkhausnummer { get { return parkhausnummer; }  set { parkhausnummer = value; } }
-        public List<Stellplatz> Stellplatzliste { get { return stellplatzliste; } }
+        public List<Stellplatz> Stellplatzliste { get { return stellplatzliste; } set { stellplatzliste = value; } }
 
-        public List<Stellplatz> stellplaetzeAnlegen(int anzahlPKW, int anzahlMotorrad, int anzahlLKW)
+        public  List<Stellplatz> stellplaetzeAnlegen(int anzahlPKW, int anzahlMotorrad, int anzahlLKW)
         {
             List<Stellplatz> lStellplatzliste = new List<Stellplatz>();
             int gesamtanzahl = anzahlPKW + anzahlMotorrad + anzahlLKW;

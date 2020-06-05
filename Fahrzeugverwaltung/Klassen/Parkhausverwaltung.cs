@@ -9,9 +9,10 @@ namespace Fahrzeugverwaltung.Klassen
     {
         private List<Parkhaus> parkhausliste = new List<Parkhaus>();
 
-        public void neuesParkhausAnlegen(string aOrt, string aPlz, string aStrasse, int aMaxKap, String aParkhausnummer, List<Stellplatz> aStellplatzliste)
+        public void neuesParkhausAnlegen(string aOrt, string aPlz, string aStrasse, int aMaxKap, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad,  int aAnzahlLKW)
         {
-            if(aMaxKap > aStellplatzliste.Count())
+            Parkhaus parkhaus = new Parkhaus(aOrt, aPlz, aStrasse, aMaxKap, aParkhausnummer, aAnzahlPKW, aAnzahlMotorrad, aAnzahlLKW);
+            if(aMaxKap > parkhaus.Stellplatzliste.Count())
             {
                 throw new ArgumentException ("Liste zu groß!");
             }
@@ -20,7 +21,7 @@ namespace Fahrzeugverwaltung.Klassen
                 throw new ArgumentException("Kennzeichen nicht vorhanden!");
             }
 
-            parkhausliste.Add(new Parkhaus(aOrt, aPlz, aStrasse, aMaxKap, aParkhausnummer, aStellplatzliste));
+            parkhausliste.Add(parkhaus);
         }
     }
 }

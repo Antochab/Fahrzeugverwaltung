@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fahrzeugverwaltung.Klassen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Fahrzeugverwaltung.Forms
     public partial class Hauptmenu : Form
     {
         private Fahrzeugpool fahrzeugpool = new Fahrzeugpool();
+        private Parkhausverwaltung parkhausverwaltung = new Parkhausverwaltung();
 
         public Hauptmenu()
         {
@@ -46,6 +48,12 @@ namespace Fahrzeugverwaltung.Forms
         private void Hauptmenu_Load(object sender, EventArgs e)
         {
             fahrzeugpool.datenAusDatenbankAuslesen();
+        }
+
+        private void buttonParkhausAnlegen_Click(object sender, EventArgs e)
+        {
+            FormParkhausAnlegen formParkhausAnlegen = new FormParkhausAnlegen(parkhausverwaltung);
+            formParkhausAnlegen.Show();
         }
     }
 }

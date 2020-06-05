@@ -29,18 +29,10 @@ namespace Fahrzeugverwaltung
                 throw new ArgumentException("Kennzeichen nicht vorhanden!");
             }
 
-<<<<<<< Updated upstream
-            //Konvertieren des Fahrzeugs in den Typ LKW
-            //um auf spezifische Variablen der Klasse LKW zugreifen zu können
-            LKW l = (LKW)Convert.ChangeType(f, typeof(LKW)); 
-            steuerschuld = l.Zuladung * 100;
-
-=======
             //Konvertieren des Fahrzeugs in den Typ Motorrad
             //um auf spezifische Variablen der Klasse Motorrad zugreifen zu können
             Motorrad m = (Motorrad)Convert.ChangeType(f, typeof(Motorrad));
             steuerschuld = (m.Hubraum + 99) / 10 * 20;
->>>>>>> Stashed changes
             return steuerschuld;
         }
 

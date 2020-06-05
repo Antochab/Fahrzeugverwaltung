@@ -32,6 +32,7 @@
             this.buttonDatenAusgeben = new System.Windows.Forms.Button();
             this.buttonSteuerschuldBerechnen = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonParkhausAnlegen = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,11 +76,22 @@
             this.panel1.Size = new System.Drawing.Size(327, 322);
             this.panel1.TabIndex = 3;
             // 
+            // buttonParkhausAnlegen
+            // 
+            this.buttonParkhausAnlegen.Location = new System.Drawing.Point(595, 106);
+            this.buttonParkhausAnlegen.Name = "buttonParkhausAnlegen";
+            this.buttonParkhausAnlegen.Size = new System.Drawing.Size(151, 62);
+            this.buttonParkhausAnlegen.TabIndex = 3;
+            this.buttonParkhausAnlegen.Text = "Parkhaus anlegen";
+            this.buttonParkhausAnlegen.UseVisualStyleBackColor = true;
+            this.buttonParkhausAnlegen.Click += new System.EventHandler(this.buttonParkhausAnlegen_Click);
+            // 
             // Hauptmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonParkhausAnlegen);
             this.Controls.Add(this.panel1);
             this.Name = "Hauptmenu";
             this.Text = "Hauptmenu";
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button buttonDatenAusgeben;
         private System.Windows.Forms.Button buttonSteuerschuldBerechnen;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button buttonParkhausAnlegen;
     }
 }

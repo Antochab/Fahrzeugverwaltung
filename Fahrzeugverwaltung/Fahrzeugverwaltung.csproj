@@ -60,6 +60,12 @@
     <Compile Include="Forms\DatenAusgeben.Designer.cs">
       <DependentUpon>DatenAusgeben.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ParkhausAnlegen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ParkhausAnlegen.Designer.cs">
+      <DependentUpon>ParkhausAnlegen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormDatenAusgeben.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,9 @@
     <Compile Include="Klassen\Stellplatz.cs" />
     <EmbeddedResource Include="Forms\DatenAusgeben.resx">
       <DependentUpon>DatenAusgeben.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ParkhausAnlegen.resx">
+      <DependentUpon>ParkhausAnlegen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDatenAusgeben.resx">
       <DependentUpon>FormDatenAusgeben.cs</DependentUpon>
