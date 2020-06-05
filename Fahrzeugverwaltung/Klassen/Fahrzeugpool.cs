@@ -30,6 +30,7 @@ namespace Fahrzeugverwaltung
             int hubraum = 0;
             int leistung = 0;
             int schadstoffklasse = 0;
+            int stellplatznummer; 
 
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
@@ -49,8 +50,17 @@ namespace Fahrzeugverwaltung
             try {
                 //neuen PKW zur Liste hinzufügen hinzufügen
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
+                stellplatznummer = stellplatzZuweisen(pkw);
+                if(stellplatznummer == -1)
+                {
+                    throw new ArgumentException("Kein freier Stellplatz gefunden."); 
+                }
+                else
+                {
+                    pkw.Stellplatznummer = stellplatznummer;
+                }
                 fahrzeugliste.Add(pkw);
-                stellplatzZuweisen(pkw);
+                
             } catch (ArgumentException ex)
             {
                 throw new ArgumentException(ex.Message);
@@ -62,6 +72,7 @@ namespace Fahrzeugverwaltung
         {
             int achsenanzahl = 0;
             int zuladung = 0;
+            int stellplatznummer;
 
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
@@ -76,13 +87,23 @@ namespace Fahrzeugverwaltung
 
             //neuen PKW zur Liste hinzufügen hinzufügen
             LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), Convert.ToInt32(aZuladung));
+            stellplatznummer = stellplatzZuweisen(lkw);
+            if(stellplatznummer == -1)
+            {
+                throw new ArgumentException("Kein freier Stellplatz gefunden.");
+            }
+            else
+            {
+                lkw.Stellplatznummer = stellplatznummer; 
+            }
             fahrzeugliste.Add(lkw);
-            stellplatzZuweisen(lkw);
+            
         }
 
         public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum)
         {
             int hubraum = 0;
+            int stellplatznummer;
 
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
@@ -93,9 +114,17 @@ namespace Fahrzeugverwaltung
 
             //neuen PKW zur Liste hinzufügen hinzufügen
             Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum));
+            stellplatznummer = stellplatzZuweisen(motorrad);
+            if(stellplatznummer == -1)
+            {
+                throw new ArgumentException("Kein freier Parkplatz gefunden.");
+            }
+            else
+            {
+                motorrad.Stellplatznummer = stellplatznummer;
+            }
             fahrzeugliste.Add(motorrad);
-            stellplatzZuweisen(motorrad);
-
+          
         }
 
 
@@ -122,9 +151,10 @@ namespace Fahrzeugverwaltung
             return steuerschuld;
         }
 
-        public void stellplatzZuweisen(Fahrzeug f)
+        public int stellplatzZuweisen(Fahrzeug f)
         {
             bool abbruch = false;
+            int stellplatznummer = -1;
             foreach (Parkhaus element in parkhausliste)
             {
                 foreach (Stellplatz s in element.Stellplatzliste)
@@ -135,6 +165,8 @@ namespace Fahrzeugverwaltung
                         if (s.Stellplatztyp == fahrzeugtyp)
                         {
                             s.Kennzeichen = f.Kennzeichen;
+                            stellplatznummer = s.Nummer;
+                            
                             abbruch = true;
                             break;
                         }
@@ -145,6 +177,7 @@ namespace Fahrzeugverwaltung
                     break;
                 }
             }
+            return stellplatznummer; 
 
         }
         private void ExceptionHandling(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis)

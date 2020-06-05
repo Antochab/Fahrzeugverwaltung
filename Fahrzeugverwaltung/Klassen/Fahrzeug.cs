@@ -10,9 +10,8 @@ namespace Fahrzeugverwaltung
     public abstract class Fahrzeug
     {
         protected string hersteller, modell, kennzeichen;
-        protected int erstzulassung;
+        protected int erstzulassung, stellplatznummer;
         protected float anschaffungspreis;
-
 
         public Fahrzeug(string aHersteller, string aModell, string aKennzeichen, int aErstzulassung, float aAnschaffungspreis)
         {
@@ -32,6 +31,7 @@ namespace Fahrzeugverwaltung
      /// </summary>
         public int Erstzulassung { get { return erstzulassung; } set { erstzulassung = value; } }
         public float Anschaffungspreis { get { return anschaffungspreis; } set { anschaffungspreis = value; } }
+        public int Stellplatznummer { get { return stellplatznummer; } set { stellplatznummer = value; } }
 
         public abstract float berechneSteuerschuldKennzeichen(List<Fahrzeug> fahrzeugliste, string kennzeichen);
 

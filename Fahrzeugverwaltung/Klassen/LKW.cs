@@ -34,10 +34,12 @@ namespace Fahrzeugverwaltung
             float steuerschuld;
             //Finden des Fahrezugs mit dem übergebenen Kennzeichen
             Fahrzeug f = Fahrzeugpool.sucheFahrzeug(fahrzeugliste, kennzeichen);
-            //Konvertieren des Fahrzeugs in den Typ Motorrad
-            //um auf spezifische Variablen der Klasse Motorrad zugreifen zu können
-            Motorrad m = (Motorrad)Convert.ChangeType(f, typeof(Motorrad));
-            steuerschuld = (m.Hubraum + 99) / 10 * 20;
+
+            //Konvertieren des Fahrzeugs in den Typ LKW
+            //um auf spezifische Variablen der Klasse LKW zugreifen zu können
+            LKW l = (LKW)Convert.ChangeType(f, typeof(LKW));
+            steuerschuld = l.Zuladung * 100;
+
             return steuerschuld;
         }
 
