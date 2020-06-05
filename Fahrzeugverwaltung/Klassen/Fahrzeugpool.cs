@@ -184,7 +184,7 @@ namespace Fahrzeugverwaltung
         {
             int erstzulassung = 0;
             float anschaffungspreis = 0;
-            Regex kennzeichenFormat = new Regex(@"^[a-zA-Z]-[a-zA-Z]{2}(-\d{2})$");
+            Regex kennzeichenFormat = new Regex(@"^[a-zA-Z]{1,3}-[a-zA-Z]{1,2}(-\d{1,4})$");
 
             if (String.IsNullOrEmpty(aHersteller) || String.IsNullOrWhiteSpace(aHersteller))
             {
