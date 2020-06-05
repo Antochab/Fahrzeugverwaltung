@@ -14,12 +14,15 @@ namespace Fahrzeugverwaltung.Forms
 {
     public partial class Hauptmenu : Form
     {
-        private Fahrzeugpool fahrzeugpool = new Fahrzeugpool();
         private Parkhausverwaltung parkhausverwaltung = new Parkhausverwaltung();
+        private Fahrzeugpool fahrzeugpool;
+        
+
 
         public Hauptmenu()
         {
             InitializeComponent();
+            fahrzeugpool = new Fahrzeugpool(parkhausverwaltung);
         }
 
         private void buttonFahrzeugAnlegen_Click(object sender, EventArgs e)

@@ -9,6 +9,8 @@ namespace Fahrzeugverwaltung.Klassen
     {
         private List<Parkhaus> parkhausliste = new List<Parkhaus>();
 
+        public List<Parkhaus> Parkhausliste { get { return parkhausliste; } set { parkhausliste = value; } }
+
         public void neuesParkhausAnlegen(string aOrt, string aPlz, string aStrasse, int aMaxKap, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad,  int aAnzahlLKW)
         {
             Parkhaus parkhaus = new Parkhaus(aOrt, aPlz, aStrasse, aMaxKap, aParkhausnummer, aAnzahlPKW, aAnzahlMotorrad, aAnzahlLKW);

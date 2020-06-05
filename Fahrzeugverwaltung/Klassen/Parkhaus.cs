@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fahrzeugverwaltung
 {
-    class Parkhaus
+    public class Parkhaus
     {
         private String ort, plz, strasse;
         private String parkhausnummer; 
@@ -39,15 +39,15 @@ namespace Fahrzeugverwaltung
             {
                 if(i < anzahlPKW)
                 {
-                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "PKW", false));
+                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.PKW", false));
                 }
                 else if(i < anzahlMotorrad)
                 {
-                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Motorrad", false));
+                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.Motorrad", false));
                 }
                 else
                 {
-                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "LKW", false));
+                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.LKW", false));
                 }
             }
 
