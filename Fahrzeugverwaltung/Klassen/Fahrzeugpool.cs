@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -143,6 +144,7 @@ namespace Fahrzeugverwaltung
         {
             int erstzulassung = 0;
             float anschaffungspreis = 0;
+            Regex kennzeichenFormat = new Regex(@"^[a-zA-Z]-[a-zA-Z]{2}(-\d{2})$");
 
             if (String.IsNullOrEmpty(aHersteller) || String.IsNullOrWhiteSpace(aHersteller))
             {
@@ -153,7 +155,7 @@ namespace Fahrzeugverwaltung
                 throw new ArgumentException("Modell überprüfen");
             }
             //Format angeben
-            if (String.IsNullOrEmpty(aKennzeichen) || String.IsNullOrWhiteSpace(aKennzeichen))
+            if (String.IsNullOrEmpty(aKennzeichen) || String.IsNullOrWhiteSpace(aKennzeichen) || !kennzeichenFormat.IsMatch(aKennzeichen))
             {
                 throw new ArgumentException("Kennzeichen überprüfen");
             }
