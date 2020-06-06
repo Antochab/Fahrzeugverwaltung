@@ -76,13 +76,14 @@ namespace Fahrzeugverwaltung.Klassen
                         }
                         ///Alles stellplätze in die Datenbank übertragen
                         ///
-                        string stellplatz_query;
+                        string stellplatz_query = string.Empty;
                             foreach (Stellplatz stellplatz in parkhaus.Stellplatzliste)
                             {
+                            try
+                            {
+                                stellplatz_query = "Insert into Stellplatzliste values('" + stellplatz.Parkhausnummer + "','" + stellplatz.Nummer + "','" + stellplatz.Stellplatztyp + "','" + stellplatz.IstBelegt.ToString() + "','" + stellplatz.Kennzeichen + "');";
 
 
-                            stellplatz_query = "Update Stellplatzliste set kennzeichen = '" + stellplatz.Kennzeichen + "', istbelegt = '" +stellplatz.IstBelegt.ToString() + "' where stellplatznummer = '" + stellplatz.Nummer + "'";
-                     
 
                                 using (cmd = new OleDbCommand(stellplatz_query, connection))
                                 {
@@ -94,6 +95,23 @@ namespace Fahrzeugverwaltung.Klassen
 
                                 };
                             }
+                            catch(Exception e)
+                            {
+                                Console.WriteLine(e.Message);
+                               /* stellplatz_query = "Update Stellplatzliste set kennzeichen = '" + stellplatz.Kennzeichen + "', istbelegt = '" + stellplatz.IstBelegt.ToString() + "' where stellplatznummer = '" + stellplatz.Nummer + "'";
+
+                                using (cmd = new OleDbCommand(stellplatz_query, connection))
+                                {
+
+                                    OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+                                    dataAdapter.Fill(dataSet);
+                                    connection.Close();
+                                    dataSet.Dispose();
+                               
+                                };
+                            */
+                                }
+                        }
 
                         
 

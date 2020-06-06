@@ -43,13 +43,14 @@ namespace Fahrzeugverwaltung
         {
             List<Stellplatz> lStellplatzliste = new List<Stellplatz>();
             int gesamtanzahl = anzahlPKW + anzahlMotorrad + anzahlLKW;
+            int motorrad = anzahlPKW + anzahlMotorrad;
             for(int i = 0; i <= gesamtanzahl; i++)
             {
                 if(i < anzahlPKW)
                 {
                     lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.PKW", false));
                 }
-                else if(i < anzahlMotorrad)
+                else if(i < motorrad)
                 {
                     lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.Motorrad", false));
                 }
