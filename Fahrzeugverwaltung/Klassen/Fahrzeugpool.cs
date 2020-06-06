@@ -9,6 +9,7 @@ namespace Fahrzeugverwaltung
 {
     public class Fahrzeugpool
     {
+        //Variablen der Klasse Fahrzeugpool
         private Parkhauspool parkhausverwaltung = new Parkhauspool();
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
         private List<String> allePKWDaten = new List<string>();
@@ -24,21 +25,32 @@ namespace Fahrzeugverwaltung
         public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum, String aLeistung, String aSchadstoffklasse)
         {
+            //Anlegen von Variablen, die zum Überprüfen der Exceptions verwendet werden
             int hubraum = 0;
             int leistung = 0;
             int schadstoffklasse = 0;
             String stellplatznummer;
 
+            //Aufrufen der Methode ExceptionHandling Methode
+            //diese behandelt die Exceptions, welche in allen abgeleiteten Klassen der Basisklasse Fahzeug auftreten können
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
+            //Vornehmen des spezifischen Exception Handlings für die Variablen der Klasse PKW
+
+            //prüfen, ob der String aHubraum in einen int transofrmiert werden kann
+            //prüfen, ob der String aHubraum ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aHubraum, out hubraum) == false || String.IsNullOrWhiteSpace(aHubraum))
             {
                 throw new ArgumentException("Hubraum überprüfen");
             }
+            //prüfen, ob der String aLeistung in einen int transofrmiert werden kann
+            //prüfen, ob der String aLeistung ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aLeistung, out leistung) == false || String.IsNullOrWhiteSpace(aLeistung))
             {
                 throw new ArgumentException("Leistung überprüfen");
             }
+            //prüfen, ob der String aSchadstoffklasse in einen int transofrmiert werden kann
+            //prüfen, ob der String aSchadstoffklasse ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aSchadstoffklasse, out schadstoffklasse) == false || String.IsNullOrWhiteSpace(aSchadstoffklasse))
             {
                 throw new ArgumentException("Schadstoffklasse überprüfen");
@@ -47,20 +59,25 @@ namespace Fahrzeugverwaltung
             try
             {
                 //neuen PKW zur Liste hinzufügen hinzufügen
-
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
+                //PKW einem Stellplatz zuweisen
                 stellplatznummer = stellplatzZuweisen(pkw);
+                //prüfen, ob kein freier Stellplatz gefunden wurde
                 if (stellplatznummer == "-1")
                 {
                     throw new ArgumentException("Kein freier Stellplatz gefunden.");
                 }
+                //wurde ein freier Stellplatz geunden, wird dem PKW die Stellplatz nummer beigefügt
                 else
                 {
                     pkw.Stellplatznummer = stellplatznummer;
                 }
+                //neuen PKW der Fahrzeugliste hinzufügen
                 fahrzeugliste.Add(pkw);
 
             }
+
+            //Abfangen einer Exception, sollte eine aufgerufen werden
             catch (ArgumentException ex)
             {
                 throw new ArgumentException(ex.Message);
@@ -70,6 +87,7 @@ namespace Fahrzeugverwaltung
 
         public void neuenLKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aAchsenAnzahl, String aZuladung)
         {
+            //Anlege
             int achsenanzahl = 0;
             int zuladung = 0;
             String stellplatznummer;
@@ -209,7 +227,7 @@ namespace Fahrzeugverwaltung
             foreach (Fahrzeug f in fahrzeugliste)
             {
                 //addieren des Ergebnis der Berechnung der Steuerschuld auf die Variable Steuerschuld
-                steuerschuld = steuerschuld + f.berechneSteuerschuldKennzeichen(fahrzeugliste, f.Kennzeichen);
+                steuerschuld = steuerschuld + berechneSteuerschuldKennzeichen(f.Kennzeichen);
             }
 
             //Zurückgeben des Ergebnisses
