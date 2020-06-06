@@ -15,7 +15,7 @@ namespace Fahrzeugverwaltung.Klassen
         public List<Parkhaus> Parkhausliste { get { return parkhausliste; } set { parkhausliste = value; } }
 
         //neues Parkhaus anlegen
-        public void neuesParkhausAnlegen(string aOrt, string aPlz, String aParkhausnummer, String aAnzahlPKW, String aAnzahlMotorrad, String aAnzahlLKW)
+        public void neuesParkhausAnlegen(String aOrt, String aPlz, String aParkhausnummer, String aAnzahlPKW, String aAnzahlMotorrad, String aAnzahlLKW)
         {
             //Anlegen der Variablen für das Exception Handling
             int anzahlPKW = 0;
@@ -77,7 +77,7 @@ namespace Fahrzeugverwaltung.Klassen
                 foreach (Parkhaus parkhaus in parkhausliste)
                 {
                     Boolean entryExists = false;
-                    string parkhaus_query = "Insert into Parkhausliste values('" + parkhaus.Ort + "','" + parkhaus.Plz + "','" + parkhaus.Parkhausnummer + "','" + parkhaus.AnzahlPKW + "','" + parkhaus.AnzahlMotorrad + "','" + parkhaus.AnzahlLKW + "');";
+                    String parkhaus_query = "Insert into Parkhausliste values('" + parkhaus.Ort + "','" + parkhaus.Plz + "','" + parkhaus.Parkhausnummer + "','" + parkhaus.AnzahlPKW + "','" + parkhaus.AnzahlMotorrad + "','" + parkhaus.AnzahlLKW + "');";
 
                     using (OleDbConnection connection = new OleDbConnection(connectionString))
                     {
@@ -86,7 +86,7 @@ namespace Fahrzeugverwaltung.Klassen
                         {
                             connection.Open();
                             OleDbDataReader reader = cmd.ExecuteReader();
-                            string parkhausnummer;
+                            String parkhausnummer;
                             while (reader.Read())
                             {
                                 parkhausnummer = reader["parkhausnummer"].ToString();
@@ -113,7 +113,7 @@ namespace Fahrzeugverwaltung.Klassen
                         }
                         ///Alles stellplätze in die Datenbank übertragen
                         ///
-                        string stellplatz_query = string.Empty;
+                        String stellplatz_query = String.Empty;
                         foreach (Stellplatz stellplatz in parkhaus.Stellplatzliste)
                         {
                             try
@@ -166,11 +166,11 @@ namespace Fahrzeugverwaltung.Klassen
             DataSet dataSet = new DataSet();
 
 
-            string plz, ort, parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen;
+            String plz, ort, parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen;
             int anzahlPKW, anzahlMotorrad, anzahlLKW;
 
-            string parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
-            string stellplatz_query = "SELECT parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen FROM stellplatzliste";
+            String parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
+            String stellplatz_query = "SELECT parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen FROM stellplatzliste";
 
             try
             {
@@ -247,13 +247,13 @@ namespace Fahrzeugverwaltung.Klassen
 
         public List<String> gibAlleParkhausDatenAus()
         {
-            List<String> parkhausDaten = new List<string>();
-            string output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t";
-            parkhausDaten.Add(string.Format(output, "Ort", "PLZ", "Parkhausnummer", "AnzahlPKWPlätze", "AnzahlMotorradPlätze", "AnzahlLKWPlätze"));
+            List<String> parkhausDaten = new List<String>();
+            String output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t";
+            parkhausDaten.Add(String.Format(output, "Ort", "PLZ", "Parkhausnummer", "AnzahlPKWPlätze", "AnzahlMotorradPlätze", "AnzahlLKWPlätze"));
 
             foreach (Parkhaus parkhaus in parkhausliste)
             {
-                parkhausDaten.Add(string.Format(output, parkhaus.Ort, parkhaus.Plz, parkhaus.Parkhausnummer, parkhaus.AnzahlPKW.ToString(), parkhaus.AnzahlMotorrad.ToString(), parkhaus.AnzahlLKW.ToString()));
+                parkhausDaten.Add(String.Format(output, parkhaus.Ort, parkhaus.Plz, parkhaus.Parkhausnummer, parkhaus.AnzahlPKW.ToString(), parkhaus.AnzahlMotorrad.ToString(), parkhaus.AnzahlLKW.ToString()));
             }
             return parkhausDaten;
         }
@@ -262,14 +262,14 @@ namespace Fahrzeugverwaltung.Klassen
         public List<String> gibAlleStellplatzDatenAus()
         {
             List<String> stellplatzDaten = new List<String>();
-            string output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t";
-            stellplatzDaten.Add(string.Format(output, "Parkhausnummer", "Stellplatznummer", "Stellplatztyp", "istBelegt", "Kennzeichen"));
+            String output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t";
+            stellplatzDaten.Add(String.Format(output, "Parkhausnummer", "Stellplatznummer", "Stellplatztyp", "istBelegt", "Kennzeichen"));
 
             foreach (Parkhaus parkhaus in parkhausliste)
             {
                 foreach (Stellplatz stellplatz in parkhaus.Stellplatzliste)
                 {
-                    stellplatzDaten.Add(string.Format(output, stellplatz.Parkhausnummer, stellplatz.Nummer, stellplatz.Stellplatztyp, stellplatz.IstBelegt.ToString(), stellplatz.Kennzeichen));
+                    stellplatzDaten.Add(String.Format(output, stellplatz.Parkhausnummer, stellplatz.Nummer, stellplatz.Stellplatztyp, stellplatz.IstBelegt.ToString(), stellplatz.Kennzeichen));
 
                 }
             }

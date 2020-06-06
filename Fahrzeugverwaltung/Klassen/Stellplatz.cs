@@ -10,10 +10,10 @@ namespace Fahrzeugverwaltung
         private String stellplatzTyp;
         private String kennzeichen;
         private bool istBelegt;
-        private string parkhausnummer;
+        private String parkhausnummer;
 
         //Festlegen des Konstruktors der Klasse Stellplatz
-        public Stellplatz(String aNummer, string aStellplatztyp, bool aIstBelegt, string aParkhausnummer)
+        public Stellplatz(String aNummer, String aStellplatztyp, bool aIstBelegt, String aParkhausnummer)
         {
             nummer = aNummer;
             stellplatzTyp = aStellplatztyp;

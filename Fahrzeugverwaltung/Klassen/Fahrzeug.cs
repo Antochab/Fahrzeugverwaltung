@@ -6,12 +6,12 @@ namespace Fahrzeugverwaltung
     public abstract class Fahrzeug
     {
         //Variablen der Klasse festlegen
-        protected string hersteller, modell, kennzeichen, stellplatznummer;
+        protected String hersteller, modell, kennzeichen, stellplatznummer;
         protected int erstzulassung;
         protected float anschaffungspreis;
 
         //Konstruktor der Klasse Fahrzeig
-        public Fahrzeug(string aHersteller, string aModell, string aKennzeichen, int aErstzulassung, float aAnschaffungspreis)
+        public Fahrzeug(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis)
         {
             hersteller = aHersteller;
             modell = aModell;

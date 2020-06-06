@@ -166,7 +166,7 @@ namespace Fahrzeugverwaltung
 
         }
 
-        public static Fahrzeug sucheFahrzeug(List<Fahrzeug> aFahrzeugliste, string kennzeichen)
+        public static Fahrzeug sucheFahrzeug(List<Fahrzeug> aFahrzeugliste, String kennzeichen)
         {
             //finden des Fahrzeugs in der Fahrzeugliste
             Fahrzeug f = aFahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
@@ -174,11 +174,11 @@ namespace Fahrzeugverwaltung
             return f;
         }
 
-        public static string FahrzeugAusgeben(List<Fahrzeug> aFahrzeugliste, string kennzeichen)
+        public static String FahrzeugAusgeben(List<Fahrzeug> aFahrzeugliste, String kennzeichen)
         {
             //festlegen des Ausgabeformats 
-            string output_format = "";
-            string output = "";
+            String output_format = "";
+            String output = "";
 
             //finden des Fahrzeugs in der Fahrzeugliste
             Fahrzeug f = aFahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
@@ -210,7 +210,7 @@ namespace Fahrzeugverwaltung
             return output;
         }
 
-        public float berechneSteuerschuldKennzeichen(string kennzeichen)
+        public float berechneSteuerschuldKennzeichen(String kennzeichen)
         {
             //Anlegen der Variablen steuerschuld
             float steuerschuld = 0;
@@ -279,7 +279,7 @@ namespace Fahrzeugverwaltung
                 foreach (Stellplatz s in element.Stellplatzliste)
                 {
                     //Fahrzeugtyp abfregen
-                    string fahrzeugtyp = f.GetType().ToString();
+                    String fahrzeugtyp = f.GetType().ToString();
                     //prüfen ob der Stellplatz belegt
                     if (s.IstBelegt == false)
                     {
@@ -350,14 +350,14 @@ namespace Fahrzeugverwaltung
         public void gibAlleDatenAus()
         {
             //festlegen der jeweiligen Formate für die einzelnen Fahrzeugtypen
-            string pkw_output = "{0,-20}{1,-20}{2,-20}{3,-20}{4,-20}{5,-20}{6,-20}{7,-20}{8,-20}";
-            string lkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
-            string motorrad_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
+            String pkw_output = "{0,-20}{1,-20}{2,-20}{3,-20}{4,-20}{5,-20}{6,-20}{7,-20}{8,-20}";
+            String lkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
+            String motorrad_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
 
             //Hinzufügen der Beschriftungen der Fahrzeuge in einen String
-            allePKWDaten.Add(string.Format(pkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Leistung", "Schadstoffklasse", "Stellplatz"));
-            alleLKWDaten.Add(string.Format(lkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "AnzahlAchsen", "Zuladung", "Stellplatz"));
-            alleMotorradDaten.Add(string.Format(motorrad_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Stellplatz"));
+            allePKWDaten.Add(String.Format(pkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Leistung", "Schadstoffklasse", "Stellplatz"));
+            alleLKWDaten.Add(String.Format(lkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "AnzahlAchsen", "Zuladung", "Stellplatz"));
+            alleMotorradDaten.Add(String.Format(motorrad_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Stellplatz"));
 
             //Schleife über alle Fahrzeuge in der Fahrzeugliste laufen lassen
             foreach (Fahrzeug fahrzeug in fahrzeugliste)
@@ -370,7 +370,7 @@ namespace Fahrzeugverwaltung
                         //Fahrzeug zu PKW konvertieren
                         PKW pkw = fahrzeug as PKW;
                         //alle PKW Daten in einen String übertragen gemäß des festgelegten Formats
-                        allePKWDaten.Add(string.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(), pkw.Leistung.ToString(), pkw.Schadstoffklasse.ToString(), pkw.Stellplatznummer.ToString()));
+                        allePKWDaten.Add(String.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(), pkw.Leistung.ToString(), pkw.Schadstoffklasse.ToString(), pkw.Stellplatznummer.ToString()));
                         break;
 
                     //es liegt ein LKW vor
@@ -378,7 +378,7 @@ namespace Fahrzeugverwaltung
                         //Fahrzeug in LKW übertragen
                         LKW lkw = fahrzeug as LKW;
                         //alle LKW Daten in einen String übertragen gemäß des festgelegten Formats
-                        alleLKWDaten.Add(string.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString(), lkw.Stellplatznummer.ToString()));
+                        alleLKWDaten.Add(String.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString(), lkw.Stellplatznummer.ToString()));
                         break;
 
                     //es liegt ein Motorrad vor
@@ -386,7 +386,7 @@ namespace Fahrzeugverwaltung
                         //Fahrzeug zu Motorrad übertragen
                         Motorrad motorrad = fahrzeug as Motorrad;
                         //alle Motorrad Daten in einen String übertragen gemäß des festgelegten Formats
-                        alleMotorradDaten.Add(string.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString(), motorrad.Stellplatznummer.ToString()));
+                        alleMotorradDaten.Add(String.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString(), motorrad.Stellplatznummer.ToString()));
                         break;
                 }
             }
@@ -403,8 +403,8 @@ namespace Fahrzeugverwaltung
 
                 foreach (Fahrzeug fahrzeug in fahrzeugliste)
                 {
-                    string fahrzeugtyp = fahrzeug.GetType().ToString();
-                    string query = "Insert into Fahrzeugliste values('" + fahrzeug.Kennzeichen + "','" + fahrzeug.Hersteller + "','" + fahrzeug.Modell + "'," + fahrzeug.Erstzulassung + "," + fahrzeug.Anschaffungspreis + ",";
+                    String fahrzeugtyp = fahrzeug.GetType().ToString();
+                    String query = "Insert into Fahrzeugliste values('" + fahrzeug.Kennzeichen + "','" + fahrzeug.Hersteller + "','" + fahrzeug.Modell + "'," + fahrzeug.Erstzulassung + "," + fahrzeug.Anschaffungspreis + ",";
                     entryExists = false;
 
                     switch (fahrzeugtyp)
@@ -434,7 +434,7 @@ namespace Fahrzeugverwaltung
                         {
                             connection.Open();
                             OleDbDataReader reader = cmd.ExecuteReader();
-                            string kennzeichen;
+                            String kennzeichen;
                             while (reader.Read())
                             {
                                 kennzeichen = reader["kennzeichen"].ToString();
@@ -471,11 +471,11 @@ namespace Fahrzeugverwaltung
             OleDbCommand cmd;
             DataSet dataSet = new DataSet();
 
-            string kennzeichen, hersteller, modell, typ, stellplatznummer;
+            String kennzeichen, hersteller, modell, typ, stellplatznummer;
             float anschaffungspreis;
             int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung;
 
-            string query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
+            String query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
 
             try
             {

@@ -12,7 +12,7 @@ namespace Fahrzeugverwaltung
         protected List<Stellplatz> stellplatzliste = new List<Stellplatz>();
 
         //Festlegen des Konstruktors der Klasse Parkhaus
-        public Parkhaus(string aOrt, string aPlz, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad, int aAnzahlLKW)
+        public Parkhaus(String aOrt, string aPlz, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad, int aAnzahlLKW)
         {
             ort = aOrt;
             plz = aPlz;
