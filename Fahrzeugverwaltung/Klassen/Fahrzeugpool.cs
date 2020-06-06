@@ -17,12 +17,14 @@ namespace Fahrzeugverwaltung
         private List<String> alleMotorradDaten = new List<string>();
 
 
-
+        #region Eigenschaftsmethoden
         //Getter Methode für die Fahrzeugliste definieren, damit Fahrzeuge ausgegeben werden können
         public Parkhauspool Parkhausverwaltung { get { return parkhausverwaltung; } set { parkhausverwaltung = value; } }
         public List<String> AllePKWDaten { get { return allePKWDaten; } set { allePKWDaten = value; } }
         public List<String> AlleLKWDaten { get { return alleLKWDaten; } set { alleLKWDaten = value; } }
         public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
+        #endregion
+
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum, String aLeistung, String aSchadstoffklasse)
         {
             //Anlegen von Variablen, die zum Überprüfen der Exceptions verwendet werden
@@ -392,7 +394,12 @@ namespace Fahrzeugverwaltung
             }
         }
 
-
+        /// <summary>
+        /// Beim Verlassen des Programmes werden alle Daten / Einträge in der Fahrzeugliste in die separate Datenbank übertragen,
+        /// damit sie beim nächsten Programmstart wieder zur Verfügung stehen. Die Datenbankanbindung wird mithilfe der Programmierschnitttelle
+        /// OLE-DB implementiert, wobei unterschiedliche Datenbankabfragen ausgeführt werden können.
+        /// </summary>
+        /// <param name="connectionString"></param>
         public void datenInDatenbankSichern(String connectionString)
         {
             OleDbCommand cmd;
@@ -400,7 +407,7 @@ namespace Fahrzeugverwaltung
             Boolean entryExists = false;
             try
             {
-
+                ///SQL-Queries in Abhängigkeit von dem Fahrzeugtypen erstellen
                 foreach (Fahrzeug fahrzeug in fahrzeugliste)
                 {
                     String fahrzeugtyp = fahrzeug.GetType().ToString();
@@ -426,10 +433,11 @@ namespace Fahrzeugverwaltung
 
                     }
 
-
+                    ///neue OLE-DB Verbindung herstellen, um auf die Datenbank zuzugreifen
                     using (OleDbConnection connection = new OleDbConnection(connectionString))
                     {
 
+                        ///prüfen, ob Kennzeichen bereits in der Datenbank vorhanden ist
                         using (cmd = new OleDbCommand("Select kennzeichen from Fahrzeugliste", connection))
                         {
                             connection.Open();
@@ -441,7 +449,7 @@ namespace Fahrzeugverwaltung
                                 if (kennzeichen.Equals(fahrzeug.Kennzeichen)) entryExists = true;
                             }
                         }
-
+                        /// Wenn der Datensatz nicht existiert wird ein neuer Eintrag angelegt
                         if (!entryExists)
                         {
                             using (cmd = new OleDbCommand(query, connection))
@@ -465,7 +473,12 @@ namespace Fahrzeugverwaltung
             }
         }
 
-
+        /// <summary>
+        /// Beim Starten des Programmes werden alle Daten / Einträge aus der Datenbank in die Fahrzeugliste der Klasse übertragen,
+        /// damit sie vom letzten Programmablauf wieder zur Verfügung stehen. Die Datenbankanbindung wird mithilfe der Programmierschnitttelle
+        /// OLE-DB implementiert, wobei unterschiedliche Datenbankabfragen ausgeführt werden können.
+        /// </summary>
+        /// <param name="connectionString"></param>
         public void datenAusDatenbankAuslesen(String connectionString)
         {
             OleDbCommand cmd;
@@ -475,10 +488,16 @@ namespace Fahrzeugverwaltung
             float anschaffungspreis;
             int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung;
 
+<<<<<<< HEAD
+            ///SQL-Abfrage zur Wiederherstellung der bereits vorhandenen Fahrzeuge aus der Datenbank
+            string query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
+=======
             String query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
+>>>>>>> 7a4f92e0c82c482a90225f9ddceba1b84ae8ced7
 
             try
             {
+                ///Aufbau einer neuen datenbankverbindung
                 using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
                     using (cmd = new OleDbCommand(query, connection))
@@ -488,8 +507,9 @@ namespace Fahrzeugverwaltung
 
                         OleDbDataReader reader = cmd.ExecuteReader();
 
+                        /// Es wird jede Reihe aus der Datenbank ausgelesen, damit die Fahrzeuge wiederhergestellt werden können
                         while (reader.Read())
-                        {    //Every new row will create a new dictionary that holds the columns
+                        {    
 
                             kennzeichen = reader["kennzeichen"].ToString();
                             hersteller = reader["hersteller"].ToString();
@@ -503,7 +523,8 @@ namespace Fahrzeugverwaltung
                             zuladung = Int32.Parse(reader["zuladung"].ToString());
                             typ = reader["typ"].ToString();
                             stellplatznummer = reader["stellplatznummer"].ToString();
-
+                            
+                            /// Abhängig von dem jeweiligen Fahrzeugtypen, wird ein neuer Fahrzeugtyp in die Liste eingefügt 
                             switch (typ)
                             {
                                 case "Fahrzeugverwaltung.PKW":

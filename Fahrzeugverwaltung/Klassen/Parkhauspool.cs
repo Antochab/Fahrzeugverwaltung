@@ -67,6 +67,12 @@ namespace Fahrzeugverwaltung.Klassen
             parkhausliste.Add(parkhaus);
         }
 
+        /// <summary>
+        /// Beim Verlassen des Programmes werden alle Parkhaus-Daten / Einträge in der Parkhausliste in die separate Datenbank übertragen,
+        /// damit sie beim nächsten Programmstart wieder zur Verfügung stehen. Die Datenbankanbindung wird mithilfe der Programmierschnitttelle
+        /// OLE-DB implementiert, wobei unterschiedliche Datenbankabfragen ausgeführt werden können.
+        /// </summary>
+        /// <param name="connectionString"></param>
         public void datenInDatenbankSichern(String connectionString)
         {
             OleDbCommand cmd;
@@ -74,6 +80,7 @@ namespace Fahrzeugverwaltung.Klassen
             try
             {
 
+                /// Durchlaufen aller Parkhäuser und Erstellung einer SQL-Abfrage, damit die Daten in die DB übertragen werden können
                 foreach (Parkhaus parkhaus in parkhausliste)
                 {
                     Boolean entryExists = false;
@@ -81,7 +88,7 @@ namespace Fahrzeugverwaltung.Klassen
 
                     using (OleDbConnection connection = new OleDbConnection(connectionString))
                     {
-                        ///
+                        /// prüfen, ob das Parkhaus bereits in der Datenbank existiert
                         using (cmd = new OleDbCommand("Select parkhausnummer from Parkhausliste", connection))
                         {
                             connection.Open();
@@ -97,7 +104,7 @@ namespace Fahrzeugverwaltung.Klassen
                                 }
                             }
                         }
-
+                        /// wenn das Parkhaus nicht existiert, dann wird ein neuer Eintrag angelegt
                         if (!entryExists)
                         {
                             ///
@@ -111,9 +118,14 @@ namespace Fahrzeugverwaltung.Klassen
 
                             }
                         }
+<<<<<<< HEAD
+                        ///Übertragen aller Stellplätze der Parkhäuser in die Datenbank
+                        string stellplatz_query = string.Empty;
+=======
                         ///Alles stellplätze in die Datenbank übertragen
                         ///
                         String stellplatz_query = String.Empty;
+>>>>>>> 7a4f92e0c82c482a90225f9ddceba1b84ae8ced7
                         foreach (Stellplatz stellplatz in parkhaus.Stellplatzliste)
                         {
                             try
@@ -160,6 +172,13 @@ namespace Fahrzeugverwaltung.Klassen
                 throw new Exception("Datenbankeintrag konnte nicht angelegt werden");
             }
         }
+
+        /// <summary>
+        /// Beim Starten des Programmes werden alle Parkhaus-Daten / Einträge aus der Datenbank in die Parkhausliste der Klasse übertragen,
+        /// damit sie vom letzten Programmablauf wieder zur Verfügung stehen. Die Datenbankanbindung wird mithilfe der Programmierschnitttelle
+        /// OLE-DB implementiert, wobei unterschiedliche Datenbankabfragen ausgeführt werden können.
+        /// </summary>
+        /// <param name="connectionString"></param>
         public void datenAusDatenbankAuslesen(String connectionString)
         {
             OleDbCommand cmd;
@@ -169,8 +188,14 @@ namespace Fahrzeugverwaltung.Klassen
             String plz, ort, parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen;
             int anzahlPKW, anzahlMotorrad, anzahlLKW;
 
+<<<<<<< HEAD
+            /// SQL-Abfragen zur Wiederherestellung der bereits vorhandenen Parkhäuser und Stellplätze in der Datenbank
+            string parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
+            string stellplatz_query = "SELECT parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen FROM stellplatzliste";
+=======
             String parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
             String stellplatz_query = "SELECT parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen FROM stellplatzliste";
+>>>>>>> 7a4f92e0c82c482a90225f9ddceba1b84ae8ced7
 
             try
             {
@@ -183,8 +208,9 @@ namespace Fahrzeugverwaltung.Klassen
 
                         OleDbDataReader reader = cmd.ExecuteReader();
 
+                    /// Auslesen aller Parkhauseinträge aus der Datenbank zur Wiederherstellung der Daten
                         while (reader.Read())
-                        {    //Every new row will create a new dictionary that holds the columns
+                        {    
 
                             plz = reader["plz"].ToString();
                             ort = reader["ort"].ToString();
@@ -210,8 +236,9 @@ namespace Fahrzeugverwaltung.Klassen
                             parkhaus.Stellplatzliste.Clear();
                         }
 
+                        /// Auslesen aller Stellplatzeinträge aus der Datenbank zur Wiederherstellung der Daten
                         while (reader.Read())
-                        {    //Every new row will create a new dictionary that holds the columns
+                        {    
 
                             parkhausnummer = reader["parkhausnummer"].ToString();
                             stellplatznummer = reader["stellplatznummer"].ToString();
@@ -240,8 +267,7 @@ namespace Fahrzeugverwaltung.Klassen
             }
             catch (Exception ex)
             {
-                //If an exception occurs, write it to the console
-                Console.WriteLine(ex.ToString());
+                throw new Exception("Inhalt konnte nicht geladen werden");
             }
         }
 
