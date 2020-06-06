@@ -11,14 +11,44 @@ namespace Fahrzeugverwaltung.Klassen
 
         public List<Parkhaus> Parkhausliste { get { return parkhausliste; } set { parkhausliste = value; } }
 
-        public void neuesParkhausAnlegen(string aOrt, string aPlz, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad, int aAnzahlLKW)
+        public void neuesParkhausAnlegen(string aOrt, string aPlz, String aParkhausnummer, String aAnzahlPKW, String aAnzahlMotorrad, String aAnzahlLKW)
         {
-            Parkhaus parkhaus = new Parkhaus(aOrt, aPlz, aParkhausnummer, aAnzahlPKW, aAnzahlMotorrad, aAnzahlLKW);
+            int anzahlPKW = 0;
+            int anzahlLKW = 0;
+            int anzahlMotorrad = 0; 
+            if (String.IsNullOrEmpty(aOrt) || String.IsNullOrWhiteSpace(aOrt))
+            {
+                throw new ArgumentException("Ort überprüfen");
+            }
 
+            if (String.IsNullOrEmpty(aPlz) || String.IsNullOrWhiteSpace(aPlz))
+            {
+                throw new ArgumentException("PLZ überprüfen");
+            }
+            if (String.IsNullOrEmpty(aParkhausnummer) || String.IsNullOrWhiteSpace(aParkhausnummer))
+            {
+                throw new ArgumentException("Parkhausnummer überprüfen");
+            }
+            if (int.TryParse(aAnzahlPKW, out anzahlPKW) == false || String.IsNullOrWhiteSpace(aAnzahlPKW))
+            {
+                throw new ArgumentException("Anzahl PKW überprüfen");
+            }
+            if (int.TryParse(aAnzahlLKW, out anzahlLKW) == false || String.IsNullOrWhiteSpace(aAnzahlLKW))
+            {
+                throw new ArgumentException("Anzahl LKW überprüfen");
+            }
+            if (int.TryParse(aAnzahlMotorrad, out anzahlMotorrad) == false || String.IsNullOrWhiteSpace(aAnzahlMotorrad))
+            {
+                throw new ArgumentException("Anzahl Motorrad überprüfen");
+            }
+            Parkhaus parkhaus = new Parkhaus(aOrt, aPlz, aParkhausnummer, Convert.ToInt32(aAnzahlPKW), Convert.ToInt32(aAnzahlMotorrad), Convert.ToInt32(aAnzahlLKW));
+            //prüfen, ob bereits ein Parkhaus mit der gleichen Parkhausnummer exisitert
             if ((parkhausliste.Exists(x => x.Parkhausnummer == aParkhausnummer)) == true)
             {
                 throw new ArgumentException("Es existiert bereits ein Parkhaus mit dieser Parkhausnummer.");
             }
+
+
 
             parkhausliste.Add(parkhaus);
         }
