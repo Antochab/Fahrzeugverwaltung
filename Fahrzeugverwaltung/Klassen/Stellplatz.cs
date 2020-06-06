@@ -15,11 +15,12 @@ namespace Fahrzeugverwaltung
         private bool istBelegt;
         private string parkhausnummer;
 
-        public Stellplatz(String aNummer, string aStellplatztyp, bool aIstBelegt)
+        public Stellplatz(String aNummer, string aStellplatztyp, bool aIstBelegt, string aParkhausnummer)
         {
             nummer = aNummer;
             stellplatzTyp = aStellplatztyp;
             istBelegt = aIstBelegt;
+            Parkhausnummer = aParkhausnummer;
         }
 
         public String Nummer { get { return nummer; } set { nummer = value; } }

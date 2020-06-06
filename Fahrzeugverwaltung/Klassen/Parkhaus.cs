@@ -48,15 +48,15 @@ namespace Fahrzeugverwaltung
             {
                 if(i < anzahlPKW)
                 {
-                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.PKW", false));
+                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.PKW", false,parkhausnummer));
                 }
                 else if(i < motorrad)
                 {
-                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.Motorrad", false));
+                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.Motorrad", false, parkhausnummer));
                 }
                 else
                 {
-                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.LKW", false));
+                    lStellplatzliste.Add(new Stellplatz(Parkhausnummer + i.ToString(), "Fahrzeugverwaltung.LKW", false, parkhausnummer));
                 }
             }
 

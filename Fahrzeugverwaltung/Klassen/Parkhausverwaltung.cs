@@ -95,10 +95,10 @@ namespace Fahrzeugverwaltung.Klassen
 
                                 };
                             }
-                            catch(Exception e)
+                            catch
                             {
-                                Console.WriteLine(e.Message);
-                               /* stellplatz_query = "Update Stellplatzliste set kennzeichen = '" + stellplatz.Kennzeichen + "', istbelegt = '" + stellplatz.IstBelegt.ToString() + "' where stellplatznummer = '" + stellplatz.Nummer + "'";
+                               
+                                stellplatz_query = "Update Stellplatzliste set kennzeichen = '" + stellplatz.Kennzeichen + "', istbelegt = '" + stellplatz.IstBelegt.ToString() + "' where stellplatznummer = '" + stellplatz.Nummer + "'";
 
                                 using (cmd = new OleDbCommand(stellplatz_query, connection))
                                 {
@@ -109,7 +109,7 @@ namespace Fahrzeugverwaltung.Klassen
                                     dataSet.Dispose();
                                
                                 };
-                            */
+                            
                                 }
                         }
 
@@ -187,9 +187,8 @@ namespace Fahrzeugverwaltung.Klassen
                             istBelegt = reader["istbelegt"].ToString();
                             kennzeichen = reader["kennzeichen"].ToString();
 
-                            Stellplatz stellplatz = new Stellplatz(stellplatznummer,stellplatztyp,Boolean.Parse(istBelegt));
+                            Stellplatz stellplatz = new Stellplatz(stellplatznummer,stellplatztyp,Boolean.Parse(istBelegt),parkhausnummer);
                             stellplatz.Kennzeichen = kennzeichen;
-                            stellplatz.Parkhausnummer = parkhausnummer;
                             
                             
                             foreach(Parkhaus parkhaus in parkhausliste)
