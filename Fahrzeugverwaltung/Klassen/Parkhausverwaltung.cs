@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data.OleDb;
+using System.Data;
+using Fahrzeugverwaltung.Klassen;
+using System.Drawing.Drawing2D;
+
 namespace Fahrzeugverwaltung.Klassen
 {
     public class Parkhausverwaltung
@@ -25,5 +31,91 @@ namespace Fahrzeugverwaltung.Klassen
 
             parkhausliste.Add(parkhaus);
         }
+
+        public void datenInDatenbankSichern()
+        {
+            OleDbCommand cmd;
+            DataSet dataSet = new DataSet();
+            try
+            {
+                string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
+
+
+                foreach (Parkhaus parkhaus in parkhausliste)
+                {
+                    string query = "Insert into Parkhausliste values('" + parkhaus.Ort + "','" + parkhaus.Plz + "','" + parkhaus.MaxKap + "','" + parkhaus.Parkhausnummer + "','" + parkhaus.AnzahlPKW + "','" + parkhaus.AnzahlMotorrad + "','" + parkhaus.AnzahlLKW + "');";
+
+                    using (OleDbConnection connection = new OleDbConnection(connString))
+                    {
+                            using (cmd = new OleDbCommand(query, connection))
+                            {
+
+                                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+                                dataAdapter.Fill(dataSet);
+                                connection.Close();
+                                dataSet.Dispose();
+
+                            };
+
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Datenbankeintrag konnte nicht angelegt werden");
+            }
+        }
+        public void datenAusDatenbankAuslesen()
+        {
+            OleDbCommand cmd;
+            DataSet dataSet = new DataSet();
+            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
+
+
+            string plz, ort, parkhausnummer;
+            int maxkap, anzahlPKW, anzahlMotorrad, anzahlLKW;
+
+            string query = "SELECT plz, ort, maxkap, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
+
+            try
+            {
+                using (OleDbConnection connection = new OleDbConnection(connString))
+                {
+                    using (cmd = new OleDbCommand(query, connection))
+                    {
+
+                        connection.Open();
+
+                        OleDbDataReader reader = cmd.ExecuteReader();
+
+                        while (reader.Read())
+                        {    //Every new row will create a new dictionary that holds the columns
+
+                            plz = reader["plz"].ToString();
+                            ort = reader["ort"].ToString();
+                            parkhausnummer = reader["parkhausnummer"].ToString();
+                            maxkap = Int32.Parse(reader["maxkap"].ToString());
+                            anzahlPKW = Int32.Parse(reader["anzahlPKW"].ToString());
+                            anzahlMotorrad = Int32.Parse(reader["anzahlMotorrad"].ToString());
+                            anzahlLKW = Int32.Parse(reader["anzahlLKW"].ToString());
+                            
+
+                            Parkhaus parkhaus = new Parkhaus(ort,plz,"beispielstraße",maxkap,parkhausnummer,anzahlPKW,anzahlMotorrad,anzahlLKW);
+                            parkhausliste.Add(parkhaus);
+                            break;
+
+                        }
+                        reader.Close();
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                //If an exception occurs, write it to the console
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
     }
 }

@@ -45,12 +45,14 @@ namespace Fahrzeugverwaltung.Forms
 
         private void Hauptmenu_FormClosing(object sender, FormClosingEventArgs e)
         {
-            fahrzeugpool.datenInDatenbankSichern();    
-        }
+            fahrzeugpool.datenInDatenbankSichern();
+            parkhausverwaltung.datenInDatenbankSichern();
+                }
 
         private void Hauptmenu_Load(object sender, EventArgs e)
         {
             fahrzeugpool.datenAusDatenbankAuslesen();
+            parkhausverwaltung.datenAusDatenbankAuslesen();
         }
 
         private void buttonParkhausAnlegen_Click(object sender, EventArgs e)
