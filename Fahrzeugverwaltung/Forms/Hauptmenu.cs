@@ -7,6 +7,9 @@ using Microsoft.VisualBasic;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Hauptmenü bei dem das Fahrzeugpool an die Submenüs übergeben wird
+    /// </summary>
     public partial class Hauptmenu : Form
     {
         private Fahrzeugpool fahrzeugpool;
@@ -51,6 +54,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ///Vor dem Programmstart muss zwingend eine Verbindung zur Datenbank hergestellt werden (Access Datenbank unter Eigenschaften Connection String angeben)
             try
             {
                 connectionString = textBox1.Text;

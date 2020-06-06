@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Auswahlmenü zum Anlegen eines neuen Fahrzeuges
+    /// </summary>
     public partial class FormMenueFahrzeugauswahl : Form
     {
         private Fahrzeugpool fahrzeugpool;
@@ -44,9 +47,5 @@ namespace Fahrzeugverwaltung.Forms
             }
         }
 
-        private void buttonMotorradAnlegen_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

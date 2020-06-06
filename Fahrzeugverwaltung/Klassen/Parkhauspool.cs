@@ -118,14 +118,10 @@ namespace Fahrzeugverwaltung.Klassen
 
                             }
                         }
-<<<<<<< HEAD
+
                         ///Übertragen aller Stellplätze der Parkhäuser in die Datenbank
                         string stellplatz_query = string.Empty;
-=======
-                        ///Alles stellplätze in die Datenbank übertragen
-                        ///
-                        String stellplatz_query = String.Empty;
->>>>>>> 7a4f92e0c82c482a90225f9ddceba1b84ae8ced7
+                        ///Alle stellplätze in die Datenbank übertragen
                         foreach (Stellplatz stellplatz in parkhaus.Stellplatzliste)
                         {
                             try
@@ -188,14 +184,10 @@ namespace Fahrzeugverwaltung.Klassen
             String plz, ort, parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen;
             int anzahlPKW, anzahlMotorrad, anzahlLKW;
 
-<<<<<<< HEAD
+
             /// SQL-Abfragen zur Wiederherestellung der bereits vorhandenen Parkhäuser und Stellplätze in der Datenbank
-            string parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
-            string stellplatz_query = "SELECT parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen FROM stellplatzliste";
-=======
-            String parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
+             String parkhaus_query = "SELECT plz, ort, parkhausnummer, anzahlPKW, anzahlMotorrad, anzahlLKW FROM parkhausliste";
             String stellplatz_query = "SELECT parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen FROM stellplatzliste";
->>>>>>> 7a4f92e0c82c482a90225f9ddceba1b84ae8ced7
 
             try
             {

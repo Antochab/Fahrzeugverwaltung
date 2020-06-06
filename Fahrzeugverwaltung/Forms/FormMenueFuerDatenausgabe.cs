@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Auswahlmenü zur Anzeige von Daten (Einzel- oder Listen)
+    /// </summary>
     public partial class FormMenueFuerDatenausgabe : Form
     {
         private readonly Fahrzeugpool fahrzeugpool;

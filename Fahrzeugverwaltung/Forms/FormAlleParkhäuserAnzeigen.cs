@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Form zur Anzeige aller Parkhäuser
+    /// </summary>
     public partial class FormParkhäuserAnzeigen : Form
     {
         private Fahrzeugpool fahrzeugpool;

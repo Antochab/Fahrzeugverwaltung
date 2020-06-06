@@ -2,6 +2,9 @@
 
 namespace Fahrzeugverwaltung.Forms
 {
+/// <summary>
+/// Form zur Anzeige eines eintelnen Fahrzeuges
+/// </summary>
     public partial class FormEinzelnesFahrzeugAusgeben : Form
     {
         private Fahrzeugpool fahrzeugpool;

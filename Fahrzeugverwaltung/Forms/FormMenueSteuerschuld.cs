@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Form zur Auswahl der jeweiligen Steuerberechnung (für alle oder nur ein Fahrzeug)
+    /// </summary>
     public partial class Steuerschulden_berechnen : Form
     {
         private Fahrzeugpool fahrzeugpool;

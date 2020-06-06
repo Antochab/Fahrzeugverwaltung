@@ -488,12 +488,9 @@ namespace Fahrzeugverwaltung
             float anschaffungspreis;
             int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung;
 
-<<<<<<< HEAD
+
             ///SQL-Abfrage zur Wiederherstellung der bereits vorhandenen Fahrzeuge aus der Datenbank
             string query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
-=======
-            String query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
->>>>>>> 7a4f92e0c82c482a90225f9ddceba1b84ae8ced7
 
             try
             {

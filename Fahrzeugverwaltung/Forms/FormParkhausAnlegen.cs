@@ -4,6 +4,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Form, um ein neues Parkhaus anzulegen
+    /// </summary>
     public partial class FormParkhausAnlegen : Form
     {
         private Parkhauspool parkhausverwaltung;

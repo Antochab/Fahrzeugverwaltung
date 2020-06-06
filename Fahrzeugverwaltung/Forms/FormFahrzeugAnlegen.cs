@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung
 {
+    /// <summary>
+    /// Form zum Anlegen eines neuen Fahrzeuges
+    /// </summary>
     public partial class FormFahrzeugAnlegen : Form
     {
         private readonly String fahrzeugtyp;
@@ -15,7 +18,7 @@ namespace Fahrzeugverwaltung
         }
 
         //Hinzufügen eines neuen Fahrzeugs
-        //TODO select case oder if case zur abfrage des momentanen Fahrzeugs...
+        //Abhängig von dem jeweiligen Button wird ein PKW, LKW oder Motorrad angelegt
         private void ButtonAnlegen_Click(object sender, EventArgs e)
         {
             string hersteller = textBoxHersteller.Text;
@@ -67,7 +70,7 @@ namespace Fahrzeugverwaltung
         }
 
         //Anzeige hängt von der Auswahl im Hauptmenü ab! 
-        // TODO Wenn Auto nur entsprechende Felder anzeigen!
+        // Abhängig von dem jeweiligen Fahrzeugtyp werden bestimmte Felder Ein-/ Ausgeblendet
         private void FormAutoAnlegen_Load(object sender, EventArgs e)
         {
             switch (fahrzeugtyp)

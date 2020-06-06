@@ -54,7 +54,6 @@
             this.buttonMotorradAnlegen.TabIndex = 1;
             this.buttonMotorradAnlegen.Text = "Motorrad anlegen";
             this.buttonMotorradAnlegen.UseVisualStyleBackColor = false;
-            this.buttonMotorradAnlegen.Click += new System.EventHandler(this.buttonMotorradAnlegen_Click);
             // 
             // buttonLKWAnlegen
             // 

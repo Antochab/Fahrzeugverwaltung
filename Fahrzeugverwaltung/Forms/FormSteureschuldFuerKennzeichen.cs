@@ -3,6 +3,9 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
+    /// <summary>
+    /// Form zur Berechnung der Steuerschuld für ein Fahrzeug
+    /// </summary>
     public partial class FormSteureschuldFuerKennzeichen : Form
     {
         private readonly Fahrzeugpool fahrzeugpool;
