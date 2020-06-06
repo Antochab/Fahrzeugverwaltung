@@ -34,33 +34,36 @@
             // 
             // buttonSteuerschuldFuerAlle
             // 
-            this.buttonSteuerschuldFuerAlle.Location = new System.Drawing.Point(343, 79);
+            this.buttonSteuerschuldFuerAlle.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonSteuerschuldFuerAlle.Location = new System.Drawing.Point(334, 106);
             this.buttonSteuerschuldFuerAlle.Name = "buttonSteuerschuldFuerAlle";
             this.buttonSteuerschuldFuerAlle.Size = new System.Drawing.Size(155, 90);
             this.buttonSteuerschuldFuerAlle.TabIndex = 0;
-            this.buttonSteuerschuldFuerAlle.Text = "alle Steuerschulden berechnen";
-            this.buttonSteuerschuldFuerAlle.UseVisualStyleBackColor = true;
+            this.buttonSteuerschuldFuerAlle.Text = "Steuerschulden berechnen";
+            this.buttonSteuerschuldFuerAlle.UseVisualStyleBackColor = false;
             this.buttonSteuerschuldFuerAlle.Click += new System.EventHandler(this.buttonSteuerschuldFuerAlle_Click);
             // 
             // buttonFuerKennzeichen
             // 
-            this.buttonFuerKennzeichen.Location = new System.Drawing.Point(343, 198);
+            this.buttonFuerKennzeichen.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonFuerKennzeichen.Location = new System.Drawing.Point(334, 241);
             this.buttonFuerKennzeichen.Name = "buttonFuerKennzeichen";
             this.buttonFuerKennzeichen.Size = new System.Drawing.Size(155, 86);
             this.buttonFuerKennzeichen.TabIndex = 1;
             this.buttonFuerKennzeichen.Text = "Steuerschuld für Fahrzeug";
-            this.buttonFuerKennzeichen.UseVisualStyleBackColor = true;
+            this.buttonFuerKennzeichen.UseVisualStyleBackColor = false;
             this.buttonFuerKennzeichen.Click += new System.EventHandler(this.buttonFuerKennzeichen_Click);
             // 
             // Steuerschulden_berechnen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonFuerKennzeichen);
             this.Controls.Add(this.buttonSteuerschuldFuerAlle);
             this.Name = "Steuerschulden_berechnen";
-            this.Text = "Steuerschulden_berechnen";
+            this.Text = "Steuerschulden berechnen";
             this.ResumeLayout(false);
 
         }

@@ -36,12 +36,13 @@
             // 
             // buttonSteuerBerechnen
             // 
-            this.buttonSteuerBerechnen.Location = new System.Drawing.Point(485, 296);
+            this.buttonSteuerBerechnen.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonSteuerBerechnen.Location = new System.Drawing.Point(485, 291);
             this.buttonSteuerBerechnen.Name = "buttonSteuerBerechnen";
             this.buttonSteuerBerechnen.Size = new System.Drawing.Size(266, 85);
             this.buttonSteuerBerechnen.TabIndex = 0;
             this.buttonSteuerBerechnen.Text = "Steuer berechnen";
-            this.buttonSteuerBerechnen.UseVisualStyleBackColor = true;
+            this.buttonSteuerBerechnen.UseVisualStyleBackColor = false;
             this.buttonSteuerBerechnen.Click += new System.EventHandler(this.buttonSteuerBerechnen_Click);
             // 
             // textBoxKennzeichen
@@ -68,16 +69,17 @@
             this.textBoxSteuerschuld.Size = new System.Drawing.Size(100, 26);
             this.textBoxSteuerschuld.TabIndex = 3;
             // 
-            // Form_Steureschuld_fuer_Kennzeichen
+            // FormSteureschuldFuerKennzeichen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textBoxSteuerschuld);
             this.Controls.Add(this.labelKennzeichen);
             this.Controls.Add(this.textBoxKennzeichen);
             this.Controls.Add(this.buttonSteuerBerechnen);
-            this.Name = "Form_Steureschuld_fuer_Kennzeichen";
+            this.Name = "FormSteureschuldFuerKennzeichen";
             this.Text = "Form_Steureschuld_fuer_Kennzeichen";
             this.ResumeLayout(false);
             this.PerformLayout();

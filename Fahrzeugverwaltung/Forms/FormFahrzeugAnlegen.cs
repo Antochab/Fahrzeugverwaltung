@@ -45,6 +45,20 @@ namespace Fahrzeugverwaltung
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                textBoxHersteller.Clear();
+                textBoxModell.Clear();
+                textBoxKennzeichen.Clear();
+                textBoxZulassung.Clear();
+                textBoxAnschaffungspreis.Clear();
+                textBoxHubraum.Clear();
+                textBoxLeistung.Clear();
+                textBoxSchadstoffklasse.Clear();
+                textBoxAnzahlAchsen.Clear();
+                textBoxZuladung.Clear();
+
+            }
         }
 
         private void ButtonAbbrechen_Click(object sender, EventArgs e)

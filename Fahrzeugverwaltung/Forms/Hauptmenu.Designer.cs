@@ -41,32 +41,35 @@
             // 
             // buttonFahrzeugAnlegen
             // 
+            this.buttonFahrzeugAnlegen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonFahrzeugAnlegen.Location = new System.Drawing.Point(73, 17);
             this.buttonFahrzeugAnlegen.Name = "buttonFahrzeugAnlegen";
             this.buttonFahrzeugAnlegen.Size = new System.Drawing.Size(151, 62);
             this.buttonFahrzeugAnlegen.TabIndex = 0;
             this.buttonFahrzeugAnlegen.Text = "Fahrzeug anlegen";
-            this.buttonFahrzeugAnlegen.UseVisualStyleBackColor = true;
+            this.buttonFahrzeugAnlegen.UseVisualStyleBackColor = false;
             this.buttonFahrzeugAnlegen.Click += new System.EventHandler(this.buttonFahrzeugAnlegen_Click);
             // 
             // buttonDatenAusgeben
             // 
+            this.buttonDatenAusgeben.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonDatenAusgeben.Location = new System.Drawing.Point(73, 124);
             this.buttonDatenAusgeben.Name = "buttonDatenAusgeben";
             this.buttonDatenAusgeben.Size = new System.Drawing.Size(151, 71);
             this.buttonDatenAusgeben.TabIndex = 1;
             this.buttonDatenAusgeben.Text = "Daten ausgeben";
-            this.buttonDatenAusgeben.UseVisualStyleBackColor = true;
+            this.buttonDatenAusgeben.UseVisualStyleBackColor = false;
             this.buttonDatenAusgeben.Click += new System.EventHandler(this.buttonDatenAusgeben_Click);
             // 
             // buttonSteuerschuldBerechnen
             // 
+            this.buttonSteuerschuldBerechnen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonSteuerschuldBerechnen.Location = new System.Drawing.Point(73, 226);
             this.buttonSteuerschuldBerechnen.Name = "buttonSteuerschuldBerechnen";
             this.buttonSteuerschuldBerechnen.Size = new System.Drawing.Size(151, 60);
             this.buttonSteuerschuldBerechnen.TabIndex = 2;
             this.buttonSteuerschuldBerechnen.Text = "Steuerschulden";
-            this.buttonSteuerschuldBerechnen.UseVisualStyleBackColor = true;
+            this.buttonSteuerschuldBerechnen.UseVisualStyleBackColor = false;
             this.buttonSteuerschuldBerechnen.Click += new System.EventHandler(this.buttonSteuerschuldBerechnen_Click);
             // 
             // panel1
@@ -83,12 +86,13 @@
             // 
             // buttonParkhausAnlegen
             // 
+            this.buttonParkhausAnlegen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonParkhausAnlegen.Location = new System.Drawing.Point(73, 318);
             this.buttonParkhausAnlegen.Name = "buttonParkhausAnlegen";
             this.buttonParkhausAnlegen.Size = new System.Drawing.Size(151, 62);
             this.buttonParkhausAnlegen.TabIndex = 3;
             this.buttonParkhausAnlegen.Text = "Parkhaus anlegen";
-            this.buttonParkhausAnlegen.UseVisualStyleBackColor = true;
+            this.buttonParkhausAnlegen.UseVisualStyleBackColor = false;
             this.buttonParkhausAnlegen.Click += new System.EventHandler(this.buttonParkhausAnlegen_Click);
             // 
             // textBox1
@@ -110,18 +114,20 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.button1.Location = new System.Drawing.Point(12, 89);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 68);
             this.button1.TabIndex = 6;
             this.button1.Text = "Verbindung herstellen";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Hauptmenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);

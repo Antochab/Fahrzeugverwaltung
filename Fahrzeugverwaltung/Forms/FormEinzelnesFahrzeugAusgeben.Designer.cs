@@ -61,24 +61,27 @@
             // 
             // buttonSuchen
             // 
+            this.buttonSuchen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonSuchen.Location = new System.Drawing.Point(12, 112);
             this.buttonSuchen.Name = "buttonSuchen";
             this.buttonSuchen.Size = new System.Drawing.Size(78, 36);
             this.buttonSuchen.TabIndex = 3;
             this.buttonSuchen.Text = "Suchen";
-            this.buttonSuchen.UseVisualStyleBackColor = true;
+            this.buttonSuchen.UseVisualStyleBackColor = false;
+            this.buttonSuchen.Click += new System.EventHandler(this.buttonSuchen_Click);
             // 
-            // EinzelnesFahrzeugAnzeigen
+            // FormEinzelnesFahrzeugAusgeben
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonSuchen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxKennzeichen);
             this.Controls.Add(this.listBox1);
-            this.Name = "EinzelnesFahrzeugAnzeigen";
-            this.Text = "EinzelnesFahrzeugAnzeigen";
+            this.Name = "FormEinzelnesFahrzeugAusgeben";
+            this.Text = "Fahrzeug anzeigen";
             this.ResumeLayout(false);
             this.PerformLayout();
 

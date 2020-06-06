@@ -20,7 +20,14 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonAnlegen_Click(object sender, EventArgs e)
         {
-            parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text, textBoxParkhausnummer.Text, Int32.Parse(textBoxAnzahlPKW.Text), Int32.Parse(textBoxAnzahlMotorrad.Text), Int32.Parse(textBoxAnzahlLKW.Text));
+            try
+            {
+                parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text, textBoxParkhausnummer.Text, textBoxAnzahlPKW.Text, textBoxAnzahlMotorrad.Text, textBoxAnzahlLKW.Text);
+            }
+            catch(ArgumentException ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
     }
 }

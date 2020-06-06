@@ -37,30 +37,34 @@
             // 
             // buttonPKWAnlegen
             // 
+            this.buttonPKWAnlegen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonPKWAnlegen.Location = new System.Drawing.Point(3, 3);
             this.buttonPKWAnlegen.Name = "buttonPKWAnlegen";
             this.buttonPKWAnlegen.Size = new System.Drawing.Size(142, 44);
             this.buttonPKWAnlegen.TabIndex = 0;
             this.buttonPKWAnlegen.Text = "PKW anlegen";
-            this.buttonPKWAnlegen.UseVisualStyleBackColor = true;
-           // 
+            this.buttonPKWAnlegen.UseVisualStyleBackColor = false;
+            // 
             // buttonMotorradAnlegen
             // 
+            this.buttonMotorradAnlegen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonMotorradAnlegen.Location = new System.Drawing.Point(3, 56);
             this.buttonMotorradAnlegen.Name = "buttonMotorradAnlegen";
             this.buttonMotorradAnlegen.Size = new System.Drawing.Size(142, 41);
             this.buttonMotorradAnlegen.TabIndex = 1;
             this.buttonMotorradAnlegen.Text = "Motorrad anlegen";
-            this.buttonMotorradAnlegen.UseVisualStyleBackColor = true;
+            this.buttonMotorradAnlegen.UseVisualStyleBackColor = false;
+            this.buttonMotorradAnlegen.Click += new System.EventHandler(this.buttonMotorradAnlegen_Click);
             // 
             // buttonLKWAnlegen
             // 
+            this.buttonLKWAnlegen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonLKWAnlegen.Location = new System.Drawing.Point(3, 113);
             this.buttonLKWAnlegen.Name = "buttonLKWAnlegen";
             this.buttonLKWAnlegen.Size = new System.Drawing.Size(142, 41);
             this.buttonLKWAnlegen.TabIndex = 2;
             this.buttonLKWAnlegen.Text = "LKW anlegen";
-            this.buttonLKWAnlegen.UseVisualStyleBackColor = true;
+            this.buttonLKWAnlegen.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 
@@ -72,13 +76,14 @@
             this.panel1.Size = new System.Drawing.Size(352, 191);
             this.panel1.TabIndex = 3;
             // 
-            // SubMenuFahrzeugAnlegen
+            // FormMenueFahrzeugauswahl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
-            this.Name = "SubMenuFahrzeugAnlegen";
+            this.Name = "FormMenueFahrzeugauswahl";
             this.Text = "Fahrzeug anlegen";
             this.Load += new System.EventHandler(this.SubMenuFahrzeugAnlegen_Load);
             this.panel1.ResumeLayout(false);

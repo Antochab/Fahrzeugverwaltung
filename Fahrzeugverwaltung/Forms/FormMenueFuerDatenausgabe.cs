@@ -20,20 +20,25 @@ namespace Fahrzeugverwaltung.Forms
             this.Close();
         }
 
-        private void FormDatenAusgeben_Load(object sender, EventArgs e)
-        {
-        }
-
         private void buttonParkhäuser_Click(object sender, EventArgs e)
         {
             FormParkhäuserAnzeigen formParkhäuserAnzeigen = new FormParkhäuserAnzeigen(fahrzeugpool);
             formParkhäuserAnzeigen.Show();
+            this.Close();
         }
 
         private void buttonStellplätze_Click(object sender, EventArgs e)
         {
             Stellplätze_anzeicgen formStellplätzeAnzeigen = new Stellplätze_anzeicgen(fahrzeugpool);
             formStellplätzeAnzeigen.Show();
+            this.Close();
+        }
+
+        private void buttonFahrzeugDaten_Click(object sender, EventArgs e)
+        {
+            FormEinzelnesFahrzeugAusgeben formEinzelnesFahrzeugAusgeben = new FormEinzelnesFahrzeugAusgeben(fahrzeugpool);
+            formEinzelnesFahrzeugAusgeben.Show();
+            this.Close();
         }
     }
 }

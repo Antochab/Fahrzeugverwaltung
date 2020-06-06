@@ -145,22 +145,24 @@
             // 
             // buttonAbbrechen
             // 
+            this.buttonAbbrechen.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.buttonAbbrechen.Location = new System.Drawing.Point(384, 348);
             this.buttonAbbrechen.Name = "buttonAbbrechen";
             this.buttonAbbrechen.Size = new System.Drawing.Size(115, 44);
             this.buttonAbbrechen.TabIndex = 17;
             this.buttonAbbrechen.Text = "Abbrechen";
-            this.buttonAbbrechen.UseVisualStyleBackColor = true;
+            this.buttonAbbrechen.UseVisualStyleBackColor = false;
             this.buttonAbbrechen.Click += new System.EventHandler(this.ButtonAbbrechen_Click);
             // 
             // buttonAnlegen
             // 
-            this.buttonAnlegen.Location = new System.Drawing.Point(505, 348);
+            this.buttonAnlegen.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.buttonAnlegen.Location = new System.Drawing.Point(506, 348);
             this.buttonAnlegen.Name = "buttonAnlegen";
             this.buttonAnlegen.Size = new System.Drawing.Size(136, 44);
             this.buttonAnlegen.TabIndex = 16;
             this.buttonAnlegen.Text = "Anlegen";
-            this.buttonAnlegen.UseVisualStyleBackColor = true;
+            this.buttonAnlegen.UseVisualStyleBackColor = false;
             this.buttonAnlegen.Click += new System.EventHandler(this.ButtonAnlegen_Click);
             // 
             // labelSchadstoffklasse
@@ -267,6 +269,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel1);
             this.Name = "FormFahrzeugAnlegen";

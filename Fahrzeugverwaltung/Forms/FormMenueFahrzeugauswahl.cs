@@ -43,5 +43,10 @@ namespace Fahrzeugverwaltung.Forms
                     break;
             }
         }
+
+        private void buttonMotorradAnlegen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
