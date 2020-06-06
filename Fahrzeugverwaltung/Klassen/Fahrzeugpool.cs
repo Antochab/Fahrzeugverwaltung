@@ -245,15 +245,13 @@ namespace Fahrzeugverwaltung
         }
 
 
-        public void datenInDatenbankSichern()
+        public void datenInDatenbankSichern(String connectionString)
         {
             OleDbCommand cmd;
             DataSet dataSet = new DataSet();
             Boolean entryExists = false;
             try
             {
-                string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
-
 
                 foreach (Fahrzeug fahrzeug in fahrzeugliste)
                 {
@@ -281,7 +279,7 @@ namespace Fahrzeugverwaltung
                     }
 
 
-                    using (OleDbConnection connection = new OleDbConnection(connString))
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
                     {
 
                         using (cmd = new OleDbCommand("Select kennzeichen from Fahrzeugliste", connection))
@@ -313,19 +311,17 @@ namespace Fahrzeugverwaltung
                     }
                 }
             }
-            catch (Exception e)
+            catch
             {
                 throw new Exception("Datenbankeintrag konnte nicht angelegt werden");
             }
         }
 
 
-        public void datenAusDatenbankAuslesen()
+        public void datenAusDatenbankAuslesen(String connectionString)
         {
             OleDbCommand cmd;
             DataSet dataSet = new DataSet();
-            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
-
 
             string kennzeichen, hersteller, modell, typ, stellplatznummer;
             float anschaffungspreis;
@@ -335,7 +331,7 @@ namespace Fahrzeugverwaltung
 
             try
             {
-                using (OleDbConnection connection = new OleDbConnection(connString))
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
                     using (cmd = new OleDbCommand(query, connection))
                     {
@@ -386,10 +382,9 @@ namespace Fahrzeugverwaltung
                     connection.Close();
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                //If an exception occurs, write it to the console
-                Console.WriteLine(ex.ToString());
+                throw new ArgumentException("Inhalt konnte nicht geladen werden");            
             }
         }
     };

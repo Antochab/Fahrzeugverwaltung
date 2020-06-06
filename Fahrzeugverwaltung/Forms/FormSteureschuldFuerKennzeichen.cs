@@ -16,7 +16,7 @@ namespace Fahrzeugverwaltung.Forms
         {
             try
             {
-                textBoxSteuerschuld.Text = ;
+                //textBoxSteuerschuld.Text = ;
             }
             catch (ArgumentException ex)
             {

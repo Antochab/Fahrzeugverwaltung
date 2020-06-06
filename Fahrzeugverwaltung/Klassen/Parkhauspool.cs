@@ -23,21 +23,19 @@ namespace Fahrzeugverwaltung.Klassen
             parkhausliste.Add(parkhaus);
         }
 
-        public void datenInDatenbankSichern()
+        public void datenInDatenbankSichern(String connectionString)
         {
             OleDbCommand cmd;
             DataSet dataSet = new DataSet();
             try
             {
-                string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
-
 
                 foreach (Parkhaus parkhaus in parkhausliste)
                 {
                     Boolean entryExists = false;
                     string parkhaus_query = "Insert into Parkhausliste values('" + parkhaus.Ort + "','" + parkhaus.Plz + "','" + parkhaus.Parkhausnummer + "','" + parkhaus.AnzahlPKW + "','" + parkhaus.AnzahlMotorrad + "','" + parkhaus.AnzahlLKW + "');";
 
-                    using (OleDbConnection connection = new OleDbConnection(connString))
+                    using (OleDbConnection connection = new OleDbConnection(connectionString))
                     {
                         ///
                         using (cmd = new OleDbCommand("Select parkhausnummer from Parkhausliste", connection))
@@ -113,16 +111,15 @@ namespace Fahrzeugverwaltung.Klassen
 
                 }
             }
-            catch (Exception e)
+            catch
             {
                 throw new Exception("Datenbankeintrag konnte nicht angelegt werden");
             }
         }
-        public void datenAusDatenbankAuslesen()
+        public void datenAusDatenbankAuslesen(String connectionString)
         {
             OleDbCommand cmd;
             DataSet dataSet = new DataSet();
-            string connString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\anton\Documents\Fahrzeugverwaltung.mdb";
 
 
             string plz, ort, parkhausnummer, stellplatznummer, stellplatztyp, istBelegt, kennzeichen;
@@ -133,7 +130,7 @@ namespace Fahrzeugverwaltung.Klassen
 
             try
             {
-                using (OleDbConnection connection = new OleDbConnection(connString))
+                using (OleDbConnection connection = new OleDbConnection(connectionString))
                 {
                     using (cmd = new OleDbCommand(parkhaus_query, connection))
                     {
