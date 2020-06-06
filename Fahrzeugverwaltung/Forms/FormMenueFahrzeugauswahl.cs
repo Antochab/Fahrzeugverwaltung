@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
@@ -19,7 +12,7 @@ namespace Fahrzeugverwaltung.Forms
             fahrzeugpool = aFahrzeugpool;
         }
 
-    private void SubMenuFahrzeugAnlegen_Load(object sender, EventArgs e)
+        private void SubMenuFahrzeugAnlegen_Load(object sender, EventArgs e)
         {
             buttonLKWAnlegen.Click += button_Click;
             buttonPKWAnlegen.Click += button_Click;
@@ -28,7 +21,7 @@ namespace Fahrzeugverwaltung.Forms
         }
 
 
-    private void button_Click(object sender, EventArgs e)
+        private void button_Click(object sender, EventArgs e)
         {
             this.Close();
             switch (((Button)sender).Name)

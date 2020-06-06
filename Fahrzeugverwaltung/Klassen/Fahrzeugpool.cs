@@ -1,14 +1,9 @@
+using Fahrzeugverwaltung.Klassen;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data.OleDb;
 using System.Data;
-using Fahrzeugverwaltung.Klassen;
-using System.Drawing.Drawing2D;
+using System.Data.OleDb;
+using System.Text.RegularExpressions;
 
 namespace Fahrzeugverwaltung
 {
@@ -49,22 +44,24 @@ namespace Fahrzeugverwaltung
                 throw new ArgumentException("Schadstoffklasse überprüfen");
             }
 
-            try {
+            try
+            {
                 //neuen PKW zur Liste hinzufügen hinzufügen
-                
+
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
                 stellplatznummer = stellplatzZuweisen(pkw);
-                if(stellplatznummer == "-1")
+                if (stellplatznummer == "-1")
                 {
-                    throw new ArgumentException("Kein freier Stellplatz gefunden."); 
+                    throw new ArgumentException("Kein freier Stellplatz gefunden.");
                 }
                 else
                 {
                     pkw.Stellplatznummer = stellplatznummer;
                 }
                 fahrzeugliste.Add(pkw);
-                  
-            } catch (ArgumentException ex)
+
+            }
+            catch (ArgumentException ex)
             {
                 throw new ArgumentException(ex.Message);
             }
@@ -91,16 +88,16 @@ namespace Fahrzeugverwaltung
             //neuen PKW zur Liste hinzufügen hinzufügen
             LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), Convert.ToInt32(aZuladung));
             stellplatznummer = stellplatzZuweisen(lkw);
-            if(stellplatznummer == "-1")
+            if (stellplatznummer == "-1")
             {
                 throw new ArgumentException("Kein freier Stellplatz gefunden.");
             }
             else
             {
-                lkw.Stellplatznummer = stellplatznummer; 
+                lkw.Stellplatznummer = stellplatznummer;
             }
             fahrzeugliste.Add(lkw);
-            
+
         }
 
         public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum)
@@ -118,7 +115,7 @@ namespace Fahrzeugverwaltung
             //neuen PKW zur Liste hinzufügen hinzufügen
             Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum));
             stellplatznummer = stellplatzZuweisen(motorrad);
-            if(stellplatznummer == "-1")
+            if (stellplatznummer == "-1")
             {
                 throw new ArgumentException("Kein freier Parkplatz gefunden.");
             }
@@ -127,7 +124,7 @@ namespace Fahrzeugverwaltung
                 motorrad.Stellplatznummer = stellplatznummer;
             }
             fahrzeugliste.Add(motorrad);
-          
+
         }
 
 
@@ -181,7 +178,7 @@ namespace Fahrzeugverwaltung
                     break;
                 }
             }
-            return stellplatznummer; 
+            return stellplatznummer;
 
         }
         private void ExceptionHandling(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis)
@@ -230,18 +227,18 @@ namespace Fahrzeugverwaltung
                 {
                     case "Fahrzeugverwaltung.PKW":
                         PKW pkw = fahrzeug as PKW;
-                        allePKWDaten.Add(string.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(),pkw.Leistung.ToString(),pkw.Schadstoffklasse.ToString(),pkw.Stellplatznummer.ToString()));
+                        allePKWDaten.Add(string.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(), pkw.Leistung.ToString(), pkw.Schadstoffklasse.ToString(), pkw.Stellplatznummer.ToString()));
                         break;
 
                     case "Fahrzeugverwaltung.LKW":
                         LKW lkw = fahrzeug as LKW;
-                        alleLKWDaten.Add(string.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString(),lkw.Stellplatznummer.ToString()));
+                        alleLKWDaten.Add(string.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString(), lkw.Stellplatznummer.ToString()));
                         break;
 
                     case "Fahrzeugverwaltung.Motorrad":
                         Motorrad motorrad = fahrzeug as Motorrad;
-                        alleMotorradDaten.Add(string.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString(),motorrad.Stellplatznummer.ToString()));
-                        
+                        alleMotorradDaten.Add(string.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString(), motorrad.Stellplatznummer.ToString()));
+
                         break;
                 }
             }
@@ -264,28 +261,28 @@ namespace Fahrzeugverwaltung
                     string query = "Insert into Fahrzeugliste values('" + fahrzeug.Kennzeichen + "','" + fahrzeug.Hersteller + "','" + fahrzeug.Modell + "'," + fahrzeug.Erstzulassung + "," + fahrzeug.Anschaffungspreis + ",";
                     entryExists = false;
 
-                        switch (fahrzeugtyp)
-                        {
-                            case "Fahrzeugverwaltung.PKW":
-                                PKW pkw = fahrzeug as PKW;
-                                query = query + pkw.Hubraum + "," + pkw.Leistung + "," + pkw.Schadstoffklasse + ",0,0,'" + pkw.GetType().ToString() + "','" + pkw.Stellplatznummer.ToString() + "');";
-                                break;
+                    switch (fahrzeugtyp)
+                    {
+                        case "Fahrzeugverwaltung.PKW":
+                            PKW pkw = fahrzeug as PKW;
+                            query = query + pkw.Hubraum + "," + pkw.Leistung + "," + pkw.Schadstoffklasse + ",0,0,'" + pkw.GetType().ToString() + "','" + pkw.Stellplatznummer.ToString() + "');";
+                            break;
 
-                            case "Fahrzeugverwaltung.Motorrad":
-                                Motorrad motorrad = fahrzeug as Motorrad;
-                                query = query + motorrad.Hubraum + ",0,0,0,0,'" + motorrad.GetType().ToString() + "','" + motorrad.Stellplatznummer.ToString() + "');";
-                                break;
+                        case "Fahrzeugverwaltung.Motorrad":
+                            Motorrad motorrad = fahrzeug as Motorrad;
+                            query = query + motorrad.Hubraum + ",0,0,0,0,'" + motorrad.GetType().ToString() + "','" + motorrad.Stellplatznummer.ToString() + "');";
+                            break;
 
-                            case "Fahrzeugverwaltung.LKW":
-                                LKW lkw = fahrzeug as LKW;
-                                query = query + "0,0,0," + lkw.Achsenanzahl + "," + lkw.Zuladung + ",'" + lkw.GetType().ToString() + "','" + lkw.Stellplatznummer.ToString() + "');";
-                                break;
+                        case "Fahrzeugverwaltung.LKW":
+                            LKW lkw = fahrzeug as LKW;
+                            query = query + "0,0,0," + lkw.Achsenanzahl + "," + lkw.Zuladung + ",'" + lkw.GetType().ToString() + "','" + lkw.Stellplatznummer.ToString() + "');";
+                            break;
 
-                        }
+                    }
 
 
-                        using (OleDbConnection connection = new OleDbConnection(connString))
-                        {
+                    using (OleDbConnection connection = new OleDbConnection(connString))
+                    {
 
                         using (cmd = new OleDbCommand("Select kennzeichen from Fahrzeugliste", connection))
                         {
@@ -313,7 +310,7 @@ namespace Fahrzeugverwaltung
                         }
 
 
-                        }
+                    }
                 }
             }
             catch (Exception e)
@@ -332,7 +329,7 @@ namespace Fahrzeugverwaltung
 
             string kennzeichen, hersteller, modell, typ, stellplatznummer;
             float anschaffungspreis;
-            int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung ;
+            int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung;
 
             string query = "SELECT kennzeichen, hersteller, modell, erstzulassung, anschaffungspreis, hubraum, leistung, schadstoffklasse, achsenanzahl, zuladung, typ, stellplatznummer FROM fahrzeugliste";
 
@@ -388,7 +385,8 @@ namespace Fahrzeugverwaltung
                     }
                     connection.Close();
                 }
-                } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 //If an exception occurs, write it to the console
                 Console.WriteLine(ex.ToString());

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fahrzeugverwaltung
 {
@@ -12,7 +9,8 @@ namespace Fahrzeugverwaltung
         private int zuladung;
 
         public LKW(String aHersteller, String aModell, String aKennzeichen, int aErstzulassung, float aAnschaffungspreis, int aAchsenanzahl, int aZuladung)
-        :base(aHersteller,aModell,aKennzeichen,aErstzulassung,aAnschaffungspreis)        {
+        : base(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis)
+        {
             achsenAnzahl = aAchsenanzahl;
             zuladung = aZuladung;
         }

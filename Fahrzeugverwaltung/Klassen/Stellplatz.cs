@@ -1,9 +1,5 @@
 ﻿
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Fahrzeugverwaltung
 {
@@ -27,7 +23,7 @@ namespace Fahrzeugverwaltung
         public String Parkhausnummer { get { return parkhausnummer; } set { parkhausnummer = value; } }
         public String Stellplatztyp { get { return stellplatzTyp; } set { stellplatzTyp = value; } }
         public String Kennzeichen { get { return kennzeichen; } set { kennzeichen = value; } }
-        public bool IstBelegt { get { return istBelegt; } set { istBelegt = value;  } }
+        public bool IstBelegt { get { return istBelegt; } set { istBelegt = value; } }
     }
 
 }

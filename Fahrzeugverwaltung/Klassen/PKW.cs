@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
 
 namespace Fahrzeugverwaltung
 {
@@ -22,7 +18,11 @@ namespace Fahrzeugverwaltung
 
         public int Hubraum { get { return hubraum; } set { hubraum = value; } }
         public int Leistung { get { return leistung; } set { leistung = value; } }
-        public int Schadstoffklasse { get { return schadstoffklasse; } set {
+        public int Schadstoffklasse
+        {
+            get { return schadstoffklasse; }
+            set
+            {
                 //prüfen, ob der eingegebene Wert den Wert 1,2 oder 3 enthält
                 if (value == 0 || value == 1 || value == 2)
                 {
@@ -33,7 +33,8 @@ namespace Fahrzeugverwaltung
                 {
                     throw new ArgumentException("Schadstoffklasse nicht vorhanden.");
                 }
-                } }
+            }
+        }
 
         public override float berechneSteuerschuldKennzeichen(List<Fahrzeug> fahrzeugliste, string kennzeichen)
         {
@@ -52,7 +53,7 @@ namespace Fahrzeugverwaltung
             PKW p = (PKW)Convert.ChangeType(f, typeof(PKW));
             steuerschuld = (p.Hubraum + 99) / 100 * 10 * (p.Schadstoffklasse + 1);
             return steuerschuld;
-            
+
         }
 
     }

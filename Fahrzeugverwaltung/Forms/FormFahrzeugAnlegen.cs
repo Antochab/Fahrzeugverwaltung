@@ -1,12 +1,4 @@
-﻿using Fahrzeugverwaltung.Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung
@@ -37,10 +29,10 @@ namespace Fahrzeugverwaltung
                 switch (fahrzeugtyp)
                 {
                     case "PKW":
-                        fahrzeugpool.neuenPKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text, textBoxLeistung.Text, textBoxSchadstoffklasse.Text);    
+                        fahrzeugpool.neuenPKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text, textBoxLeistung.Text, textBoxSchadstoffklasse.Text);
                         break;
 
-                    case "Motorrad":    
+                    case "Motorrad":
                         fahrzeugpool.neuesMotorradAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxHubraum.Text);
                         break;
 

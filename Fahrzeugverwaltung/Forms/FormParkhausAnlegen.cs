@@ -1,12 +1,5 @@
 ﻿using Fahrzeugverwaltung.Klassen;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
@@ -27,7 +20,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonAnlegen_Click(object sender, EventArgs e)
         {
-            parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text,  textBoxParkhausnummer.Text, Int32.Parse(textBoxAnzahlPKW.Text), Int32.Parse(textBoxAnzahlMotorrad.Text), Int32.Parse(textBoxAnzahlLKW.Text));
+            parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text, textBoxParkhausnummer.Text, Int32.Parse(textBoxAnzahlPKW.Text), Int32.Parse(textBoxAnzahlMotorrad.Text), Int32.Parse(textBoxAnzahlLKW.Text));
         }
     }
 }
