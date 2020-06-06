@@ -56,7 +56,7 @@
             this.label1.Location = new System.Drawing.Point(13, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 20);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Kennzeichen";
             // 
             // buttonSuchen
@@ -65,7 +65,7 @@
             this.buttonSuchen.Location = new System.Drawing.Point(12, 112);
             this.buttonSuchen.Name = "buttonSuchen";
             this.buttonSuchen.Size = new System.Drawing.Size(78, 36);
-            this.buttonSuchen.TabIndex = 3;
+            this.buttonSuchen.TabIndex = 2;
             this.buttonSuchen.Text = "Suchen";
             this.buttonSuchen.UseVisualStyleBackColor = false;
             this.buttonSuchen.Click += new System.EventHandler(this.buttonSuchen_Click);

@@ -40,7 +40,7 @@
             this.buttonSteuerBerechnen.Location = new System.Drawing.Point(485, 291);
             this.buttonSteuerBerechnen.Name = "buttonSteuerBerechnen";
             this.buttonSteuerBerechnen.Size = new System.Drawing.Size(266, 85);
-            this.buttonSteuerBerechnen.TabIndex = 0;
+            this.buttonSteuerBerechnen.TabIndex = 3;
             this.buttonSteuerBerechnen.Text = "Steuer berechnen";
             this.buttonSteuerBerechnen.UseVisualStyleBackColor = false;
             this.buttonSteuerBerechnen.Click += new System.EventHandler(this.buttonSteuerBerechnen_Click);
@@ -58,7 +58,7 @@
             this.labelKennzeichen.Location = new System.Drawing.Point(76, 31);
             this.labelKennzeichen.Name = "labelKennzeichen";
             this.labelKennzeichen.Size = new System.Drawing.Size(200, 20);
-            this.labelKennzeichen.TabIndex = 2;
+            this.labelKennzeichen.TabIndex = 0;
             this.labelKennzeichen.Text = "Bitte Kenneichen eingeben";
             // 
             // textBoxSteuerschuld
@@ -67,7 +67,7 @@
             this.textBoxSteuerschuld.Name = "textBoxSteuerschuld";
             this.textBoxSteuerschuld.ReadOnly = true;
             this.textBoxSteuerschuld.Size = new System.Drawing.Size(100, 26);
-            this.textBoxSteuerschuld.TabIndex = 3;
+            this.textBoxSteuerschuld.TabIndex = 2;
             // 
             // FormSteureschuldFuerKennzeichen
             // 
