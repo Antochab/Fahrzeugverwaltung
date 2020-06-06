@@ -170,7 +170,7 @@ namespace Fahrzeugverwaltung
             //Anlegen der Variablen steuerschuld
             float steuerschuld = 0;
             //Finden des Fahrezugs mit dem übergebenen Kennzeichen
-            Fahrzeug f = Fahrzeugpool.sucheFahrzeug(fahrzeugliste, kennzeichen);
+            Fahrzeug f = sucheFahrzeug(fahrzeugliste, kennzeichen);
 
             if ((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
             {
