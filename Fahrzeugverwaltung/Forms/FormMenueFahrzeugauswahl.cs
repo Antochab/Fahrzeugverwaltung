@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
-    public partial class SubMenuFahrzeugAnlegen : Form
+    public partial class FormMenueFahrzeugauswahl : Form
     {
         private Fahrzeugpool fahrzeugpool;
-        public SubMenuFahrzeugAnlegen(Fahrzeugpool aFahrzeugpool)
+        public FormMenueFahrzeugauswahl(Fahrzeugpool aFahrzeugpool)
         {
             InitializeComponent();
             fahrzeugpool = aFahrzeugpool;

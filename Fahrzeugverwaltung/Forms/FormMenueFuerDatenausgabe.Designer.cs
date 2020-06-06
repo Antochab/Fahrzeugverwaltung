@@ -1,6 +1,6 @@
 ﻿namespace Fahrzeugverwaltung.Forms
 {
-    partial class FormDatenAusgeben
+    partial class FormMenueFuerDatenausgabe
     {
         /// <summary>
         /// Required designer variable.

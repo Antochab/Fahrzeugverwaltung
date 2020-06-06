@@ -13,8 +13,8 @@ namespace Fahrzeugverwaltung.Forms
 {
     public partial class FormParkhausAnlegen : Form
     {
-        private Parkhausverwaltung parkhausverwaltung;
-        public FormParkhausAnlegen(Parkhausverwaltung aParkhausverwaltung)
+        private Parkhauspool parkhausverwaltung;
+        public FormParkhausAnlegen(Parkhauspool aParkhausverwaltung)
         {
             InitializeComponent();
             parkhausverwaltung = aParkhausverwaltung;
@@ -27,7 +27,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonAnlegen_Click(object sender, EventArgs e)
         {
-            parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text, textBoxStrasse.Text, Int32.Parse(textBoxMaxKap.Text), textBoxParkhausnummer.Text, Int32.Parse(textBoxAnzahlPKW.Text), Int32.Parse(textBoxAnzahlMotorrad.Text), Int32.Parse(textBoxAnzahlLKW.Text));
+            parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text,  textBoxParkhausnummer.Text, Int32.Parse(textBoxAnzahlPKW.Text), Int32.Parse(textBoxAnzahlMotorrad.Text), Int32.Parse(textBoxAnzahlLKW.Text));
         }
     }
 }

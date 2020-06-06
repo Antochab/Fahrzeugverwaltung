@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
-    public partial class FormDatenAusgeben : Form
+    public partial class FormMenueFuerDatenausgabe : Form
     {
         private readonly Fahrzeugpool fahrzeugpool;
 
-        public FormDatenAusgeben(Fahrzeugpool aFahrzeugpool)
+        public FormMenueFuerDatenausgabe(Fahrzeugpool aFahrzeugpool)
         {
             InitializeComponent();
             fahrzeugpool = aFahrzeugpool;
@@ -23,7 +23,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonAlleDaten_Click(object sender, EventArgs e)
         {
-            DatenAusgeben datenAusgeben = new DatenAusgeben(fahrzeugpool);
+            FormAlleFahrzeugeAusgeben datenAusgeben = new FormAlleFahrzeugeAusgeben(fahrzeugpool);
             datenAusgeben.Show();
             this.Close();
         }

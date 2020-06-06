@@ -27,7 +27,7 @@ namespace Fahrzeugverwaltung.Forms
         private void buttonFuerKennzeichen_Click(object sender, EventArgs e)
         {
             this.Close();
-            Form_Steureschuld_fuer_Kennzeichen form_Steureschuld_Fuer_Kennzeichen = new Form_Steureschuld_fuer_Kennzeichen(fahrzeugpool);
+            FormSteureschuldFuerKennzeichen form_Steureschuld_Fuer_Kennzeichen = new FormSteureschuldFuerKennzeichen(fahrzeugpool);
             form_Steureschuld_Fuer_Kennzeichen.Show();
         }
     }

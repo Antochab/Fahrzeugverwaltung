@@ -8,19 +8,16 @@ namespace Fahrzeugverwaltung
 {
     public class Parkhaus
     {
-        private String ort, plz, strasse;
+        private String ort, plz;
         private String parkhausnummer; 
         //maximale Kapazität als Readonly, damit sie nicht verändert werden kann
-        private readonly int maxKap;
         private int anzahlPKW, anzahlMotorrad, anzahlLKW;
         protected List<Stellplatz> stellplatzliste = new List<Stellplatz>();
 
-        public Parkhaus(string aOrt, string aPlz, string aStrasse, int aMaxKap, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad, int aAnzahlLKW)
+        public Parkhaus(string aOrt, string aPlz, String aParkhausnummer, int aAnzahlPKW, int aAnzahlMotorrad, int aAnzahlLKW)
         {
             ort = aOrt;
             plz = aPlz;
-            strasse = aStrasse;
-            maxKap = aMaxKap;
             parkhausnummer = aParkhausnummer;
             anzahlPKW = aAnzahlPKW;
             anzahlMotorrad = aAnzahlMotorrad;
@@ -30,8 +27,6 @@ namespace Fahrzeugverwaltung
 
         public String Ort { get { return ort; } set { ort = value; } }
         public String Plz { get { return plz; } set { plz = value; } }
-        public String Strasse { get { return strasse; } set { strasse = value; } }
-        public int MaxKap { get { return maxKap; } }
         public String Parkhausnummer { get { return parkhausnummer; }  set { parkhausnummer = value; } }
         public List<Stellplatz> Stellplatzliste { get { return stellplatzliste; } set { stellplatzliste = value; } }
         public int AnzahlPKW { get { return anzahlPKW; } set { anzahlPKW = value; } }

@@ -1,6 +1,6 @@
 ﻿namespace Fahrzeugverwaltung.Forms
 {
-    partial class SubMenuFahrzeugAnlegen
+    partial class FormMenueFahrzeugauswahl
     {
         /// <summary>
         /// Required designer variable.

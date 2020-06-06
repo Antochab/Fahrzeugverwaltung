@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
-    public partial class Form_Steureschuld_fuer_Kennzeichen : Form
+    public partial class FormSteureschuldFuerKennzeichen : Form
     {
         private readonly Fahrzeugpool fahrzeugpool;
-        public Form_Steureschuld_fuer_Kennzeichen(Fahrzeugpool aFahrzeugpool)
+        public FormSteureschuldFuerKennzeichen(Fahrzeugpool aFahrzeugpool)
         {
             InitializeComponent();
             fahrzeugpool = aFahrzeugpool;
@@ -23,7 +23,7 @@ namespace Fahrzeugverwaltung.Forms
         {
             try
             {
-                //textBoxSteuerschuld.Text = fahrzeugpool.berechneSteuerschuldKennzeichen(textBoxKennzeichen.Text).ToString();
+                textBoxSteuerschuld.Text = ;
             }
             catch (ArgumentException ex)
             {

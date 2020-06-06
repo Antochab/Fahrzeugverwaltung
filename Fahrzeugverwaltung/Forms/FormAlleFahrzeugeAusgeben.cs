@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
-    public partial class DatenAusgeben : Form
+    public partial class FormAlleFahrzeugeAusgeben : Form
     {
         private Fahrzeugpool fahrzeugpool;
-        public DatenAusgeben(Fahrzeugpool aFahrzeugpool)
+        public FormAlleFahrzeugeAusgeben(Fahrzeugpool aFahrzeugpool)
         {
             InitializeComponent();
             fahrzeugpool = aFahrzeugpool;

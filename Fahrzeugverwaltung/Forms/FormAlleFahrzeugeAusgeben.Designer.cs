@@ -1,6 +1,6 @@
 ﻿namespace Fahrzeugverwaltung.Forms
 {
-    partial class DatenAusgeben
+    partial class FormAlleFahrzeugeAusgeben
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Motorrad";
             // 
-            // DatenAusgeben
+            // FormAlleFahrzeugeAusgeben
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -101,8 +101,8 @@
             this.Controls.Add(this.listBoxMottorad);
             this.Controls.Add(this.listBoxLKW);
             this.Controls.Add(this.listBoxPKW);
-            this.Name = "DatenAusgeben";
-            this.Text = "Form1";
+            this.Name = "FormAlleFahrzeugeAusgeben";
+            this.Text = "Alle Fahrzeuge";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

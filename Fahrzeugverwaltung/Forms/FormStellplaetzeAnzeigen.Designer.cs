@@ -48,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(1249, 620);
             this.Controls.Add(this.listBox1);
             this.Name = "Stellplätze_anzeicgen";
-            this.Text = "Stellplätze_anzeicgen";
+            this.Text = "Stellplaetze";
             this.Load += new System.EventHandler(this.Stellplätze_anzeicgen_Load);
             this.ResumeLayout(false);
 

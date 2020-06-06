@@ -26,7 +26,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonFahrzeugAnlegen_Click(object sender, EventArgs e)
         {
-            SubMenuFahrzeugAnlegen subMenuFahrzeugAnlegen = new SubMenuFahrzeugAnlegen(fahrzeugpool);
+            FormMenueFahrzeugauswahl subMenuFahrzeugAnlegen = new FormMenueFahrzeugauswahl(fahrzeugpool);
             subMenuFahrzeugAnlegen.Show();
         }
 
@@ -38,7 +38,7 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonDatenAusgeben_Click(object sender, EventArgs e)
         {
-            FormDatenAusgeben formDatenAusgeben = new FormDatenAusgeben(fahrzeugpool);
+            FormMenueFuerDatenausgabe formDatenAusgeben = new FormMenueFuerDatenausgabe(fahrzeugpool);
             formDatenAusgeben.Show();
         }
 

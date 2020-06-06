@@ -14,7 +14,7 @@ namespace Fahrzeugverwaltung
 {
     public class Fahrzeugpool
     {
-        private Parkhausverwaltung parkhausverwaltung = new Parkhausverwaltung();
+        private Parkhauspool parkhausverwaltung = new Parkhauspool();
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
         private List<String> allePKWDaten = new List<string>();
         private List<String> alleLKWDaten = new List<string>();
@@ -23,7 +23,7 @@ namespace Fahrzeugverwaltung
 
 
         //Getter Methode für die Fahrzeugliste definieren, damit Fahrzeuge ausgegeben werden können
-        public Parkhausverwaltung Parkhausverwaltung { get { return parkhausverwaltung; } set { parkhausverwaltung = value; } }
+        public Parkhauspool Parkhausverwaltung { get { return parkhausverwaltung; } set { parkhausverwaltung = value; } }
         public List<String> AllePKWDaten { get { return allePKWDaten; } set { allePKWDaten = value; } }
         public List<String> AlleLKWDaten { get { return alleLKWDaten; } set { alleLKWDaten = value; } }
         public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
@@ -214,28 +214,32 @@ namespace Fahrzeugverwaltung
         }
         public void gibAlleDatenAus()
         {
+            string pkw_output = "{0,-20}{1,-20}{2,-20}{3,-20}{4,-20}{5,-20}{6,-20}{7,-20}{8,-20}";
+            string lkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
+            string motorrad_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
+
+
+            allePKWDaten.Add(string.Format(pkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Leistung", "Schadstoffklasse", "Stellplatz"));
+            alleLKWDaten.Add(string.Format(lkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "AnzahlAchsen", "Zuladung", "Stellplatz"));
+            alleMotorradDaten.Add(string.Format(motorrad_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Stellplatz"));
+
+
             foreach (Fahrzeug fahrzeug in fahrzeugliste)
             {
                 switch (fahrzeug.GetType().ToString())
                 {
                     case "Fahrzeugverwaltung.PKW":
-                        string pkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t{8,-20}\t";
                         PKW pkw = fahrzeug as PKW;
-                        allePKWDaten.Add(string.Format(pkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Leistung", "Schadstoffklasse","Stellplatz"));
                         allePKWDaten.Add(string.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(),pkw.Leistung.ToString(),pkw.Schadstoffklasse.ToString(),pkw.Stellplatznummer.ToString()));
                         break;
 
                     case "Fahrzeugverwaltung.LKW":
-                        string lkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
                         LKW lkw = fahrzeug as LKW;
-                        alleLKWDaten.Add(string.Format(lkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "AnzahlAchsen","Zuladung","Stellplatz"));
                         alleLKWDaten.Add(string.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString(),lkw.Stellplatznummer.ToString()));
                         break;
 
                     case "Fahrzeugverwaltung.Motorrad":
-                        string motorrad_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
                         Motorrad motorrad = fahrzeug as Motorrad;
-                        alleMotorradDaten.Add(string.Format(motorrad_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum","Stellplatz"));
                         alleMotorradDaten.Add(string.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString(),motorrad.Stellplatznummer.ToString()));
                         
                         break;

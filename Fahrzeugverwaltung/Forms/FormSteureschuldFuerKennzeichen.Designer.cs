@@ -1,6 +1,6 @@
 ﻿namespace Fahrzeugverwaltung.Forms
 {
-    partial class Form_Steureschuld_fuer_Kennzeichen
+    partial class FormSteureschuldFuerKennzeichen
     {
         /// <summary>
         /// Required designer variable.
