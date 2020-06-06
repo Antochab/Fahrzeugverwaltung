@@ -127,13 +127,78 @@ namespace Fahrzeugverwaltung
 
         }
 
-
         public static Fahrzeug sucheFahrzeug(List<Fahrzeug> aFahrzeugliste, string kennzeichen)
         {
             //finden des Fahrzeugs in der Fahrzeugliste
             Fahrzeug f = aFahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
             //Zurückgeben des Ergebnisses
             return f;
+        }
+
+        public static string FahrzeugAusgeben(List<Fahrzeug> aFahrzeugliste, string kennzeichen)
+        {
+            string output_format = "";
+            string output = "";
+
+            //finden des Fahrzeugs in der Fahrzeugliste
+            Fahrzeug f = aFahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
+            //Zurückgeben des Ergebnisses
+            
+            switch (f.GetType().ToString())
+            {
+                case "Fahrzeugverwaltung.PKW":
+                    PKW pkw = f as PKW;
+                    output_format = "{0,-50}\n{1,-50}\n{2,-50}\n{3,-50}\n{4,-50}\n{5,-50}\n{6,-50}\n{7,-50}\n{8,-50}";
+                    output = string.Format(output_format, "Hersteller: " + pkw.Hersteller, "Modell: " + pkw.Modell, "Kennzeichen: " + pkw.Kennzeichen, "Erstzulassung: " + pkw.Erstzulassung, "Anschaffungspreis: " + pkw.Anschaffungspreis, "Hubraum: " + pkw.Hubraum, "Leistung: " + pkw.Leistung, "Schadstoffklasse: " + pkw.Schadstoffklasse, "Stellplatz: " + pkw.Stellplatznummer);
+                    break;
+                case "Fahrzeugverwaltung.LKW":
+                    LKW lkw = f as LKW;
+                    output_format = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
+                    output = string.Format(output_format, "Hersteller: " + lkw.Hersteller, "Modell: " + lkw.Modell, "Kennzeichen: " + lkw.Kennzeichen, "Erstzulassung: " + lkw.Erstzulassung, "Anschaffungspreis: " + lkw.Anschaffungspreis, "AnzahlAchsen: " + lkw.Achsenanzahl, "Zuladung: " + lkw.Zuladung, "Stellplatz: " + lkw.Stellplatznummer);
+                    break;
+                case "Fahrzeugverwaltung.Motorrad":
+                    Motorrad motorrad = f as Motorrad;
+                    output_format = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
+                    output = string.Format(output_format, "Hersteller: " + motorrad.Hersteller, "Modell: " + motorrad.Modell, "Kennzeichen: " + motorrad.Kennzeichen, "Erstzulassung: " + motorrad.Erstzulassung, "Anschaffungspreis: " + motorrad.Anschaffungspreis, "Hubraum: " + motorrad.Hubraum, "Stellplatz: " + motorrad.Stellplatznummer);
+                    break;
+            }
+            return output;
+        }
+
+        public float berechneSteuerschuldKennzeichen(string kennzeichen)
+        {
+            //Anlegen der Variablen steuerschuld
+            float steuerschuld = 0;
+            //Finden des Fahrezugs mit dem übergebenen Kennzeichen
+            Fahrzeug f = Fahrzeugpool.sucheFahrzeug(fahrzeugliste, kennzeichen);
+
+            if ((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
+            {
+                throw new ArgumentException("Kennzeichen nicht vorhanden!");
+            }
+
+            if (f.GetType().ToString().Equals("Fahrzeugverwaltung.PKW"))
+            {
+                //Konvertieren des Fahrzeugs in den Typ PKW
+                //um auf spezifische Variablen der Klasse PKW zugreifen zu können
+                PKW p = (PKW)Convert.ChangeType(f, typeof(PKW));
+                steuerschuld = (p.Hubraum + 99) / 100 * 10 * (p.Schadstoffklasse + 1);
+            }
+            else if (f.GetType().ToString().Equals("Fahrzeugverwaltung.LKW"))
+            {
+                //Konvertieren des Fahrzeugs in den Typ LKW
+                //um auf spezifische Variablen der Klasse LKW zugreifen zu können
+                LKW l = (LKW)Convert.ChangeType(f, typeof(LKW));
+                steuerschuld = l.Zuladung * 100;
+            }
+            else
+            {
+                //Konvertieren des Fahrzeugs in den Typ Motorrad
+                //um auf spezifische Variablen der Klasse Motorrad zugreifen zu können
+                Motorrad m = (Motorrad)Convert.ChangeType(f, typeof(Motorrad));
+                steuerschuld = (m.Hubraum + 99) / 10 * 20;
+            }
+            return steuerschuld;
         }
 
         public float berechneSteuerschuld()

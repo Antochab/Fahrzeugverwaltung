@@ -29,7 +29,7 @@ namespace Fahrzeugverwaltung
         public float Anschaffungspreis { get { return anschaffungspreis; } set { anschaffungspreis = value; } }
         public String Stellplatznummer { get { return stellplatznummer; } set { stellplatznummer = value; } }
 
-        public abstract float berechneSteuerschuldKennzeichen(List<Fahrzeug> fahrzeugliste, string kennzeichen);
+        
 
     }
 }

@@ -36,25 +36,6 @@ namespace Fahrzeugverwaltung
             }
         }
 
-        public override float berechneSteuerschuldKennzeichen(List<Fahrzeug> fahrzeugliste, string kennzeichen)
-        {
-            //Anlegen der Variablen steuerschuld
-            float steuerschuld;
-            //Finden des Fahrezugs mit dem übergebenen Kennzeichen
-            Fahrzeug f = Fahrzeugpool.sucheFahrzeug(fahrzeugliste, kennzeichen);
-
-            if ((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
-            {
-                throw new ArgumentException("Kennzeichen nicht vorhanden!");
-            }
-
-            //Konvertieren des Fahrzeugs in den Typ PKW
-            //um auf spezifische Variablen der Klasse PKW zugreifen zu können
-            PKW p = (PKW)Convert.ChangeType(f, typeof(PKW));
-            steuerschuld = (p.Hubraum + 99) / 100 * 10 * (p.Schadstoffklasse + 1);
-            return steuerschuld;
-
-        }
 
     }
 }
