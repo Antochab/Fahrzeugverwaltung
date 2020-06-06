@@ -14,7 +14,6 @@ namespace Fahrzeugverwaltung.Forms
 {
     public partial class Hauptmenu : Form
     {
-        private Parkhausverwaltung parkhausverwaltung = new Parkhausverwaltung();
         private Fahrzeugpool fahrzeugpool;
         
 
@@ -22,7 +21,7 @@ namespace Fahrzeugverwaltung.Forms
         public Hauptmenu()
         {
             InitializeComponent();
-            fahrzeugpool = new Fahrzeugpool(parkhausverwaltung);
+            fahrzeugpool = new Fahrzeugpool();
         }
 
         private void buttonFahrzeugAnlegen_Click(object sender, EventArgs e)
@@ -46,18 +45,18 @@ namespace Fahrzeugverwaltung.Forms
         private void Hauptmenu_FormClosing(object sender, FormClosingEventArgs e)
         {
             fahrzeugpool.datenInDatenbankSichern();
-            parkhausverwaltung.datenInDatenbankSichern();
+            fahrzeugpool.Parkhausverwaltung.datenInDatenbankSichern();
                 }
 
         private void Hauptmenu_Load(object sender, EventArgs e)
         {
             fahrzeugpool.datenAusDatenbankAuslesen();
-            parkhausverwaltung.datenAusDatenbankAuslesen();
+            fahrzeugpool.Parkhausverwaltung.datenAusDatenbankAuslesen();
         }
 
         private void buttonParkhausAnlegen_Click(object sender, EventArgs e)
         {
-            FormParkhausAnlegen formParkhausAnlegen = new FormParkhausAnlegen(parkhausverwaltung);
+            FormParkhausAnlegen formParkhausAnlegen = new FormParkhausAnlegen(fahrzeugpool.Parkhausverwaltung);
             formParkhausAnlegen.Show();
         }
     }

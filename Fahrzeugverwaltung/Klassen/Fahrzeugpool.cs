@@ -14,20 +14,17 @@ namespace Fahrzeugverwaltung
 {
     public class Fahrzeugpool
     {
+        private Parkhausverwaltung parkhausverwaltung = new Parkhausverwaltung();
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
         private List<Parkhaus> parkhausliste = new List<Parkhaus>();
         private List<String> allePKWDaten = new List<string>();
         private List<String> alleLKWDaten = new List<string>();
         private List<String> alleMotorradDaten = new List<string>();
 
-        public Fahrzeugpool(Parkhausverwaltung aParkhausverwaltung)
-        {
-            Parkhausliste = aParkhausverwaltung.Parkhausliste;
-        }
 
 
         //Getter Methode für die Fahrzeugliste definieren, damit Fahrzeuge ausgegeben werden können
-        public List<Fahrzeug> Fahrzeugliste { get { return fahrzeugliste; } }
+        public Parkhausverwaltung Parkhausverwaltung { get { return parkhausverwaltung; } set { parkhausverwaltung = value; } }
         public List<String> AllePKWDaten { get { return allePKWDaten; } set { allePKWDaten = value; } }
         public List<String> AlleLKWDaten { get { return alleLKWDaten; } set { alleLKWDaten = value; } }
         public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
@@ -176,7 +173,7 @@ namespace Fahrzeugverwaltung
                             s.Kennzeichen = f.Kennzeichen;
                             s.Parkhausnummer = element.Parkhausnummer;
                             stellplatznummer = s.Nummer;
-                            
+                            s.IstBelegt = true;
                             abbruch = true;
                             break;
                         }

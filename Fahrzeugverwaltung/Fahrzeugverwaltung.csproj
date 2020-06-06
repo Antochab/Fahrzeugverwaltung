@@ -60,6 +60,12 @@
     <Compile Include="Forms\DatenAusgeben.Designer.cs">
       <DependentUpon>DatenAusgeben.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ParkhausAnlegen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,12 @@
     </Compile>
     <Compile Include="Forms\Hauptmenu.Designer.cs">
       <DependentUpon>Hauptmenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Stellplätze anzeicgen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Stellplätze anzeicgen.Designer.cs">
+      <DependentUpon>Stellplätze anzeicgen.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Steuerschulden berechnen.cs">
       <SubType>Form</SubType>
@@ -114,6 +126,9 @@
     <EmbeddedResource Include="Forms\DatenAusgeben.resx">
       <DependentUpon>DatenAusgeben.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ParkhausAnlegen.resx">
       <DependentUpon>ParkhausAnlegen.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Hauptmenu.resx">
       <DependentUpon>Hauptmenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Stellplätze anzeicgen.resx">
+      <DependentUpon>Stellplätze anzeicgen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Steuerschulden berechnen.resx">
       <DependentUpon>Steuerschulden berechnen.cs</DependentUpon>

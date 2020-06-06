@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fahrzeugverwaltung.Klassen;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,7 @@ namespace Fahrzeugverwaltung.Forms
     public partial class FormDatenAusgeben : Form
     {
         private readonly Fahrzeugpool fahrzeugpool;
+
         public FormDatenAusgeben(Fahrzeugpool aFahrzeugpool)
         {
             InitializeComponent();
@@ -28,6 +30,18 @@ namespace Fahrzeugverwaltung.Forms
 
         private void FormDatenAusgeben_Load(object sender, EventArgs e)
         {
+        }
+
+        private void buttonParkhäuser_Click(object sender, EventArgs e)
+        {
+            FormParkhäuserAnzeigen formParkhäuserAnzeigen = new FormParkhäuserAnzeigen(fahrzeugpool);
+            formParkhäuserAnzeigen.Show();
+        }
+
+        private void buttonStellplätze_Click(object sender, EventArgs e)
+        {
+            Stellplätze_anzeicgen formStellplätzeAnzeigen = new Stellplätze_anzeicgen(fahrzeugpool);
+            formStellplätzeAnzeigen.Show();
         }
     }
 }
