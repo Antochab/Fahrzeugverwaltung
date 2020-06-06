@@ -69,7 +69,7 @@ namespace Fahrzeugverwaltung
                     pkw.Stellplatznummer = stellplatznummer;
                 }
                 fahrzeugliste.Add(pkw);
-                
+                  
             } catch (ArgumentException ex)
             {
                 throw new ArgumentException(ex.Message);
@@ -174,6 +174,7 @@ namespace Fahrzeugverwaltung
                         if (s.Stellplatztyp == fahrzeugtyp)
                         {
                             s.Kennzeichen = f.Kennzeichen;
+                            s.Parkhausnummer = element.Parkhausnummer;
                             stellplatznummer = s.Nummer;
                             
                             abbruch = true;

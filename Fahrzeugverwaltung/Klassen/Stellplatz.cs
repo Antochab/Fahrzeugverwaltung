@@ -13,6 +13,7 @@ namespace Fahrzeugverwaltung
         private String stellplatzTyp;
         private String kennzeichen;
         private bool istBelegt;
+        private string parkhausnummer;
 
         public Stellplatz(String aNummer, string aStellplatztyp, bool aIstBelegt)
         {
@@ -22,6 +23,7 @@ namespace Fahrzeugverwaltung
         }
 
         public String Nummer { get { return nummer; } set { nummer = value; } }
+        public String Parkhausnummer { get { return parkhausnummer; } set { parkhausnummer = value; } }
         public String Stellplatztyp { get { return stellplatzTyp; } set { stellplatzTyp = value; } }
         public String Kennzeichen { get { return kennzeichen; } set { kennzeichen = value; } }
         public bool IstBelegt { get { return istBelegt; } set { istBelegt = value;  } }

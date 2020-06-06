@@ -43,11 +43,11 @@ namespace Fahrzeugverwaltung.Klassen
 
                 foreach (Parkhaus parkhaus in parkhausliste)
                 {
-                    string query = "Insert into Parkhausliste values('" + parkhaus.Ort + "','" + parkhaus.Plz + "','" + parkhaus.MaxKap + "','" + parkhaus.Parkhausnummer + "','" + parkhaus.AnzahlPKW + "','" + parkhaus.AnzahlMotorrad + "','" + parkhaus.AnzahlLKW + "');";
+                    string parkhaus_query = "Insert into Parkhausliste values('" + parkhaus.Ort + "','" + parkhaus.Plz + "','" + parkhaus.MaxKap + "','" + parkhaus.Parkhausnummer + "','" + parkhaus.AnzahlPKW + "','" + parkhaus.AnzahlMotorrad + "','" + parkhaus.AnzahlLKW + "');";
 
                     using (OleDbConnection connection = new OleDbConnection(connString))
                     {
-                            using (cmd = new OleDbCommand(query, connection))
+                            using (cmd = new OleDbCommand(parkhaus_query, connection))
                             {
 
                                 OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
@@ -56,6 +56,24 @@ namespace Fahrzeugverwaltung.Klassen
                                 dataSet.Dispose();
 
                             };
+                        ///Alles stellplätze in die Datenbank übertragen
+                        ///
+                        foreach(Stellplatz stellplatz in parkhaus.Stellplatzliste)
+                        {
+                            string stelllplatz_query = "Insert into Stellplatzliste values('" + parkhaus.Parkhausnummer + "','" + stellplatz.Nummer + "','" + stellplatz.Stellplatztyp + "','" + stellplatz.IstBelegt.ToString() + "');";
+
+                            using (cmd = new OleDbCommand(stelllplatz_query, connection))
+                            {
+
+                                OleDbDataAdapter dataAdapter = new OleDbDataAdapter(cmd);
+                                dataAdapter.Fill(dataSet);
+                                connection.Close();
+                                dataSet.Dispose();
+
+                            };
+                        }
+
+
 
                     }
                 }
