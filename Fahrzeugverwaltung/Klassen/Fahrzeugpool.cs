@@ -16,7 +16,6 @@ namespace Fahrzeugverwaltung
     {
         private Parkhausverwaltung parkhausverwaltung = new Parkhausverwaltung();
         private List<Fahrzeug> fahrzeugliste = new List<Fahrzeug>();
-        private List<Parkhaus> parkhausliste = new List<Parkhaus>();
         private List<String> allePKWDaten = new List<string>();
         private List<String> alleLKWDaten = new List<string>();
         private List<String> alleMotorradDaten = new List<string>();
@@ -28,9 +27,6 @@ namespace Fahrzeugverwaltung
         public List<String> AllePKWDaten { get { return allePKWDaten; } set { allePKWDaten = value; } }
         public List<String> AlleLKWDaten { get { return alleLKWDaten; } set { alleLKWDaten = value; } }
         public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
-
-        public List<Parkhaus> Parkhausliste { get { return parkhausliste; } set { parkhausliste = value; } }
-
         public void neuenPKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum, String aLeistung, String aSchadstoffklasse)
         {
             int hubraum = 0;
@@ -55,6 +51,7 @@ namespace Fahrzeugverwaltung
 
             try {
                 //neuen PKW zur Liste hinzufügen hinzufügen
+                
                 PKW pkw = new PKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum), Convert.ToInt32(aLeistung), Convert.ToInt32(aSchadstoffklasse));
                 stellplatznummer = stellplatzZuweisen(pkw);
                 if(stellplatznummer == "-1")
@@ -161,7 +158,7 @@ namespace Fahrzeugverwaltung
         {
             bool abbruch = false;
             String stellplatznummer = "-1";
-            foreach (Parkhaus element in parkhausliste)
+            foreach (Parkhaus element in Parkhausverwaltung.Parkhausliste)
             {
                 foreach (Stellplatz s in element.Stellplatzliste)
                 {
