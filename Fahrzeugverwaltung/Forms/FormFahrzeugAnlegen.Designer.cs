@@ -114,7 +114,7 @@
             // labelZuladung
             // 
             this.labelZuladung.AutoSize = true;
-            this.labelZuladung.Location = new System.Drawing.Point(23, 278);
+            this.labelZuladung.Location = new System.Drawing.Point(20, 328);
             this.labelZuladung.Name = "labelZuladung";
             this.labelZuladung.Size = new System.Drawing.Size(76, 20);
             this.labelZuladung.TabIndex = 15;
@@ -123,7 +123,7 @@
             // labelAnzahlAchsen
             // 
             this.labelAnzahlAchsen.AutoSize = true;
-            this.labelAnzahlAchsen.Location = new System.Drawing.Point(23, 326);
+            this.labelAnzahlAchsen.Location = new System.Drawing.Point(20, 276);
             this.labelAnzahlAchsen.Name = "labelAnzahlAchsen";
             this.labelAnzahlAchsen.Size = new System.Drawing.Size(116, 20);
             this.labelAnzahlAchsen.TabIndex = 16;
@@ -131,7 +131,7 @@
             // 
             // textBoxZuladung
             // 
-            this.textBoxZuladung.Location = new System.Drawing.Point(206, 321);
+            this.textBoxZuladung.Location = new System.Drawing.Point(206, 322);
             this.textBoxZuladung.Name = "textBoxZuladung";
             this.textBoxZuladung.Size = new System.Drawing.Size(100, 26);
             this.textBoxZuladung.TabIndex = 6;
@@ -239,7 +239,7 @@
             // 
             // textBoxSchadstoffklasse
             // 
-            this.textBoxSchadstoffklasse.Location = new System.Drawing.Point(206, 369);
+            this.textBoxSchadstoffklasse.Location = new System.Drawing.Point(206, 370);
             this.textBoxSchadstoffklasse.Name = "textBoxSchadstoffklasse";
             this.textBoxSchadstoffklasse.Size = new System.Drawing.Size(100, 26);
             this.textBoxSchadstoffklasse.TabIndex = 7;

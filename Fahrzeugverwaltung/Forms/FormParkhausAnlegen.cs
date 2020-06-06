@@ -26,6 +26,7 @@ namespace Fahrzeugverwaltung.Forms
             try
             {
                 parkhausverwaltung.neuesParkhausAnlegen(textBoxOrt.Text, textBoxPLZ.Text, textBoxParkhausnummer.Text, textBoxAnzahlPKW.Text, textBoxAnzahlMotorrad.Text, textBoxAnzahlLKW.Text);
+                MessageBox.Show("Parkhaus angelegt");
             }
             catch(ArgumentException ex)
             {

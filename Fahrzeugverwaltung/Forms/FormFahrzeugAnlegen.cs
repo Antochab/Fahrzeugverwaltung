@@ -43,6 +43,7 @@ namespace Fahrzeugverwaltung
                         fahrzeugpool.neuenLKWAnlegen(hersteller, modell, kennzeichen, erstzulassung, anschaffungspreis, textBoxAnzahlAchsen.Text, textBoxZuladung.Text);
                         break;
                 }
+                MessageBox.Show("Fahrzeug angelegt");
             }
             catch (ArgumentException ex)
             {
