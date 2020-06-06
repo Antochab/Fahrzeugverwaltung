@@ -87,17 +87,25 @@ namespace Fahrzeugverwaltung
 
         public void neuenLKWAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aAchsenAnzahl, String aZuladung)
         {
-            //Anlege
+            //Anlegen der Variablen für das Exception Handling
             int achsenanzahl = 0;
             int zuladung = 0;
             String stellplatznummer;
 
+            //Aufrufen der Methode ExceptionHandling Methode
+            //diese behandelt die Exceptions, welche in allen abgeleiteten Klassen der Basisklasse Fahzeug auftreten können
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
+            //Vornehmen des spezifischen Exception Handlings für die Variablen der Klasse PKW
+
+            //prüfen, ob der String aAchsenAnzahl in einen int transofrmiert werden kann
+            //prüfen, ob der String aAchsenAnzahl ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aAchsenAnzahl, out achsenanzahl) == false || String.IsNullOrWhiteSpace(aAchsenAnzahl))
             {
                 throw new ArgumentException("Achsenanzahl überprüfen");
             }
+            //prüfen, ob der String aZuladung in einen int transofrmiert werden kann
+            //prüfen, ob der String aZuladung ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aZuladung, out zuladung) == false || String.IsNullOrWhiteSpace(aZuladung))
             {
                 throw new ArgumentException("Zuladung überprüfen");
@@ -106,10 +114,12 @@ namespace Fahrzeugverwaltung
             //neuen PKW zur Liste hinzufügen hinzufügen
             LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), Convert.ToInt32(aZuladung));
             stellplatznummer = stellplatzZuweisen(lkw);
+            //prüfen, ob kein freier Stellplatz gefunden wurde
             if (stellplatznummer == "-1")
             {
                 throw new ArgumentException("Kein freier Stellplatz gefunden.");
             }
+            //wurde ein freier Stellplatz gefunden, wird dem LKW die entsprechende Stellplatzummer beigefügt
             else
             {
                 lkw.Stellplatznummer = stellplatznummer;
@@ -120,27 +130,38 @@ namespace Fahrzeugverwaltung
 
         public void neuesMotorradAnlegen(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis, String aHubraum)
         {
+            //Anlegen der Variablen für das Exception Handling
             int hubraum = 0;
             String stellplatznummer;
 
+            //Aufrufen der Methode ExceptionHandling Methode
+            //diese behandelt die Exceptions, welche in allen abgeleiteten Klassen der Basisklasse Fahzeug auftreten können
             ExceptionHandling(aHersteller, aModell, aKennzeichen, aErstzulassung, aAnschaffungspreis);
 
+            //Vornehmen des spezifischen Exception Handlings für die Variablen der Klasse PKW
+
+            //prüfen, ob der String aHubraum in einen int transofrmiert werden kann
+            //prüfen, ob der String aHubraum ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aHubraum, out hubraum) == false || String.IsNullOrWhiteSpace(aHubraum))
             {
                 throw new ArgumentException("Hubraum überprüfen");
             }
 
-            //neuen PKW zur Liste hinzufügen hinzufügen
+            //neues Motorrad zur Liste hinzufügen hinzufügen
             Motorrad motorrad = new Motorrad(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aHubraum));
+            //Motorrad einem Stellplatz zuweisen
             stellplatznummer = stellplatzZuweisen(motorrad);
+            //prüfen, ob ein freier Stellplatz gefunden wurde
             if (stellplatznummer == "-1")
             {
                 throw new ArgumentException("Kein freier Parkplatz gefunden.");
             }
+            //wurde ein freier Stellplatz gefunden, wird die Stellplatznummer dem Motorrad beigefügt
             else
             {
                 motorrad.Stellplatznummer = stellplatznummer;
             }
+            //Motorrad in die Fahrzeugliste hinzufügen
             fahrzeugliste.Add(motorrad);
 
         }
@@ -155,31 +176,37 @@ namespace Fahrzeugverwaltung
 
         public static string FahrzeugAusgeben(List<Fahrzeug> aFahrzeugliste, string kennzeichen)
         {
+            //festlegen des Ausgabeformats 
             string output_format = "";
             string output = "";
 
             //finden des Fahrzeugs in der Fahrzeugliste
             Fahrzeug f = aFahrzeugliste.Find(x => x.Kennzeichen.Contains(kennzeichen));
             //Zurückgeben des Ergebnisses
-            
+
+            //Prüfen, welcher Fahrzeugtyp vorliegt
             switch (f.GetType().ToString())
             {
                 case "Fahrzeugverwaltung.PKW":
+                    //Format auf PKW anwenden
                     PKW pkw = f as PKW;
                     output_format = "{0,-50}\n{1,-50}\n{2,-50}\n{3,-50}\n{4,-50}\n{5,-50}\n{6,-50}\n{7,-50}\n{8,-50}";
                     output = string.Format(output_format, "Hersteller: " + pkw.Hersteller, "Modell: " + pkw.Modell, "Kennzeichen: " + pkw.Kennzeichen, "Erstzulassung: " + pkw.Erstzulassung, "Anschaffungspreis: " + pkw.Anschaffungspreis, "Hubraum: " + pkw.Hubraum, "Leistung: " + pkw.Leistung, "Schadstoffklasse: " + pkw.Schadstoffklasse, "Stellplatz: " + pkw.Stellplatznummer);
                     break;
                 case "Fahrzeugverwaltung.LKW":
+                    //Format auf LKW anwenden
                     LKW lkw = f as LKW;
                     output_format = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
                     output = string.Format(output_format, "Hersteller: " + lkw.Hersteller, "Modell: " + lkw.Modell, "Kennzeichen: " + lkw.Kennzeichen, "Erstzulassung: " + lkw.Erstzulassung, "Anschaffungspreis: " + lkw.Anschaffungspreis, "AnzahlAchsen: " + lkw.Achsenanzahl, "Zuladung: " + lkw.Zuladung, "Stellplatz: " + lkw.Stellplatznummer);
                     break;
                 case "Fahrzeugverwaltung.Motorrad":
+                    //Format auf Motorrad anwenden
                     Motorrad motorrad = f as Motorrad;
                     output_format = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
                     output = string.Format(output_format, "Hersteller: " + motorrad.Hersteller, "Modell: " + motorrad.Modell, "Kennzeichen: " + motorrad.Kennzeichen, "Erstzulassung: " + motorrad.Erstzulassung, "Anschaffungspreis: " + motorrad.Anschaffungspreis, "Hubraum: " + motorrad.Hubraum, "Stellplatz: " + motorrad.Stellplatznummer);
                     break;
             }
+            //String ausgeben, welcher alle Fahrzeugdaten zurückgibt
             return output;
         }
 
@@ -190,11 +217,12 @@ namespace Fahrzeugverwaltung
             //Finden des Fahrezugs mit dem übergebenen Kennzeichen
             Fahrzeug f = sucheFahrzeug(fahrzeugliste, kennzeichen);
 
+            //prüfen, ob das Kennzeichen in der Fahrzeugliste existiert
             if ((fahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
             {
                 throw new ArgumentException("Kennzeichen nicht vorhanden!");
             }
-
+            //prüfen, ob Fahrzeug vom Typ PKW ist
             if (f.GetType().ToString().Equals("Fahrzeugverwaltung.PKW"))
             {
                 //Konvertieren des Fahrzeugs in den Typ PKW
@@ -202,6 +230,7 @@ namespace Fahrzeugverwaltung
                 PKW p = (PKW)Convert.ChangeType(f, typeof(PKW));
                 steuerschuld = (p.Hubraum + 99) / 100 * 10 * (p.Schadstoffklasse + 1);
             }
+            //prüfen, ob Fahrzeug vom Typ LKW ist
             else if (f.GetType().ToString().Equals("Fahrzeugverwaltung.LKW"))
             {
                 //Konvertieren des Fahrzeugs in den Typ LKW
@@ -209,6 +238,7 @@ namespace Fahrzeugverwaltung
                 LKW l = (LKW)Convert.ChangeType(f, typeof(LKW));
                 steuerschuld = l.Zuladung * 100;
             }
+            //ist das Fahrzeug weder vom Typ LKW noch vom Typ PKW, ist es vom Typ Motorrad
             else
             {
                 //Konvertieren des Fahrzeugs in den Typ Motorrad
@@ -216,12 +246,12 @@ namespace Fahrzeugverwaltung
                 Motorrad m = (Motorrad)Convert.ChangeType(f, typeof(Motorrad));
                 steuerschuld = (m.Hubraum + 99) / 10 * 20;
             }
+            //zurückgeben der Steuerschuld
             return steuerschuld;
         }
 
         public float berechneSteuerschuld()
         {
-            //TODO Fahrzeuge mit Steuerschulden ausgeben
             float steuerschuld = 0;
             //berechnen der Steuerschuld für jedes Fahrzeug in der Fahrzeugliste
             foreach (Fahrzeug f in fahrzeugliste)
@@ -236,57 +266,82 @@ namespace Fahrzeugverwaltung
 
         public String stellplatzZuweisen(Fahrzeug f)
         {
+            //Definieren einer Abbruchvariable
             bool abbruch = false;
+            //Stellplatznummer standardmäßig auf -1 setzen
+            //wird -1 zurückgegeben, indiziert dies, dass kein freier Parkplatz gefunden wurde
             String stellplatznummer = "-1";
+
+            //Schleife über alle Parkhäuser in der Parkhausliste laufen lassen
             foreach (Parkhaus element in Parkhausverwaltung.Parkhausliste)
             {
+                //Schleife über alle Stellplätze in einem Parkplatz
                 foreach (Stellplatz s in element.Stellplatzliste)
                 {
+                    //Fahrzeugtyp abfregen
                     string fahrzeugtyp = f.GetType().ToString();
+                    //prüfen ob der Stellplatz belegt
                     if (s.IstBelegt == false)
                     {
+                        //Prüfen, ob der Stellplatztyp dem Typ des Fahrzeugs entspricht
                         if (s.Stellplatztyp == fahrzeugtyp)
                         {
+                            //dem Stellplatz das Kennzeichen zuweisen
                             s.Kennzeichen = f.Kennzeichen;
                             s.Parkhausnummer = element.Parkhausnummer;
+                            //stellplatznummer zuweisen
                             stellplatznummer = s.Nummer;
+                            //Variable istBelegt des Stellplatzes auf true stellen
                             s.IstBelegt = true;
+                            //Schleifen durchlauf abbrechen
                             abbruch = true;
                             break;
                         }
                     }
                 }
+                //prüfen, ob die Schleife abgebrochen wurde
+                //ist der Fall, wenn ein freier Stellplatz gefunden wurde
                 if (abbruch == true)
                 {
                     break;
                 }
             }
+            //stellplatznummer zurückgeben
             return stellplatznummer;
 
         }
         private void ExceptionHandling(String aHersteller, String aModell, String aKennzeichen, String aErstzulassung, String aAnschaffungspreis)
         {
+            //Anlegen der Variablen für das Exception Handling
             int erstzulassung = 0;
             float anschaffungspreis = 0;
+            //festlegen des Formats für das Kennezeichen
             Regex kennzeichenFormat = new Regex(@"^[a-zA-Z]{1,3}-[a-zA-Z]{1,2}(-\d{1,4})$");
 
+            //Prüfen ob der String ein NullWert oder ein Leerzeichen repräsentiert
             if (String.IsNullOrEmpty(aHersteller) || String.IsNullOrWhiteSpace(aHersteller))
             {
                 throw new ArgumentException("Hersteller überprüfen");
             }
+            //Prüfen ob der String ein NullWert oder ein Leerzeichen repräsentiert
             if (String.IsNullOrEmpty(aModell) || String.IsNullOrWhiteSpace(aModell))
             {
                 throw new ArgumentException("Modell überprüfen");
             }
-            //Format angeben
+            //Prüfen ob der String ein NullWert oder ein Leerzeichen repräsentiert
+            //Prüfen, ob das Kennzeichen ein korrektes Format hat
             if (String.IsNullOrEmpty(aKennzeichen) || String.IsNullOrWhiteSpace(aKennzeichen) || !kennzeichenFormat.IsMatch(aKennzeichen))
             {
                 throw new ArgumentException("Kennzeichen überprüfen");
             }
+            //prüfen, ob der String aZuladung in einen int transofrmiert werden kann
+            //prüfen, ob der String aZuladung ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (int.TryParse(aErstzulassung, out erstzulassung) == false || String.IsNullOrWhiteSpace(aErstzulassung))
             {
                 throw new ArgumentException("Erstzulassung überprüfen");
             }
+            //prüfen, ob der String aZuladung in einen float transofrmiert werden kann
+            //prüfen, ob der String aZuladung ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
             if (float.TryParse(aAnschaffungspreis, out anschaffungspreis) == false || String.IsNullOrWhiteSpace(aAnschaffungspreis))
             {
                 throw new ArgumentException("Anschaffungspreis überprüfen");
@@ -294,34 +349,44 @@ namespace Fahrzeugverwaltung
         }
         public void gibAlleDatenAus()
         {
+            //festlegen der jeweiligen Formate für die einzelnen Fahrzeugtypen
             string pkw_output = "{0,-20}{1,-20}{2,-20}{3,-20}{4,-20}{5,-20}{6,-20}{7,-20}{8,-20}";
             string lkw_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
             string motorrad_output = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
 
-
+            //Hinzufügen der Beschriftungen der Fahrzeuge in einen String
             allePKWDaten.Add(string.Format(pkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Leistung", "Schadstoffklasse", "Stellplatz"));
             alleLKWDaten.Add(string.Format(lkw_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "AnzahlAchsen", "Zuladung", "Stellplatz"));
             alleMotorradDaten.Add(string.Format(motorrad_output, "Hersteller", "Modell", "Kennzeichen", "Erstzulassung", "Anschaffungspreis", "Hubraum", "Stellplatz"));
 
-
+            //Schleife über alle Fahrzeuge in der Fahrzeugliste laufen lassen
             foreach (Fahrzeug fahrzeug in fahrzeugliste)
             {
+                //Prüfen, welcher Fahrzeugtyp vorliegt
                 switch (fahrzeug.GetType().ToString())
                 {
+                    //es liegt ein PKW vor
                     case "Fahrzeugverwaltung.PKW":
+                        //Fahrzeug zu PKW konvertieren
                         PKW pkw = fahrzeug as PKW;
+                        //alle PKW Daten in einen String übertragen gemäß des festgelegten Formats
                         allePKWDaten.Add(string.Format(pkw_output, pkw.Hersteller, pkw.Modell, pkw.Kennzeichen, pkw.Erstzulassung.ToString(), pkw.Anschaffungspreis.ToString(), pkw.Hubraum.ToString(), pkw.Leistung.ToString(), pkw.Schadstoffklasse.ToString(), pkw.Stellplatznummer.ToString()));
                         break;
 
+                    //es liegt ein LKW vor
                     case "Fahrzeugverwaltung.LKW":
+                        //Fahrzeug in LKW übertragen
                         LKW lkw = fahrzeug as LKW;
+                        //alle LKW Daten in einen String übertragen gemäß des festgelegten Formats
                         alleLKWDaten.Add(string.Format(lkw_output, lkw.Hersteller, lkw.Modell, lkw.Kennzeichen, lkw.Erstzulassung.ToString(), lkw.Anschaffungspreis.ToString(), lkw.Achsenanzahl.ToString(), lkw.Zuladung.ToString(), lkw.Stellplatznummer.ToString()));
                         break;
 
+                    //es liegt ein Motorrad vor
                     case "Fahrzeugverwaltung.Motorrad":
+                        //Fahrzeug zu Motorrad übertragen
                         Motorrad motorrad = fahrzeug as Motorrad;
+                        //alle Motorrad Daten in einen String übertragen gemäß des festgelegten Formats
                         alleMotorradDaten.Add(string.Format(motorrad_output, motorrad.Hersteller, motorrad.Modell, motorrad.Kennzeichen, motorrad.Erstzulassung.ToString(), motorrad.Anschaffungspreis.ToString(), motorrad.Hubraum.ToString(), motorrad.Stellplatznummer.ToString()));
-
                         break;
                 }
             }

@@ -7,40 +7,55 @@ namespace Fahrzeugverwaltung.Klassen
 {
     public class Parkhauspool
     {
+        //Anlegen einer Parkhausliste
+        //speichert alle Fahrzeuge einer Laufzeitinstanz
         private List<Parkhaus> parkhausliste = new List<Parkhaus>();
 
+        //Getter und Setter der Parkhausliste
         public List<Parkhaus> Parkhausliste { get { return parkhausliste; } set { parkhausliste = value; } }
 
+        //neues Parkhaus anlegen
         public void neuesParkhausAnlegen(string aOrt, string aPlz, String aParkhausnummer, String aAnzahlPKW, String aAnzahlMotorrad, String aAnzahlLKW)
         {
+            //Anlegen der Variablen für das Exception Handling
             int anzahlPKW = 0;
             int anzahlLKW = 0;
-            int anzahlMotorrad = 0; 
+            int anzahlMotorrad = 0;
+
+            //prüfen, ob der String aOrt ein Null Wert, leer oder ein Leerzeichen ist
             if (String.IsNullOrEmpty(aOrt) || String.IsNullOrWhiteSpace(aOrt))
             {
                 throw new ArgumentException("Ort überprüfen");
             }
-
+            //prüfen, ob der String aPLZ ein Null Wert, leer oder ein Leerzeichen ist
             if (String.IsNullOrEmpty(aPlz) || String.IsNullOrWhiteSpace(aPlz))
             {
                 throw new ArgumentException("PLZ überprüfen");
             }
+            //prüfen, ob der String aParkhausnummer ein Null Wert, leer oder ein Leerzeichen ist
             if (String.IsNullOrEmpty(aParkhausnummer) || String.IsNullOrWhiteSpace(aParkhausnummer))
             {
                 throw new ArgumentException("Parkhausnummer überprüfen");
             }
+            //prüfen, ob der String aAnzahlPKW in ein Int konvertiert werden kann
+            //prüfen, ob der String aAnzahlPKW einen Nullwert oder ein Leerzeichen beinhaltet
             if (int.TryParse(aAnzahlPKW, out anzahlPKW) == false || String.IsNullOrWhiteSpace(aAnzahlPKW))
             {
                 throw new ArgumentException("Anzahl PKW überprüfen");
             }
+            //prüfen, ob der String aAnzahlLKW in ein Int konvertiert werden kann
+            //prüfen, ob der String aAnzahlLKW einen Nullwert oder ein Leerzeichen beinhaltet
             if (int.TryParse(aAnzahlLKW, out anzahlLKW) == false || String.IsNullOrWhiteSpace(aAnzahlLKW))
             {
                 throw new ArgumentException("Anzahl LKW überprüfen");
             }
+            //prüfen, ob der String aAnzahlMotorrad in ein Int konvertiert werden kann
+            //prüfen, ob der String aAnzahlMotorrad einen Nullwert oder ein Leerzeichen beinhaltet
             if (int.TryParse(aAnzahlMotorrad, out anzahlMotorrad) == false || String.IsNullOrWhiteSpace(aAnzahlMotorrad))
             {
                 throw new ArgumentException("Anzahl Motorrad überprüfen");
             }
+            //neues Parkhaus instanziieren
             Parkhaus parkhaus = new Parkhaus(aOrt, aPlz, aParkhausnummer, Convert.ToInt32(aAnzahlPKW), Convert.ToInt32(aAnzahlMotorrad), Convert.ToInt32(aAnzahlLKW));
             //prüfen, ob bereits ein Parkhaus mit der gleichen Parkhausnummer exisitert
             if ((parkhausliste.Exists(x => x.Parkhausnummer == aParkhausnummer)) == true)
@@ -48,8 +63,7 @@ namespace Fahrzeugverwaltung.Klassen
                 throw new ArgumentException("Es existiert bereits ein Parkhaus mit dieser Parkhausnummer.");
             }
 
-
-
+            //Parkhausinstanz der Parkhausliste hinzufügen
             parkhausliste.Add(parkhaus);
         }
 

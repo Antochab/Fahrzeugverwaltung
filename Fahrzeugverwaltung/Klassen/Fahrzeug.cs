@@ -5,10 +5,12 @@ namespace Fahrzeugverwaltung
 {
     public abstract class Fahrzeug
     {
+        //Variablen der Klasse festlegen
         protected string hersteller, modell, kennzeichen, stellplatznummer;
         protected int erstzulassung;
         protected float anschaffungspreis;
 
+        //Konstruktor der Klasse Fahrzeig
         public Fahrzeug(string aHersteller, string aModell, string aKennzeichen, int aErstzulassung, float aAnschaffungspreis)
         {
             hersteller = aHersteller;
@@ -18,13 +20,10 @@ namespace Fahrzeugverwaltung
             anschaffungspreis = aAnschaffungspreis;
         }
 
+        //Getter und Setter Methoden für die Variablen der Klasse
         public String Hersteller { get { return hersteller; } set { hersteller = value; } }
         public String Modell { get { return modell; } set { modell = value; } }
         public String Kennzeichen { get { return kennzeichen; } set { kennzeichen = value; } }
-        /// <summary>
-        /// TODO
-        /// Bei Set Erstzulassung Kriterium setzen,das man in einem bestimmten Bereich bleibt!
-        /// </summary>
         public int Erstzulassung { get { return erstzulassung; } set { erstzulassung = value; } }
         public float Anschaffungspreis { get { return anschaffungspreis; } set { anschaffungspreis = value; } }
         public String Stellplatznummer { get { return stellplatznummer; } set { stellplatznummer = value; } }
