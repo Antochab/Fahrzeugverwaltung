@@ -20,6 +20,8 @@ namespace Fahrzeugverwaltung
         #region Eigenschaftsmethoden
         //Getter Methode für die Fahrzeugliste definieren, damit Fahrzeuge ausgegeben werden können
         public Parkhauspool Parkhausverwaltung { get { return parkhausverwaltung; } set { parkhausverwaltung = value; } }
+        public List<Fahrzeug> Fahrzeugliste { get { return fahrzeugliste; } set { fahrzeugliste = value; } }
+
         public List<String> AllePKWDaten { get { return allePKWDaten; } set { allePKWDaten = value; } }
         public List<String> AlleLKWDaten { get { return alleLKWDaten; } set { alleLKWDaten = value; } }
         public List<String> AlleMotorradDaten { get { return alleMotorradDaten; } set { alleMotorradDaten = value; } }
@@ -179,7 +181,6 @@ namespace Fahrzeugverwaltung
         public static String FahrzeugAusgeben(List<Fahrzeug> aFahrzeugliste, String kennzeichen)
         {
             //festlegen des Ausgabeformats 
-            String output_format = "";
             String output = "";
 
             //finden des Fahrzeugs in der Fahrzeugliste
@@ -192,20 +193,17 @@ namespace Fahrzeugverwaltung
                 case "Fahrzeugverwaltung.PKW":
                     //Format auf PKW anwenden
                     PKW pkw = f as PKW;
-                    output_format = "{0,-50}\n{1,-50}\n{2,-50}\n{3,-50}\n{4,-50}\n{5,-50}\n{6,-50}\n{7,-50}\n{8,-50}";
-                    output = string.Format(output_format, "Hersteller: " + pkw.Hersteller, "Modell: " + pkw.Modell, "Kennzeichen: " + pkw.Kennzeichen, "Erstzulassung: " + pkw.Erstzulassung, "Anschaffungspreis: " + pkw.Anschaffungspreis, "Hubraum: " + pkw.Hubraum, "Leistung: " + pkw.Leistung, "Schadstoffklasse: " + pkw.Schadstoffklasse, "Stellplatz: " + pkw.Stellplatznummer);
+                    output = "Hersteller: " + pkw.Hersteller + "\r\nModell: " + pkw.Modell + "\r\nKennzeichen: " + pkw.Kennzeichen + "\r\nErstzulassung: " + pkw.Erstzulassung + "\r\nAnschaffungspreis: " + pkw.Anschaffungspreis + "\r\nHubraum: " + pkw.Hubraum + "\r\nLeistung: " + pkw.Leistung + "\r\nSchadstoffklasse: " + pkw.Schadstoffklasse + "\r\nStellplatz: " + pkw.Stellplatznummer;
                     break;
                 case "Fahrzeugverwaltung.LKW":
                     //Format auf LKW anwenden
                     LKW lkw = f as LKW;
-                    output_format = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t{7,-20}\t";
-                    output = string.Format(output_format, "Hersteller: " + lkw.Hersteller, "Modell: " + lkw.Modell, "Kennzeichen: " + lkw.Kennzeichen, "Erstzulassung: " + lkw.Erstzulassung, "Anschaffungspreis: " + lkw.Anschaffungspreis, "AnzahlAchsen: " + lkw.Achsenanzahl, "Zuladung: " + lkw.Zuladung, "Stellplatz: " + lkw.Stellplatznummer);
+                    output = "Hersteller: " + lkw.Hersteller + "\r\nModell: " + lkw.Modell + "\r\nKennzeichen: " + lkw.Kennzeichen + "\r\nErstzulassung: " + lkw.Erstzulassung + "\r\nAnschaffungspreis: " + lkw.Anschaffungspreis + "\r\nAnzahlAchsen: " + lkw.Achsenanzahl + "\r\nZuladung: " + lkw.Zuladung + "\r\nStellplatz: " + lkw.Stellplatznummer;
                     break;
                 case "Fahrzeugverwaltung.Motorrad":
                     //Format auf Motorrad anwenden
                     Motorrad motorrad = f as Motorrad;
-                    output_format = "{0,-20}\t{1,-20}\t{2,-20}\t{3,-20}\t{4,-20}\t{5,-20}\t{6,-20}\t";
-                    output = string.Format(output_format, "Hersteller: " + motorrad.Hersteller, "Modell: " + motorrad.Modell, "Kennzeichen: " + motorrad.Kennzeichen, "Erstzulassung: " + motorrad.Erstzulassung, "Anschaffungspreis: " + motorrad.Anschaffungspreis, "Hubraum: " + motorrad.Hubraum, "Stellplatz: " + motorrad.Stellplatznummer);
+                    output = "\r\nHersteller: " + motorrad.Hersteller + "\r\nModell: " + motorrad.Modell + "\r\nKennzeichen: " + motorrad.Kennzeichen + "\r\nErstzulassung: " + motorrad.Erstzulassung + "\r\nAnschaffungspreis: " + motorrad.Anschaffungspreis + "\r\nHubraum: " + motorrad.Hubraum + "\r\nStellplatz: " + motorrad.Stellplatznummer;
                     break;
             }
             //String ausgeben, welcher alle Fahrzeugdaten zurückgibt

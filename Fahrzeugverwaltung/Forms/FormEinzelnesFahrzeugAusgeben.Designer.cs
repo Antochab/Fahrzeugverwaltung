@@ -28,20 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.textBoxKennzeichen = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonSuchen = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(253, 14);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(535, 424);
-            this.listBox1.TabIndex = 0;
             // 
             // textBoxKennzeichen
             // 
@@ -70,16 +61,24 @@
             this.buttonSuchen.UseVisualStyleBackColor = false;
             this.buttonSuchen.Click += new System.EventHandler(this.buttonSuchen_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(274, 64);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(410, 352);
+            this.textBox1.TabIndex = 3;
+            // 
             // FormEinzelnesFahrzeugAusgeben
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonSuchen);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxKennzeichen);
-            this.Controls.Add(this.listBox1);
             this.Name = "FormEinzelnesFahrzeugAusgeben";
             this.Text = "Fahrzeug anzeigen";
             this.ResumeLayout(false);
@@ -88,10 +87,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox textBoxKennzeichen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSuchen;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

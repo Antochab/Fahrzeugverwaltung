@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Fahrzeugverwaltung.Forms
 {
@@ -16,7 +17,17 @@ namespace Fahrzeugverwaltung.Forms
 
         private void buttonSuchen_Click(object sender, System.EventArgs e)
         {
-            fahrzeugpool.berechneSteuerschuldKennzeichen(textBoxKennzeichen.Text);
+            try
+            {
+                textBox1.Multiline = true;
+                textBox1.Text = Fahrzeugpool.FahrzeugAusgeben(fahrzeugpool.Fahrzeugliste,textBoxKennzeichen.Text);
+
+            }
+            catch(ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
