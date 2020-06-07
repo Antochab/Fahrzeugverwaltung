@@ -93,7 +93,7 @@ namespace Fahrzeugverwaltung
         {
             //Anlegen der Variablen für das Exception Handling
             int achsenanzahl = 0;
-            int zuladung = 0;
+            float zuladung = 0;
             String stellplatznummer;
 
             //Aufrufen der Methode ExceptionHandling Methode
@@ -110,13 +110,13 @@ namespace Fahrzeugverwaltung
             }
             //prüfen, ob der String aZuladung in einen int transofrmiert werden kann
             //prüfen, ob der String aZuladung ein Null Wert beinhaltet oder ein Leerzeichen beinhaltet
-            if (int.TryParse(aZuladung, out zuladung) == false || String.IsNullOrWhiteSpace(aZuladung))
+            if (float.TryParse(aZuladung, out zuladung) == false || String.IsNullOrWhiteSpace(aZuladung))
             {
                 throw new ArgumentException("Zuladung überprüfen");
             }
 
             //neuen PKW zur Liste hinzufügen hinzufügen
-            LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), Convert.ToInt32(aZuladung));
+            LKW lkw = new LKW(aHersteller, aModell, aKennzeichen, Convert.ToInt32(aErstzulassung), float.Parse(aAnschaffungspreis), Convert.ToInt32(aAchsenAnzahl), float.Parse(aZuladung));
             stellplatznummer = stellplatzZuweisen(lkw);
             //prüfen, ob kein freier Stellplatz gefunden wurde
             if (stellplatznummer == "-1")
