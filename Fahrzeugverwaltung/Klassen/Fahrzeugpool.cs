@@ -180,6 +180,11 @@ namespace Fahrzeugverwaltung
 
         public static String FahrzeugAusgeben(List<Fahrzeug> aFahrzeugliste, String kennzeichen)
         {
+            //prüfen, ob das Kennzeichen in der Fahrzeugliste existiert
+            if ((aFahrzeugliste.Exists(x => x.Kennzeichen == kennzeichen)) == false)
+            {
+                throw new ArgumentException("Kennzeichen nicht vorhanden!");
+            }
             //festlegen des Ausgabeformats 
             String output = "";
 
