@@ -30,7 +30,7 @@ namespace Fahrzeugverwaltung.Forms
             }
             catch(ArgumentException ex)
             {
-                throw new ArgumentException(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
     }

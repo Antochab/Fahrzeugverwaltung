@@ -80,7 +80,7 @@
             this.Controls.Add(this.textBoxKennzeichen);
             this.Controls.Add(this.buttonSteuerBerechnen);
             this.Name = "FormSteureschuldFuerKennzeichen";
-            this.Text = "Form_Steureschuld_fuer_Kennzeichen";
+            this.Text = "Steureschuld fuer Kennzeichen";
             this.ResumeLayout(false);
             this.PerformLayout();
 
