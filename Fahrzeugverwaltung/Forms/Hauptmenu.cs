@@ -63,7 +63,7 @@ namespace Fahrzeugverwaltung.Forms
                 panel1.Enabled = true;
             }catch(ArgumentException ex)
             {
-                MessageBox.Show("Es konnte keine Verbindung zur Datenbank hergestellt werden. \n Bitte Dateipfad überprüfen! .mdb nötig!");
+                MessageBox.Show("Es konnte keine Verbindung zur Datenbank hergestellt werden. \n Stellen Sie sicher, dass die Datenbank mit dem Projekt verbunden ist.  \n Siehe Informationen: \n https://docs.microsoft.com/de-de/visualstudio/data-tools/connect-to-data-in-an-access-database-windows-forms?view=vs-2019");
             }
 
         }
