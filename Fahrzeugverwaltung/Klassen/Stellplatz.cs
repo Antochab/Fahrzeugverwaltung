@@ -1,4 +1,7 @@
-﻿
+﻿/// <head>
+/// Diese Klasse beinhaltet die Eigenschaften eines Stellplatzes sowie die Getter und Setter Methoden.
+/// Sie repräsentiert einen Stellplatz, welcher in einem Parkhaus existieren kann.
+/// </head>
 using System;
 
 namespace Fahrzeugverwaltung

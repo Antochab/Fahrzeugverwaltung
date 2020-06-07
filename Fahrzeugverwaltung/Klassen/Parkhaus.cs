@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// <head>
+/// Diese Klasse beinhaltet alle relevanten Daten, die über ein Parkhaus abgespeichert werden sollen sowie die
+/// dazugehörigen Getter und Setter Methoden. Zudem wird in dieser Klasse das Anlegen von Stellplätzen für das
+/// jeweilige Parkhaus ermöglicht.
+/// </head>
+
+using System;
 using System.Collections.Generic;
 
 namespace Fahrzeugverwaltung

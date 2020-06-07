@@ -1,3 +1,11 @@
+///<head>
+/// Diese Klasse enthält alle Operationen, die mit den Fahrzeugen und dementsprechen allen Fahrzeugtypen zusammenhängen.
+/// Sie umfasst Funktionen zum Anlegen von PKWs, LKWs und Motorrädern, das Suchen eines Fahrzeuges anhand eines
+/// Kennzeichens sowie das Ausgeben eines Fahrzeugs anhand seines Kennzeichens, die Berechnung der Steuerschuld für
+/// ein und alle Fahrzeuge und die Abfrage sowie die Abspeicherung der Fahrzeugdaten in die Datenbank wird in dieser
+/// Klasse vorgenommen. 
+/// </head>
+
 using Fahrzeugverwaltung.Klassen;
 using System;
 using System.Collections.Generic;

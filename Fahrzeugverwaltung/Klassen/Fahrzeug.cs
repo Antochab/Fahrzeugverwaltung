@@ -1,4 +1,10 @@
-﻿using System;
+﻿/// <head>
+/// Diese Klasse enthält alle relevanten Informationen, die für alle Fahrzeuge gespeichert werden müssen. Sie stellt
+/// dabei die Basisklasse für die Klassen PKW, LKW und Motorrad dar, welche alle von dieser Klasse abgeleitet werden
+/// und diese um ihre eigenen Attribute erweitern.
+/// </head>
+
+using System;
 using System.Collections.Generic;
 
 namespace Fahrzeugverwaltung

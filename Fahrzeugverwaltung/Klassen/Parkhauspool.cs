@@ -1,4 +1,8 @@
-﻿using System;
+﻿/// <head>
+/// Diese Klasse hat den Zweck, alle Operationen durchzuführen, welche mit dem Verwalten der Parkhäuser zusammenhängen.
+/// Zudem werden in dieser Klasse das Abfragen sowie das Abspeichern von Parkhausdaten auf der Datenbank durchgeführt.
+/// </head>
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/// <head>
+/// Diese Klasse repräsentiert alle Eigenschaften, die über einen LKW gespeichert werden sollen. Es handelt sich dabei
+/// um eine abgeleitete Klasse der Basisklasse Fahrzeug. 
+/// </head>
+
+using System;
 using System.Collections.Generic;
 
 namespace Fahrzeugverwaltung
