@@ -488,8 +488,8 @@ namespace Fahrzeugverwaltung
             DataSet dataSet = new DataSet();
 
             String kennzeichen, hersteller, modell, typ, stellplatznummer;
-            float anschaffungspreis;
-            int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl, zuladung;
+            float anschaffungspreis, zuladung;
+            int hubraum, erstzulassung, leistung, schadstoffklasse, achsenanzahl;
 
 
             ///SQL-Abfrage zur Wiederherstellung der bereits vorhandenen Fahrzeuge aus der Datenbank
@@ -520,7 +520,7 @@ namespace Fahrzeugverwaltung
                             leistung = Int32.Parse(reader["leistung"].ToString());
                             schadstoffklasse = Int32.Parse(reader["schadstoffklasse"].ToString());
                             achsenanzahl = Int32.Parse(reader["achsenanzahl"].ToString());
-                            zuladung = Int32.Parse(reader["zuladung"].ToString());
+                            zuladung = float.Parse(reader["zuladung"].ToString());
                             typ = reader["typ"].ToString();
                             stellplatznummer = reader["stellplatznummer"].ToString();
                             
