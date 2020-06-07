@@ -101,7 +101,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(368, 26);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "ConnectionString (@\"Provider=Microsoft.Jet.OLEDB.4.0...)";
+            this.textBox1.Text = "Datenbank-Dateipfad angeben";
             // 
             // label1
             // 

@@ -13,7 +13,7 @@ namespace Fahrzeugverwaltung.Forms
     public partial class Hauptmenu : Form
     {
         private Fahrzeugpool fahrzeugpool;
-        private String connectionString;
+        private String connectionString = "Provider = Microsoft.Jet.OLEDB.4.0; Data Source = ";
 
 
         public Hauptmenu()
@@ -57,13 +57,13 @@ namespace Fahrzeugverwaltung.Forms
             ///Vor dem Programmstart muss zwingend eine Verbindung zur Datenbank hergestellt werden (Access Datenbank unter Eigenschaften Connection String angeben)
             try
             {
-                connectionString = textBox1.Text;
+                connectionString = connectionString + textBox1.Text + ";";
                 fahrzeugpool.datenAusDatenbankAuslesen(connectionString);
                 fahrzeugpool.Parkhausverwaltung.datenAusDatenbankAuslesen(connectionString);
                 panel1.Enabled = true;
             }catch(ArgumentException ex)
             {
-                MessageBox.Show("Es konnte keine Verbindung zur Datenbank hergestellt werden. \n Bitte ConnectionString überprüfen!");
+                MessageBox.Show("Es konnte keine Verbindung zur Datenbank hergestellt werden. \n Bitte Dateipfad überprüfen! .mdb nötig!");
             }
 
         }
